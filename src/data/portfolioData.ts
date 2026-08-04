@@ -11,11 +11,40 @@ export const PERSONAL_INFO = {
   linkedin: "https://linkedin.com/in/toka-nani-33a124359",
   resumePath: "nani.pdf",
   bio: [
-    "Google Student Ambassador (GSA 2026) for the Gemini Program. Self-directed 'vibe coder' — building production systems end-to-end using AI-native tools (Antigravity, Codex, Kiro, Windsurf) rather than manual coding, with a focus on shipping deployed, verified work fast.",
-    "Specializing in LLM context optimization middleware, cloud-native microservices on Google Cloud Run, and forensic ML bias auditing.",
+    "Google Student Ambassador (GSA 2026) for the Gemini Program. Self-directed AI engineer building production systems end-to-end using AI-native tools (Antigravity, Codex, Kiro, Windsurf) to ship verified, containerized applications fast.",
+    "Specializing in LLM context optimization middleware, cloud-native microservices on Google Cloud Run, and forensic ML bias auditing platforms.",
     "Actively seeking SWE / backend / DevOps internships (India-based, no visa sponsorship needed)."
   ]
 };
+
+export interface Specialization {
+  title: string;
+  description: string;
+  iconName: string;
+}
+
+export const SPECIALIZATIONS: Specialization[] = [
+  {
+    title: "LLM Context Optimization",
+    description: "Semantic vector ranking and real-time context condensation middleware cutting token costs and latency.",
+    iconName: "Zap"
+  },
+  {
+    title: "Cloud-Native Microservices",
+    description: "Containerized serverless backends on Google Cloud Run with Docker and Firestore real-time synchronization.",
+    iconName: "Cloud"
+  },
+  {
+    title: "Forensic ML Bias Auditing",
+    description: "Automated demographic parity metrics and Gemini 1.5 Flash explainability engines for compliance reporting.",
+    iconName: "ShieldCheck"
+  },
+  {
+    title: "AI-Native Engineering",
+    description: "End-to-end rapid application delivery using AI-native workflows (Antigravity, Codex, Kiro, Windsurf).",
+    iconName: "Sparkles"
+  }
+];
 
 export const PROJECTS: Project[] = [
   {
@@ -23,8 +52,9 @@ export const PROJECTS: Project[] = [
     title: "TokenFlow AI",
     subtitle: "Prompt Memory Optimizer Middleware",
     description: "Production-grade semantic vector ranking & real-time context condensation middleware that prunes redundant prompt tokens before LLM completion API calls.",
-    problem: "LLM context windows get bloated with redundant prompt history, driving up cost, API throttling, and latency.",
-    solution: "Built a FastAPI & React 18 middleware utilizing Gemini text-embedding-004 and gemini-1.5-flash for zero-storage semantic memory compression.",
+    problem: "Conversational LLM applications repeatedly resend growing prompt histories across chat sessions, racking up high token costs and latency spikes. This results in API rate-limit throttling, context window saturation, and degraded response accuracy due to noisy background prompt data.",
+    solution: "Built a production-grade FastAPI and React 18 middleware pipeline combining Gemini text-embedding-004 vector representations with an exponential recency-decay formula. The algorithm dynamically calculates similarity and half-life decay to condense prompt history in-memory before invoking completion endpoints—achieving ~74% token overhead reduction with zero database storage cost.",
+    stackRationale: "FastAPI for high-throughput asynchronous request handling; Gemini text-embedding-004 for semantic vector precision over keyword matching; React 18 for real-time frontend telemetry.",
     stack: ["FastAPI", "Gemini text-embedding-004", "Gemini 1.5 Flash", "React 18", "Swagger", "Render"],
     metrics: "~74% average reduction in prompt token overhead via exponential recency decay vector scoring",
     liveUrl: "https://tokenflow-ai.onrender.com",
@@ -37,8 +67,9 @@ export const PROJECTS: Project[] = [
     title: "BiasGuard AI",
     subtitle: "Forensic ML Bias Auditing Platform",
     description: "Forensic auditing platform ingesting ML decision logs and detecting automated bias patterns using Vertex AI and Gemini explainability engines.",
-    problem: "Automated decision systems in hiring and lending embed demographic bias that is difficult to detect and explain after deployment.",
-    solution: "Designed a serverless Flask pipeline on Cloud Run with Cloud Storage audit trails, Firestore sync, and Gemini 1.5 Flash compliance rationale generation. Built solo for Google Solution Challenge 2026.",
+    problem: "Black-box automated decision systems in hiring, credit scoring, and admissions risk embedding unseen demographic bias after deployment. Without forensic audit trails or explainability engines, engineering and compliance teams struggle to detect disparity or generate human-readable regulatory reports.",
+    solution: "Built a serverless forensic auditing platform on Google Cloud Run that streams decision logs through a statistical evaluator calculating demographic parity and equalized odds metrics. Paired calculations with Gemini 1.5 Flash structured prompts to generate human-readable compliance audit reports and retraining recommendations in under 30 seconds. Built solo for Google Solution Challenge 2026.",
+    stackRationale: "Google Cloud Run & Cloud Storage for event-driven serverless audit log processing; Vertex AI & Gemini 1.5 Flash for automated disparity evaluation and natural-language compliance reporting; Cloud Firestore for cross-region report sync.",
     stack: ["Vertex AI", "Gemini 1.5 Flash", "Flask", "Firestore", "Cloud Storage", "Cloud Run", "Docker"],
     metrics: "<30s audit cycle with automated UN SDG-5 & SDG-10 fairness reports",
     liveUrl: "https://biasguard-rzpoqg6s6a-uc.a.run.app",
@@ -50,8 +81,9 @@ export const PROJECTS: Project[] = [
     title: "JanVoice AI",
     subtitle: "National AI Governance Suite",
     description: "Governance platform enabling citizens and Members of Parliament to report, track, and analyze constituency issues in real time.",
-    problem: "Indian parliamentary constituencies lack unified digital tools for direct citizen feedback and executive governance intelligence.",
-    solution: "Developed executive MP dashboards with daily briefing summaries, automated issue routing, and natural language smart search.",
+    problem: "Indian parliamentary constituencies lack unified digital tools for direct citizen grievance reporting and constituency-level governance analytics. Representatives and administrative offices are overwhelmed by unstructured constituent feedback without automated categorization or daily executive briefings.",
+    solution: "Developed a national AI governance platform providing role-based portals for citizens, Members of Parliament (MPs), and administrators. Built MP executive dashboards featuring AI-generated daily constituency briefings, automated report routing, and natural-language smart search across citizen submissions.",
+    stackRationale: "React & Netlify for fast, component-driven dashboard interfaces; Gemini AI for automated daily briefing summarization and natural-language search query parsing; SVG chart visualizers for real-time constituency data rendering.",
     stack: ["React", "Gemini AI", "JavaScript", "SVG Charts", "Netlify"],
     liveUrl: "https://spontaneous-raindrop-8a7198.netlify.app/dashboard",
     githubUrl: "https://github.com/NaniToka/Ai-agent",
@@ -62,8 +94,9 @@ export const PROJECTS: Project[] = [
     title: "StadiumSense AI",
     subtitle: "FIFA World Cup 2026 GenAI Operations",
     description: "GenAI stadium operations platform providing real-time crowd telemetry and automated incident response briefings. Built for PromptWars.",
-    problem: "Massive sports stadium venues struggle with real-time crowd telemetry, incident dispatch, and multi-agency operational briefings.",
-    solution: "Integrated Gemini 1.5 Flash with Firestore real-time data streams and FastAPI backends for instant operational incident briefs.",
+    problem: "Large sports venues and FIFA World Cup stadium operations struggle to coordinate real-time crowd flow telemetry, safety incident dispatch, and multi-agency briefings. Incident logs are often fragmented across disparate communication channels, delaying emergency response.",
+    solution: "Integrated Gemini 1.5 Flash with Firestore real-time data streams and FastAPI microservices to deliver predictive crowd telemetry and automated operational incident briefings. Built for PromptWars hackathon to streamline stadium operations management.",
+    stackRationale: "FastAPI & TypeScript for type-safe real-time telemetry pipelines; Firestore for live incident state synchronization; Gemini 1.5 Flash for automated operational briefing generation.",
     stack: ["React", "TypeScript", "FastAPI", "Gemini 1.5 Flash", "Firestore", "Render"],
     githubUrl: "https://github.com/NaniToka",
     featured: false
@@ -73,8 +106,9 @@ export const PROJECTS: Project[] = [
     title: "Carbon Footprint Tracker",
     subtitle: "Environmental Impact Monitoring Dashboard",
     description: "Full-stack environmental impact monitoring web application calculating lifestyle carbon emissions with real-time reduction analytics. Built for PromptWars (Challenge 3).",
-    problem: "Individuals and teams lack actionable real-time analytics to measure and reduce carbon emissions across daily activities.",
-    solution: "Containerized React & Vite dashboard deployed on Cloud Run providing emission calculation algorithms and visual charts.",
+    problem: "Individuals and organizations lack actionable real-time visibility into daily carbon emissions generated by transportation, energy usage, and workplace habits. Existing tools rely on manual static estimation rather than interactive analytics.",
+    solution: "Built a containerized full-stack web application providing real-time carbon emission calculations and interactive reduction analytics. Deployed on Google Cloud Run for PromptWars (Challenge 3) to provide instant visual feedback on lifestyle emissions.",
+    stackRationale: "React & Vite for high-performance interactive charting UI; Tailwind CSS for responsive dark UI layout; Docker & Google Cloud Run for containerized serverless hosting.",
     stack: ["React", "Vite", "Tailwind CSS", "Docker", "Google Cloud Run"],
     githubUrl: "https://github.com/NaniToka/carbon-footprint-tracker.git",
     featured: false

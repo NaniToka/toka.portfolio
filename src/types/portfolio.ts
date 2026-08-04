@@ -5,6 +5,7 @@ export interface Project {
   description: string;
   problem: string;
   solution: string;
+  stackRationale?: string;
   stack: string[];
   metrics?: string;
   liveUrl?: string;

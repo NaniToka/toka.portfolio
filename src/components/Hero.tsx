@@ -43,10 +43,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                   <img
                     src="/toka-profile.jpg"
                     alt="Toka Nani, Software Engineer"
-                    width={224}
-                    height={224}
+                    width={288}
+                    height={288}
                     loading="eager"
-                    className="w-36 h-36 sm:w-48 sm:h-48 lg:w-56 lg:h-56 rounded-full object-cover border-2 border-indigo-500/40 ring-8 ring-indigo-500/10 shadow-2xl shadow-indigo-950/60 transition-transform duration-300 hover:scale-[1.03]"
+                    className="w-36 h-36 sm:w-56 sm:h-56 lg:w-72 lg:h-72 rounded-full object-cover border-2 border-indigo-500/40 ring-8 ring-indigo-500/10 shadow-2xl shadow-indigo-950/60 transition-transform duration-300 hover:scale-[1.02]"
                   />
                 </picture>
                 <div className="absolute bottom-2 right-2 w-5 h-5 rounded-full bg-indigo-500 border-4 border-[#07080D]" title="Online / Active" />

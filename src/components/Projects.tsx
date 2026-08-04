@@ -141,10 +141,15 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, idx }) => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -4 }}
                   transition={{ duration: 0.2 }}
-                  className="p-4 rounded-lg bg-slate-900/60 border border-slate-800/80 text-xs"
+                  className="p-4 rounded-lg bg-slate-900/60 border border-slate-800/80 text-xs space-y-3"
                 >
-                  <div className="font-mono font-semibold text-slate-300 uppercase mb-2">Technologies Used</div>
-                  <div className="flex flex-wrap gap-1.5">
+                  <div className="font-mono font-semibold text-slate-300 uppercase">Technologies & Architectural Choice</div>
+                  {project.stackRationale && (
+                    <p className="text-slate-300 text-xs leading-relaxed italic border-l-2 border-indigo-500 pl-3 py-0.5">
+                      {project.stackRationale}
+                    </p>
+                  )}
+                  <div className="flex flex-wrap gap-1.5 pt-1">
                     {project.stack.map((tech) => (
                       <span
                         key={tech}
