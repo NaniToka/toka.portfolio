@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-[#07080D] text-slate-100 font-sans antialiased selection:bg-indigo-500/30 selection:text-indigo-200;
+    overflow-x: hidden;
+  }
+
+  /* Focus visible accessibility outline */
+  :focus-visible {
+    @apply outline-none ring-2 ring-indigo-500 ring-offset-2 ring-offset-[#07080D];
+  }
+}
+
+/* Custom minimal scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #07080D;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4F46E5;
+}
+
+/* Glassmorphism utility */
+.glass-card {
+  background: rgba(16, 20, 32, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card:hover {
+  border-color: rgba(79, 70, 229, 0.35);
+  background: rgba(24, 30, 48, 0.75);
+}
+
+.glass-nav {
+  background: rgba(7, 8, 13, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}

@@ -1,0 +1,206 @@
+import { Project, SkillCategory, Certification, Achievement, ExperienceItem } from '../types/portfolio';
+
+export const PERSONAL_INFO = {
+  name: "Toka Nani",
+  title: "AI Engineer / Software Engineer",
+  education: "B.Tech CSE, 3rd year (2024–2028)",
+  institution: "DVR & Dr. HS MIC College of Technology, Vijayawada, India",
+  valueProp: "Building production AI systems, one prompt-driven deploy at a time.",
+  email: "tokananiy@gmail.com",
+  github: "https://github.com/NaniToka",
+  linkedin: "https://linkedin.com/in/toka-nani-33a124359",
+  resumePath: "nani.pdf",
+  bio: [
+    "Google Student Ambassador (GSA 2026) for the Gemini Program. Self-directed 'vibe coder' — building production systems end-to-end using AI-native tools (Antigravity, Codex, Kiro, Windsurf) rather than manual coding, with a focus on shipping deployed, verified work fast.",
+    "Specializing in LLM context optimization middleware, cloud-native microservices on Google Cloud Run, and forensic ML bias auditing.",
+    "Actively seeking SWE / backend / DevOps internships (India-based, no visa sponsorship needed)."
+  ]
+};
+
+export const PROJECTS: Project[] = [
+  {
+    id: "tokenflow-ai",
+    title: "TokenFlow AI",
+    subtitle: "Prompt Memory Optimizer Middleware",
+    description: "Production-grade semantic vector ranking & real-time context condensation middleware that prunes redundant prompt tokens before LLM completion API calls.",
+    problem: "LLM context windows get bloated with redundant prompt history, driving up cost, API throttling, and latency.",
+    solution: "Built a FastAPI & React 18 middleware utilizing Gemini text-embedding-004 and gemini-1.5-flash for zero-storage semantic memory compression.",
+    stack: ["FastAPI", "Gemini text-embedding-004", "Gemini 1.5 Flash", "React 18", "Swagger", "Render"],
+    metrics: "~74% average reduction in prompt token overhead via exponential recency decay vector scoring",
+    liveUrl: "https://tokenflow-ai.onrender.com",
+    docsUrl: "https://tokenflow-ai.onrender.com/docs",
+    githubUrl: "https://github.com/NaniToka/TokenFlow-AI",
+    featured: true
+  },
+  {
+    id: "biasguard-ai",
+    title: "BiasGuard AI",
+    subtitle: "Forensic ML Bias Auditing Platform",
+    description: "Forensic auditing platform ingesting ML decision logs and detecting automated bias patterns using Vertex AI and Gemini explainability engines.",
+    problem: "Automated decision systems in hiring and lending embed demographic bias that is difficult to detect and explain after deployment.",
+    solution: "Designed a serverless Flask pipeline on Cloud Run with Cloud Storage audit trails, Firestore sync, and Gemini 1.5 Flash compliance rationale generation. Built solo for Google Solution Challenge 2026.",
+    stack: ["Vertex AI", "Gemini 1.5 Flash", "Flask", "Firestore", "Cloud Storage", "Cloud Run", "Docker"],
+    metrics: "<30s audit cycle with automated UN SDG-5 & SDG-10 fairness reports",
+    liveUrl: "https://biasguard-rzpoqg6s6a-uc.a.run.app",
+    githubUrl: "https://github.com/NaniToka/unbiased-ai-decision",
+    featured: true
+  },
+  {
+    id: "janvoice-ai",
+    title: "JanVoice AI",
+    subtitle: "National AI Governance Suite",
+    description: "Governance platform enabling citizens and Members of Parliament to report, track, and analyze constituency issues in real time.",
+    problem: "Indian parliamentary constituencies lack unified digital tools for direct citizen feedback and executive governance intelligence.",
+    solution: "Developed executive MP dashboards with daily briefing summaries, automated issue routing, and natural language smart search.",
+    stack: ["React", "Gemini AI", "JavaScript", "SVG Charts", "Netlify"],
+    liveUrl: "https://spontaneous-raindrop-8a7198.netlify.app/dashboard",
+    githubUrl: "https://github.com/NaniToka/Ai-agent",
+    featured: true
+  },
+  {
+    id: "stadiumsense-ai",
+    title: "StadiumSense AI",
+    subtitle: "FIFA World Cup 2026 GenAI Operations",
+    description: "GenAI stadium operations platform providing real-time crowd telemetry and automated incident response briefings. Built for PromptWars.",
+    problem: "Massive sports stadium venues struggle with real-time crowd telemetry, incident dispatch, and multi-agency operational briefings.",
+    solution: "Integrated Gemini 1.5 Flash with Firestore real-time data streams and FastAPI backends for instant operational incident briefs.",
+    stack: ["React", "TypeScript", "FastAPI", "Gemini 1.5 Flash", "Firestore", "Render"],
+    githubUrl: "https://github.com/NaniToka",
+    featured: false
+  },
+  {
+    id: "carbon-tracker",
+    title: "Carbon Footprint Tracker",
+    subtitle: "Environmental Impact Monitoring Dashboard",
+    description: "Full-stack environmental impact monitoring web application calculating lifestyle carbon emissions with real-time reduction analytics. Built for PromptWars (Challenge 3).",
+    problem: "Individuals and teams lack actionable real-time analytics to measure and reduce carbon emissions across daily activities.",
+    solution: "Containerized React & Vite dashboard deployed on Cloud Run providing emission calculation algorithms and visual charts.",
+    stack: ["React", "Vite", "Tailwind CSS", "Docker", "Google Cloud Run"],
+    githubUrl: "https://github.com/NaniToka/carbon-footprint-tracker.git",
+    featured: false
+  }
+];
+
+export const SKILL_CATEGORIES: SkillCategory[] = [
+  {
+    category: "Cloud / AI Infrastructure",
+    iconName: "Cloud",
+    skills: ["Google Cloud (Cloud Run, GCS)", "Vertex AI", "Gemini API (Flash & Pro)", "AWS"]
+  },
+  {
+    category: "Backend & Systems",
+    iconName: "Server",
+    skills: ["Python", "FastAPI", "Flask", "Cloud Firestore", "REST API Design"]
+  },
+  {
+    category: "Frontend Web",
+    iconName: "Layout",
+    skills: ["React", "TypeScript", "Vite", "Tailwind CSS", "Component Architecture"]
+  },
+  {
+    category: "DevOps & Tooling",
+    iconName: "Container",
+    skills: ["Docker", "Cloud Run Deployment", "Git & GitHub", "CI Basics", "OpenAPI / Swagger"]
+  },
+  {
+    category: "Programming Languages",
+    iconName: "Code",
+    skills: ["Python", "JavaScript", "TypeScript", "SQL", "C++"]
+  },
+  {
+    category: "CS Fundamentals",
+    iconName: "Cpu",
+    skills: ["Data Structures & Algorithms (Daily LeetCode Practice)", "System Design", "OOP", "DBMS"]
+  }
+];
+
+export const CERTIFICATIONS: Certification[] = [
+  {
+    id: "gsc-2026",
+    title: "BiasGuard AI Prototype Certificate",
+    issuer: "Google Solution Challenge 2026 × Hack2Skill",
+    credentialId: "2026H2S07SCBWAI-PS06834",
+    verifyUrl: "https://certificate.hack2skill.com/verify/2026H2S07SCBWAI-PS06834"
+  },
+  {
+    id: "google-ai-essentials",
+    title: "Google AI Essentials Specialization",
+    issuer: "Google via Coursera (5-course specialization)",
+    verifyUrl: "https://www.coursera.org/account/accomplishments/specialization/HAXF8PBC6D2I"
+  },
+  {
+    id: "google-gail",
+    title: "Generative AI Leader — Certified",
+    issuer: "Google Cloud",
+    credentialId: "GAIL03-GETCERT/2026.06.29",
+    status: "Verified Official"
+  },
+  {
+    id: "jpmorgan-forage",
+    title: "Software Engineering Job Simulation",
+    issuer: "JPMorgan Chase & Co. × Forage",
+    verifyUrl: "https://www.theforage.com/completion-certificates/Sj7temL583QAYpHXD/E6McHJDKsQYh79moz_Sj7temL583QAYpHXD_6973b13fb1ee4126d09b7191_1781903103039_completion_certificate.pdf"
+  },
+  {
+    id: "walmart-forage",
+    title: "Advanced Software Engineering Simulation",
+    issuer: "Walmart Global Tech × Forage",
+    verifyUrl: "https://www.theforage.com/completion-certificates/prBZoAihniNijyD6d/oX6f9BbCL9kJDJzfg_prBZoAihniNijyD6d_6973b13fb1ee4126d09b7191_1781985899780_completion_certificate.pdf"
+  },
+  {
+    id: "tata-iq-forage",
+    title: "GenAI Data Analytics Simulation",
+    issuer: "Tata iQ × Forage",
+    verifyUrl: "https://www.theforage.com/completion-certificates/ifobHAoMjQs9s6bKS/gMTdCXwDdLYoXZ3wG_ifobHAoMjQs9s6bKS_6973b13fb1ee4126d09b7191_1782260307680_completion_certificate.pdf"
+  },
+  {
+    id: "aws-saa",
+    title: "AWS Certified Solutions Architect – Associate (SAA-C03)",
+    issuer: "Amazon Web Services",
+    status: "Exam Scheduled September 2026"
+  }
+];
+
+export const ACHIEVEMENTS: Achievement[] = [
+  {
+    id: "hackathons-13",
+    title: "13+ Hackathons & Engineering Competitions",
+    event: "Google Solution Challenge, PromptWars, Meta PyTorch Hackathon, Ascent 2026",
+    description: "Participated in 13+ hackathons including Google Solution Challenge 2026, PromptWars (Challenges 1 & 3), Meta PyTorch Hackathon, and Anvil @ Ascent 2026 (Grand Finale)."
+  },
+  {
+    id: "build-with-ai",
+    title: "Build with AI Bootcamp Participant",
+    event: "Google for Developers × Hack2skill (Chennai)",
+    description: "Attended intensive hands-on technical workshop on building production AI applications using Gemini API and Vertex AI."
+  }
+];
+
+export const EXPERIENCE_ITEMS: ExperienceItem[] = [
+  {
+    id: "gsa-2026",
+    role: "Google Student Ambassador — Gemini Program",
+    organization: "Google",
+    period: "May 2026 – Present",
+    location: "Vijayawada, India",
+    bullets: [
+      "Selected at national level to represent Google AI and Gemini initiatives on campus as one of a limited cohort of ambassadors across India.",
+      "Advised 100+ peers on Google AI, Cloud, and ML certification pathways; organized hands-on technical workshops.",
+      "Used direct Gemini API access to architect and deploy production-level AI-powered applications."
+    ],
+    type: "role"
+  },
+  {
+    id: "self-directed-dev",
+    role: "Full-Stack & Cloud AI Developer (Self-Directed)",
+    organization: "Personal Projects & Hackathons",
+    period: "Jan 2025 – Present",
+    location: "Remote",
+    bullets: [
+      "Architected and deployed 3 full-stack AI applications as sole engineer on Google Cloud Run and Render.",
+      "Built distributed serverless backends with Flask/FastAPI, Docker containerization, and Firestore real-time synchronization.",
+      "Maintained 30+ GitHub contributions across public repositories."
+    ],
+    type: "role"
+  }
+];
