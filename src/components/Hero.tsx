@@ -1,18 +1,56 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useState, useRef } from 'react';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { Terminal, FileText, Download, Github, Linkedin, Mail, ArrowDown } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
+import { useReducedMotion } from '../hooks/useReducedMotion';
 
 interface HeroProps {
   onOpenResume: () => void;
 }
 
 export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
+  const isReducedMotion = useReducedMotion();
+  const [isDesktop, setIsDesktop] = useState(false);
+  const heroRef = useRef<HTMLElement>(null);
+
+  // Mouse position motion values
+  const mouseX = useMotionValue(-500);
+  const mouseY = useMotionValue(-500);
+
+  // Smooth fluid spring interpolation (prevents jittery 1:1 tracking)
+  const springX = useSpring(mouseX, { damping: 30, stiffness: 180 });
+  const springY = useSpring(mouseY, { damping: 30, stiffness: 180 });
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const finePointer = window.matchMedia('(pointer: fine)').matches;
+    setIsDesktop(finePointer && !isReducedMotion);
+  }, [isReducedMotion]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    if (!isDesktop || !heroRef.current) return;
+    const rect = heroRef.current.getBoundingClientRect();
+    mouseX.set(e.clientX - rect.left);
+    mouseY.set(e.clientY - rect.top);
+  };
+
   return (
-    <section id="hero" className="min-h-screen pt-28 pb-16 flex flex-col justify-center relative overflow-hidden">
-      
-      {/* Background Subtle Accent Glow */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[140px] pointer-events-none" />
+    <section 
+      ref={heroRef}
+      onMouseMove={handleMouseMove}
+      id="hero" 
+      className="min-h-screen pt-28 pb-16 flex flex-col justify-center relative overflow-hidden"
+    >
+      {/* Desktop Interactive Cursor-Reactive Glow Layer (Linear Landing Style) */}
+      {isDesktop && (
+        <motion.div
+          className="pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] bg-indigo-500/12 rounded-full blur-[110px] z-0 transition-opacity duration-500"
+          style={{
+            left: springX,
+            top: springY,
+          }}
+        />
+      )}
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">

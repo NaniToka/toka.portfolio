@@ -21,12 +21,64 @@
   }
 }
 
-/* Site-wide subtle technical grid pattern (Vercel/Linear dark aesthetic) */
-.bg-grid-pattern {
-  background-size: 40px 40px;
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+/* Site-wide fine noise/grain texture overlay (Vercel/Linear dark aesthetic) */
+.bg-grain-texture {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+/* GPU-accelerated smooth ambient gradient mesh keyframe animations */
+@keyframes mesh-drift-1 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(40px, -50px, 0) scale(1.08);
+  }
+  66% {
+    transform: translate3d(-30px, 30px, 0) scale(0.95);
+  }
+}
+
+@keyframes mesh-drift-2 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(-45px, 40px, 0) scale(0.92);
+  }
+  66% {
+    transform: translate3d(35px, -35px, 0) scale(1.06);
+  }
+}
+
+@keyframes mesh-drift-3 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(50px, 45px, 0) scale(1.1);
+  }
+}
+
+.animate-mesh-1 {
+  animation: mesh-drift-1 22s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-mesh-2 {
+  animation: mesh-drift-2 26s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-mesh-3 {
+  animation: mesh-drift-3 20s ease-in-out infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-mesh-1, .animate-mesh-2, .animate-mesh-3 {
+    animation: none !important;
+  }
 }
 
 /* Custom minimal scrollbar */
