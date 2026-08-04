@@ -2,54 +2,60 @@ import React from 'react';
 import { useReducedMotion } from '../hooks/useReducedMotion';
 
 /**
- * Site-Wide Layered Background System
- * 1. Base Layer: Animated gradient mesh with slow breathing drift (20-26s loops)
- * 2. Color Palette: Accent indigo (#4F46E5) + deep blue/violet cool tones
- * 3. Texture Layer: Fine SVG noise grain overlay
- * 4. Accessibility: Static ambient mesh for users with prefers-reduced-motion
+ * Single Fixed Full-Viewport Background System
+ * Persistent across full-page scroll
+ * - Blob 1: 600px circle (#4F46E5, 18s loop, top-left)
+ * - Blob 2: 500px circle (#3B82F6, 22s loop, center-right)
+ * - Blob 3: 550px circle (#4F46E5, 26s loop, bottom-left)
+ * - Fine Noise Overlay: mix-blend-mode overlay (3% - 4% opacity)
+ * - Reduced Motion: disables animations
  */
 export const BackgroundMesh: React.FC = () => {
   const isReducedMotion = useReducedMotion();
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden select-none">
-      
-      {/* Texture Layer: Fine Grain SVG Noise Overlay */}
-      <div className="absolute inset-0 bg-grain-texture opacity-60 z-10" />
+    <div
+      aria-hidden="true"
+      className="fixed inset-0 pointer-events-none z-0 overflow-hidden select-none"
+      style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, zIndex: 0 }}
+    >
+      {/* Texture Layer: Fine SVG Noise Grain Overlay */}
+      <div className="absolute inset-0 bg-grain-texture opacity-40 mix-blend-overlay z-10 pointer-events-none" />
 
-      {/* Base Layer: Soft Drifting Gradient Mesh Blobs */}
-      <div className="absolute inset-0 z-0">
+      {/* Base Layer: 3 Blurred Radial Gradient Blobs */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
         
-        {/* Blob 1: Hero Area — Indigo (#4F46E5) */}
+        {/* Blob 1: Top-Left (600px, #4F46E5, 18s loop) */}
         <div
-          className={`absolute -top-20 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-indigo-600/12 rounded-full blur-[140px] ${
-            isReducedMotion ? '' : 'animate-mesh-1'
+          className={`absolute -top-24 -left-24 w-[600px] h-[600px] rounded-full blur-[120px] opacity-30 pointer-events-none ${
+            isReducedMotion ? '' : 'animate-blob-1'
           }`}
+          style={{
+            background: 'radial-gradient(circle, #4F46E5 0%, transparent 70%)',
+          }}
         />
 
-        {/* Blob 2: About & Experience Timeline — Deep Violet (#4338CA) */}
+        {/* Blob 2: Center-Right (500px, #3B82F6, 22s loop) */}
         <div
-          className={`absolute top-[26%] -right-20 w-[600px] h-[600px] bg-indigo-800/10 rounded-full blur-[150px] ${
-            isReducedMotion ? '' : 'animate-mesh-2'
+          className={`absolute top-[38%] -right-24 w-[500px] h-[500px] rounded-full blur-[120px] opacity-25 pointer-events-none ${
+            isReducedMotion ? '' : 'animate-blob-2'
           }`}
+          style={{
+            background: 'radial-gradient(circle, #3B82F6 0%, transparent 70%)',
+          }}
         />
 
-        {/* Blob 3: Featured Projects Stack — Cool Blue (#3B82F6) */}
+        {/* Blob 3: Bottom-Left (550px, #4F46E5, 26s loop) */}
         <div
-          className={`absolute top-[52%] -left-20 w-[650px] h-[650px] bg-blue-600/08 rounded-full blur-[150px] ${
-            isReducedMotion ? '' : 'animate-mesh-3'
+          className={`absolute -bottom-24 -left-12 w-[550px] h-[550px] rounded-full blur-[120px] opacity-25 pointer-events-none ${
+            isReducedMotion ? '' : 'animate-blob-3'
           }`}
-        />
-
-        {/* Blob 4: Skills & Certifications — Deep Indigo (#4F46E5) */}
-        <div
-          className={`absolute bottom-20 left-1/2 -translate-x-1/2 w-[750px] h-[500px] bg-indigo-600/10 rounded-full blur-[160px] ${
-            isReducedMotion ? '' : 'animate-mesh-1'
-          }`}
+          style={{
+            background: 'radial-gradient(circle, #4F46E5 0%, transparent 70%)',
+          }}
         />
 
       </div>
-
     </div>
   );
 };

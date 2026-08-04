@@ -23,60 +23,60 @@
 
 /* Site-wide fine noise/grain texture overlay (Vercel/Linear dark aesthetic) */
 .bg-grain-texture {
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
 }
 
-/* GPU-accelerated smooth ambient gradient mesh keyframe animations */
-@keyframes mesh-drift-1 {
+/* GPU-accelerated smooth ambient gradient blob keyframe animations */
+@keyframes blob-drift-1 {
   0%, 100% {
     transform: translate3d(0, 0, 0) scale(1);
   }
   33% {
-    transform: translate3d(40px, -50px, 0) scale(1.08);
+    transform: translate3d(60px, -70px, 0) scale(1.12);
   }
   66% {
-    transform: translate3d(-30px, 30px, 0) scale(0.95);
+    transform: translate3d(-40px, 50px, 0) scale(0.92);
   }
 }
 
-@keyframes mesh-drift-2 {
+@keyframes blob-drift-2 {
   0%, 100% {
     transform: translate3d(0, 0, 0) scale(1);
   }
   33% {
-    transform: translate3d(-45px, 40px, 0) scale(0.92);
+    transform: translate3d(-70px, 60px, 0) scale(0.88);
   }
   66% {
-    transform: translate3d(35px, -35px, 0) scale(1.06);
+    transform: translate3d(50px, -50px, 0) scale(1.1);
   }
 }
 
-@keyframes mesh-drift-3 {
+@keyframes blob-drift-3 {
   0%, 100% {
     transform: translate3d(0, 0, 0) scale(1);
   }
   50% {
-    transform: translate3d(50px, 45px, 0) scale(1.1);
+    transform: translate3d(75px, 65px, 0) scale(1.15);
   }
 }
 
-.animate-mesh-1 {
-  animation: mesh-drift-1 22s ease-in-out infinite;
+.animate-blob-1 {
+  animation: blob-drift-1 18s ease-in-out infinite;
   will-change: transform;
 }
 
-.animate-mesh-2 {
-  animation: mesh-drift-2 26s ease-in-out infinite;
+.animate-blob-2 {
+  animation: blob-drift-2 22s ease-in-out infinite;
   will-change: transform;
 }
 
-.animate-mesh-3 {
-  animation: mesh-drift-3 20s ease-in-out infinite;
+.animate-blob-3 {
+  animation: blob-drift-3 26s ease-in-out infinite;
   will-change: transform;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-mesh-1, .animate-mesh-2, .animate-mesh-3 {
+  .animate-blob-1, .animate-blob-2, .animate-blob-3 {
     animation: none !important;
   }
 }
