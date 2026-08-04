@@ -28,9 +28,25 @@ export const About: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="lg:col-span-8 glass-card rounded-xl p-6 sm:p-8 space-y-5"
           >
-            <div className="flex items-center gap-3 text-indigo-400 font-mono text-sm font-semibold pb-4 border-b border-slate-800">
-              <Sparkles className="w-5 h-5" />
-              <span>Google Student Ambassador • Gemini Program (2026)</span>
+            <div className="flex items-center gap-4 pb-4 border-b border-slate-800">
+              <picture className="shrink-0">
+                <source srcSet="/toka-profile.webp" type="image/webp" />
+                <img
+                  src="/toka-profile.jpg"
+                  alt="Toka Nani, Software Engineer"
+                  width={64}
+                  height={64}
+                  loading="lazy"
+                  className="w-14 h-14 sm:w-16 sm:h-16 rounded-full object-cover border border-indigo-500/30 ring-2 ring-indigo-500/10"
+                />
+              </picture>
+              <div>
+                <div className="flex items-center gap-2 text-indigo-400 font-mono text-sm font-semibold">
+                  <Sparkles className="w-4 h-4" />
+                  <span>Google Student Ambassador</span>
+                </div>
+                <div className="text-xs font-mono text-slate-400 mt-0.5">Gemini Program (2026 Cohort)</div>
+              </div>
             </div>
 
             {PERSONAL_INFO.bio.map((paragraph, idx) => (

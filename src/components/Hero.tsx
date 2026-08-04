@@ -35,14 +35,31 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
               </span>
             </div>
 
-            {/* Name & Headline */}
-            <div>
-              <h1 className="text-4xl sm:text-6xl font-extrabold text-slate-100 tracking-tight leading-none mb-3">
-                {PERSONAL_INFO.name}
-              </h1>
-              <div className="flex items-center gap-2 text-indigo-400 font-mono text-lg sm:text-xl font-semibold">
-                <Terminal className="w-5 h-5 text-indigo-500" />
-                <span>{PERSONAL_INFO.title}</span>
+            {/* Name & Headline with Profile Avatar */}
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
+              <div className="relative shrink-0">
+                <picture>
+                  <source srcSet="/toka-profile.webp" type="image/webp" />
+                  <img
+                    src="/toka-profile.jpg"
+                    alt="Toka Nani, Software Engineer"
+                    width={110}
+                    height={110}
+                    loading="eager"
+                    className="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover border-2 border-indigo-500/40 ring-4 ring-indigo-500/10 shadow-xl shadow-indigo-950/40 transition-transform duration-300 hover:scale-105"
+                  />
+                </picture>
+                <div className="absolute bottom-0 right-0 w-3.5 h-3.5 rounded-full bg-indigo-500 border-2 border-[#07080D]" title="Online / Active" />
+              </div>
+
+              <div>
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-100 tracking-tight leading-none mb-2">
+                  {PERSONAL_INFO.name}
+                </h1>
+                <div className="flex items-center gap-2 text-indigo-400 font-mono text-base sm:text-lg font-semibold">
+                  <Terminal className="w-5 h-5 text-indigo-500" />
+                  <span>{PERSONAL_INFO.title}</span>
+                </div>
               </div>
             </div>
 
