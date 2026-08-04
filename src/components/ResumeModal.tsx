@@ -29,7 +29,10 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md animate-fadeIn">
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md animate-fadeIn"
+      onClick={onClose}
+    >
       <div 
         className="relative w-full max-w-5xl h-[90vh] bg-[#0C0F17] border border-slate-800 rounded-xl flex flex-col overflow-hidden shadow-2xl"
         onClick={(e) => e.stopPropagation()}

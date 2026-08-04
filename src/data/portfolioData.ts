@@ -9,7 +9,7 @@ export const PERSONAL_INFO = {
   email: "tokananiy@gmail.com",
   github: "https://github.com/NaniToka",
   linkedin: "https://linkedin.com/in/toka-nani-33a124359",
-  resumePath: "nani.pdf",
+  resumePath: "/nani.pdf",
   bio: [
     "Google Student Ambassador (GSA 2026) for the Gemini Program. Self-directed AI engineer building production systems end-to-end using AI-native tools (Antigravity, Codex, Kiro, Windsurf) to ship verified, containerized applications fast.",
     "Specializing in LLM context optimization middleware, cloud-native microservices on Google Cloud Run, and forensic ML bias auditing platforms.",
