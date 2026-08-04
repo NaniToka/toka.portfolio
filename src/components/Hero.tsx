@@ -35,25 +35,25 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
               </span>
             </div>
 
-            {/* Name & Headline with Profile Avatar */}
-            <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
+            {/* Name & Headline with Enlarged Profile Avatar */}
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-8">
               <div className="relative shrink-0">
                 <picture>
                   <source srcSet="/toka-profile.webp" type="image/webp" />
                   <img
                     src="/toka-profile.jpg"
                     alt="Toka Nani, Software Engineer"
-                    width={110}
-                    height={110}
+                    width={224}
+                    height={224}
                     loading="eager"
-                    className="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover border-2 border-indigo-500/40 ring-4 ring-indigo-500/10 shadow-xl shadow-indigo-950/40 transition-transform duration-300 hover:scale-105"
+                    className="w-36 h-36 sm:w-48 sm:h-48 lg:w-56 lg:h-56 rounded-full object-cover border-2 border-indigo-500/40 ring-8 ring-indigo-500/10 shadow-2xl shadow-indigo-950/60 transition-transform duration-300 hover:scale-[1.03]"
                   />
                 </picture>
-                <div className="absolute bottom-0 right-0 w-3.5 h-3.5 rounded-full bg-indigo-500 border-2 border-[#07080D]" title="Online / Active" />
+                <div className="absolute bottom-2 right-2 w-5 h-5 rounded-full bg-indigo-500 border-4 border-[#07080D]" title="Online / Active" />
               </div>
 
-              <div>
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-100 tracking-tight leading-none mb-2">
+              <div className="space-y-2">
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-100 tracking-tight leading-none">
                   {PERSONAL_INFO.name}
                 </h1>
                 <div className="flex items-center gap-2 text-indigo-400 font-mono text-base sm:text-lg font-semibold">
