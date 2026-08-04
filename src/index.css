@@ -10,75 +10,41 @@
     color-scheme: dark;
   }
 
+  /* Global Base Background (#0a0a0f) with subtle 40px x 40px violet grid pattern */
   body {
-    @apply bg-[#07080D] text-slate-100 font-sans antialiased selection:bg-indigo-500/30 selection:text-indigo-200;
+    background-color: #0a0a0f;
+    background-image: 
+      linear-gradient(to right, rgba(139, 92, 246, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(139, 92, 246, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    @apply text-slate-100 font-sans antialiased selection:bg-indigo-500/30 selection:text-indigo-200;
     overflow-x: hidden;
   }
 
   /* Focus visible accessibility outline */
   :focus-visible {
-    @apply outline-none ring-2 ring-indigo-500 ring-offset-2 ring-offset-[#07080D];
+    @apply outline-none ring-2 ring-indigo-500 ring-offset-2 ring-offset-[#0a0a0f];
   }
 }
 
-/* Site-wide fine noise/grain texture overlay (Vercel/Linear dark aesthetic) */
-.bg-grain-texture {
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+/* Hero section soft radial gradient glow utility */
+.hero-glow {
+  position: relative;
+  overflow: hidden;
 }
 
-/* GPU-accelerated smooth ambient gradient blob keyframe animations */
-@keyframes blob-drift-1 {
-  0%, 100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  33% {
-    transform: translate3d(60px, -70px, 0) scale(1.12);
-  }
-  66% {
-    transform: translate3d(-40px, 50px, 0) scale(0.92);
-  }
+.hero-glow::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 25% 20%, rgba(139, 92, 246, 0.22) 0%, transparent 55%);
 }
 
-@keyframes blob-drift-2 {
-  0%, 100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  33% {
-    transform: translate3d(-70px, 60px, 0) scale(0.88);
-  }
-  66% {
-    transform: translate3d(50px, -50px, 0) scale(1.1);
-  }
-}
-
-@keyframes blob-drift-3 {
-  0%, 100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(75px, 65px, 0) scale(1.15);
-  }
-}
-
-.animate-blob-1 {
-  animation: blob-drift-1 18s ease-in-out infinite;
-  will-change: transform;
-}
-
-.animate-blob-2 {
-  animation: blob-drift-2 22s ease-in-out infinite;
-  will-change: transform;
-}
-
-.animate-blob-3 {
-  animation: blob-drift-3 26s ease-in-out infinite;
-  will-change: transform;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .animate-blob-1, .animate-blob-2, .animate-blob-3 {
-    animation: none !important;
-  }
+.hero-glow > * {
+  position: relative;
+  z-index: 1;
 }
 
 /* Custom minimal scrollbar */
@@ -87,7 +53,7 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #07080D;
+  background: #0a0a0f;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -96,7 +62,7 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #4F46E5;
+  background: #8b5cf6;
 }
 
 /* Glassmorphism utility */
@@ -108,12 +74,12 @@
 }
 
 .glass-card:hover {
-  border-color: rgba(79, 70, 229, 0.35);
+  border-color: rgba(139, 92, 246, 0.35);
   background: rgba(24, 30, 48, 0.75);
 }
 
 .glass-nav {
-  background: rgba(7, 8, 13, 0.85);
+  background: rgba(10, 10, 15, 0.88);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);

@@ -8,8 +8,10 @@ export default {
   theme: {
     extend: {
       colors: {
+        'bg-base': '#0a0a0f',
+        'accent-violet': 'rgba(139, 92, 246, 1)',
         bg: {
-          dark: '#07080D',
+          dark: '#0a0a0f',
           card: '#101420',
           hover: '#181E30',
         },

@@ -10,8 +10,6 @@ import { Achievements } from './components/Achievements';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { ResumeModal } from './components/ResumeModal';
-import { BackgroundMesh } from './components/BackgroundMesh';
-
 export const App: React.FC = () => {
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
 
@@ -24,11 +22,7 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#07080D] text-slate-100 font-sans selection:bg-indigo-500/30 selection:text-indigo-200 relative overflow-hidden">
-      
-      {/* Dynamic Multi-Layered Site-Wide Background (Gradient Mesh + Grain Texture) */}
-      <BackgroundMesh />
-
+    <div className="min-h-screen bg-bg-base text-slate-100 font-sans selection:bg-indigo-500/30 selection:text-indigo-200 relative">
       <Navbar onOpenResume={handleOpenResume} />
       <main className="relative z-10">
         <Hero onOpenResume={handleOpenResume} />
