@@ -1,123 +1,118 @@
-# 🚀 Toka Nani - Personal Engineering Portfolio
+# 🚀 Toka Nani — Engineering Portfolio
 
-Welcome to the official developer portfolio repository of **Toka Nani**, B.Tech Computer Science student, Google Student Ambassador (Gemini Program), and Full-Stack / Cloud AI Engineer.
+A modern, production-grade developer portfolio built with **React 18, TypeScript, Vite, Tailwind CSS, Framer Motion**, and **Lucide Icons**. Styled with a dark Linear/Stripe/Vercel aesthetic (`#4F46E5` single indigo accent) designed for technical recruiters and engineering managers.
 
 ---
 
-## 🔗 Quick Links & Live Demos
+## 🔗 Live Deployment & Links
 
-- **🌐 Live Portfolio:** [toka-portfolio-2.onrender.com](https://toka-portfolio-2.onrender.com)
+- **🌐 Production Site:** [toka-portfolio-2.onrender.com](https://toka-portfolio-2.onrender.com)
 - **⚡ TokenFlow AI Live:** [tokenflow-ai.onrender.com](https://tokenflow-ai.onrender.com) | [Swagger API Docs](https://tokenflow-ai.onrender.com/docs)
-- **📄 Download Resume:** [`nani.pdf`](nani.pdf) (Available via direct download button on the site)
+- **📄 Official Resume:** [Download PDF](https://toka-portfolio-2.onrender.com/nani.pdf)
 - **🐙 GitHub Profile:** [github.com/NaniToka](https://github.com/NaniToka)
 - **💼 LinkedIn:** [linkedin.com/in/toka-nani-33a124359](https://linkedin.com/in/toka-nani-33a124359)
-- **📧 Email:** [tokananiy@gmail.com](mailto:tokananiy@gmail.com)
+- **📧 Contact:** [tokananiy@gmail.com](mailto:tokananiy@gmail.com)
 
 ---
 
-## 📌 Project Overview
+## 🛠️ Tech Stack & Architecture
 
-This portfolio website is a custom-designed, high-performance web platform built with a modern developer terminal & matrix aesthetic. It showcases production-deployed applications, AI memory optimization middleware, governance platforms, cloud architecture skills, hackathon achievements, verified certificates, and technical experience.
-
-### Key Features
-- **📄 Interactive Resume Download:** Single-click direct PDF download (`nani.pdf`) for recruiters and hiring managers.
-- **⚡ Terminal Typewriter Effect:** Live typing sequence simulating a developer environment.
-- **🌌 Interactive Particle & Matrix Background:** Dynamic HTML5 Canvas rendering particle networks and matrix background animations.
-- **🛠️ Technical Stack Breakdown:** Categorized breakdown of Frontend, Cloud, Systems, Languages, and CS Fundamentals.
-- **🚀 Featured AI Projects Showcase:** Direct links and technical deep-dives into flagship projects (*TokenFlow AI*, *JanVoice AI*, *BiasGuard AI*).
-- **🏆 Certifications & Verification Links:** Verified certificates from Google Solution Challenge 2026, Google Cloud, AWS, JPMorgan Chase, Walmart, and Tata iQ.
+- **Core Framework:** React 18 + TypeScript + Vite
+- **Styling:** Tailwind CSS (Vanilla CSS design system, dark mode default `#07080D`, `#4F46E5` indigo accent)
+- **Animations:** Framer Motion (page transitions, crossfade tab panels, modal overlays with `useReducedMotion` support)
+- **Icons:** Lucide React
+- **Build Output:** Static SPA bundle compiled into `dist/`
 
 ---
 
-## 🚀 Featured Flagship Projects
-
-### 1. TokenFlow AI — Prompt Memory Optimizer Middleware
-- **Live App:** [https://tokenflow-ai.onrender.com](https://tokenflow-ai.onrender.com)
-- **Interactive Swagger Docs:** [https://tokenflow-ai.onrender.com/docs](https://tokenflow-ai.onrender.com/docs)
-- **GitHub Repository:** [https://github.com/NaniToka/TokenFlow-AI](https://github.com/NaniToka/TokenFlow-AI)
-- **Description:** Production-grade semantic vector ranking & real-time LLM context compression middleware built with FastAPI, Gemini `text-embedding-004`, and React 18. Reduces prompt token overhead by 50%–75%+ (~74% avg) with zero-storage memory condensation via `gemini-1.5-flash` and exponential recency decay vector scoring.
-
-### 2. JanVoice AI — National AI Governance Suite
-- **Live Suite:** [https://spontaneous-raindrop-8a7198.netlify.app/dashboard](https://spontaneous-raindrop-8a7198.netlify.app/dashboard)
-- **GitHub Repository:** [https://github.com/NaniToka/Ai-agent](https://github.com/NaniToka/Ai-agent)
-- **Description:** Presentation-ready national AI governance platform for Indian parliamentary constituencies, enabling MP executive dashboards, citizen reporting, daily briefings, and natural language search.
-
-### 3. BiasGuard AI — Forensic ML Bias Auditing Platform
-- **Live Cloud Run:** [https://biasguard-rzpoqg6s6a-uc.a.run.app](https://biasguard-rzpoqg6s6a-uc.a.run.app)
-- **GitHub Repository:** [https://github.com/NaniToka/unbiased-ai-decision](https://github.com/NaniToka/unbiased-ai-decision)
-- **Description:** Forensic ML bias auditing platform ingesting decision logs and detecting automated bias using Vertex AI and Gemini 1.5 Flash. Built for Google Solution Challenge 2026.
-
----
-
-## 🏆 Certifications & Verification Links
-
-- **Google Solution Challenge 2026 × Hack2Skill:** [BiasGuard AI Prototype Certificate](https://certificate.hack2skill.com/verify/2026H2S07SCBWAI-PS06834) (ID: `2026H2S07SCBWAI-PS06834`, Dated: 22/07/2026)
-- **Google:** [AI Essentials Specialization](https://www.coursera.org/account/accomplishments/specialization/HAXF8PBC6D2I)
-- **Google Cloud:** Generative AI Leader — Certified (`GAIL03-GETCERT/2026.06.29`)
-- **JPMorgan Chase × Forage:** [Software Engineering Certificate](https://www.theforage.com/completion-certificates/Sj7temL583QAYpHXD/E6McHJDKsQYh79moz_Sj7temL583QAYpHXD_6973b13fb1ee4126d09b7191_1781903103039_completion_certificate.pdf)
-- **Walmart Global Tech × Forage:** [Advanced Software Engineering Certificate](https://www.theforage.com/completion-certificates/prBZoAihniNijyD6d/oX6f9BbCL9kJDJzfg_prBZoAihniNijyD6d_6973b13fb1ee4126d09b7191_1781985899780_completion_certificate.pdf)
-- **Tata iQ × Forage:** [GenAI Data Analytics Certificate](https://www.theforage.com/completion-certificates/ifobHAoMjQs9s6bKS/gMTdCXwDdLYoXZ3wG_ifobHAoMjQs9s6bKS_6973b13fb1ee4126d09b7191_1782260307680_completion_certificate.pdf)
-
----
-
-## 🛠️ Tech Stack & Technologies Used
-
-- **Frontend Core:** HTML5, CSS3 (Vanilla Custom CSS with Design Tokens & Glassmorphism), Modern JavaScript (ES6+)
-- **Icons & Typography:** Tabler Icons, JetBrains Mono, Inter Font Family
-- **Visuals & Graphics:** Custom SVG visualizers, HTML5 Canvas 2D API
-- **Deployment & Hosting:** Render (Production CDN deployment)
-- **Document Management:** PDF resume integration (`nani.pdf`)
-
----
-
-## 📂 Repository File Structure
+## 📁 Repository Directory Structure
 
 ```text
-/Users/tokanani/port/
-├── index.html        # Main single-page application (HTML structure, CSS design tokens, JS animations)
-├── nani.pdf          # Official PDF Resume (linked directly to the "Download Resume" button)
-└── README.md         # Full project documentation & architectural overview
+/
+├── public/
+│   ├── nani.pdf             # Verified PDF resume file
+│   ├── toka-profile.webp    # Compressed WebP hero portrait (17KB)
+│   └── toka-profile.jpg     # Fallback JPEG portrait (30KB)
+├── src/
+│   ├── components/          # Modular React UI components
+│   │   ├── Navbar.tsx       # Glassmorphism header with active section tracking
+│   │   ├── Hero.tsx         # Headline, enlarged hero avatar, stat cards & CTAs
+│   │   ├── About.tsx        # Bio, specializations grid, internship panel & live GitHub graph
+│   │   ├── Projects.tsx     # Interactive 3-tab project case study cards (Problem / Solution / Stack)
+│   │   ├── Skills.tsx       # Categorized technical skill matrix
+│   │   ├── Certs.tsx        # Verified certification cards with live validation links
+│   │   ├── Experience.tsx   # Structured experience, hackathons & roles timeline
+│   │   ├── ResumeModal.tsx  # Accessible inline PDF preview modal with mobile fallback
+│   │   ├── Contact.tsx      # Direct contact form & channels
+│   │   └── Footer.tsx       # Copyright & quick navigation links
+│   ├── data/
+│   │   └── portfolioData.ts # Strongly-typed centralized portfolio data
+│   ├── hooks/
+│   │   └── useReducedMotion.ts # Accessibility hook for reduced motion preferences
+│   ├── types/
+│   │   └── portfolio.ts     # TypeScript interfaces (Project, Certification, SkillCategory, etc.)
+│   ├── utils/
+│   │   └── helpers.ts       # Secure link helpers & date formatting utilities
+│   ├── App.tsx              # Main application wrapper with modal state
+│   ├── main.tsx             # React entry point
+│   └── index.css            # Global CSS, Tailwind directives & scrollbar styles
+├── .gitignore               # Comprehensive git ignore rules
+├── index.html               # Main HTML entry point with meta tags & Google Fonts
+├── package.json             # NPM dependencies and build scripts
+├── tailwind.config.js       # Custom Tailwind theme configuration
+├── tsconfig.json            # TypeScript compiler configuration
+└── vite.config.ts           # Vite build configuration
 ```
 
 ---
 
-## 📄 Resume PDF Integration
+## 🔒 Security & Best Practices
 
-The portfolio includes a **Download Resume** button configured with the HTML5 `download` attribute to serve Toka Nani's resume (`nani.pdf`):
+- **Zero API Secrets in Source:** No hardcoded tokens, secret keys, or `.env` files are tracked in version control.
+- **Tabnabbing Prevention:** All external links (`target="_blank"`) enforce `rel="noopener noreferrer"`.
+- **Render Deployment Security Headers:** When deploying to Render static site hosting, attach the following HTTP response headers via a `render.yaml` or header rule:
+  ```yaml
+  headers:
+    - path: /*
+      name: X-Content-Type-Options
+      value: nosniff
+    - path: /*
+      name: X-Frame-Options
+      value: DENY
+    - path: /*
+      name: Referrer-Policy
+      value: strict-origin-when-cross-origin
+  ```
 
-```html
-<a href="nani.pdf" download="Toka_Nani_Resume.pdf" target="_blank" rel="noopener" class="btn btn-primary">
-    <i class="ti ti-download"></i> Download Resume
-</a>
+---
+
+## 💻 Local Setup & Development Instructions
+
+### Prerequisites
+- Node.js 18+ and `npm`
+
+### Installation & Execution
+```bash
+# 1. Clone the repository
+git clone https://github.com/NaniToka/toka.portfolio.git
+cd toka.portfolio
+
+# 2. Install dependencies
+npm install
+
+# 3. Start local development server
+npm run dev
+
+# 4. Build for production (compiles TypeScript & bundles via Vite into /dist)
+npm run build
+
+# 5. Preview production build locally
+npm run preview
 ```
 
 ---
 
-## 💻 Local Setup & Development
+## 🚀 Deployment (Render Static Site)
 
-To view or test the portfolio website locally:
-
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/NaniToka/toka.portfolio.git
-   cd toka.portfolio
-   ```
-
-2. **Run locally using any static web server:**
-   - Using Python:
-     ```bash
-     python3 -m http.server 8000
-     ```
-   - Using Node `serve`:
-     ```bash
-     npx serve .
-     ```
-   - Or simply open `index.html` directly in your web browser.
-
-3. Open `http://localhost:8000` in your web browser.
-
----
-
-## 📝 License & Contact
-
-Developed with ❤️ by **Toka Nani**. Feel free to reach out for software engineering internship opportunities, collaborations, or cloud/AI projects!
+- **Build Command:** `npm run build`
+- **Publish Directory:** `dist`

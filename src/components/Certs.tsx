@@ -44,18 +44,32 @@ export const Certs: React.FC = () => {
                   {cert.title}
                 </h3>
 
+                {cert.description && (
+                  <p className="text-xs text-slate-300 leading-relaxed">
+                    {cert.description}
+                  </p>
+                )}
+
                 {cert.credentialId && (
                   <div className="font-mono text-xs text-slate-400">
                     ID: {cert.credentialId}
                   </div>
                 )}
 
-                {cert.status && (
-                  <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-indigo-950/80 border border-indigo-800/40 text-indigo-300 font-mono text-xs">
-                    <Clock className="w-3.5 h-3.5" />
-                    <span>{cert.status}</span>
-                  </div>
-                )}
+                <div className="flex flex-wrap items-center gap-2">
+                  {cert.status && (
+                    <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-indigo-950/80 border border-indigo-800/40 text-indigo-300 font-mono text-xs">
+                      <Clock className="w-3.5 h-3.5" />
+                      <span>{cert.status}</span>
+                    </div>
+                  )}
+
+                  {cert.date && (
+                    <span className="font-mono text-[11px] text-slate-400">
+                      Dated: {cert.date}
+                    </span>
+                  )}
+                </div>
               </div>
 
               {cert.verifyUrl ? (

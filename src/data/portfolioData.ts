@@ -150,6 +150,26 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
 
 export const CERTIFICATIONS: Certification[] = [
   {
+    id: "promptwars-ch1",
+    title: "PromptWars Virtual — Challenge 1",
+    issuer: "Google for Developers × Hack2Skill",
+    status: "Certificate of Appreciation",
+    description: "Verified Generative AI solution submission for Challenge 1 during PromptWars Virtual",
+    date: "04/08/2026",
+    credentialId: "2026H2S04PWVCHL1-A00285",
+    verifyUrl: "https://certificate.hack2skill.com/verify/2026H2S04PWVCHL1-A00285"
+  },
+  {
+    id: "build-with-ai-chennai",
+    title: "Build with AI Bootcamp, Chennai",
+    issuer: "Google for Developers × Hack2Skill",
+    status: "Certificate of Participation",
+    description: "Hands-on bootcamp covering AI agent architecture, workflow design, and generative AI integration into production-ready systems",
+    date: "04/08/2026",
+    credentialId: "2026H2S08BWAICHN-P00569",
+    verifyUrl: "https://certificate.hack2skill.com/verify/2026H2S08BWAICHN-P00569"
+  },
+  {
     id: "gsc-2026",
     title: "BiasGuard AI Prototype Certificate",
     issuer: "Google Solution Challenge 2026 × Hack2Skill",

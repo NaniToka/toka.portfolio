@@ -26,6 +26,8 @@ export interface Certification {
   issuer: string;
   credentialId?: string;
   status?: string;
+  date?: string;
+  description?: string;
   verifyUrl?: string;
 }
 
