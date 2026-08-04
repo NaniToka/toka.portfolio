@@ -223,3 +223,15 @@ npm run preview
 - **Hosting Platform:** Render (Static Site CDN)
 - **Build Command:** `npm run build`
 - **Publish Directory:** `dist`
+
+### 🔄 Render SPA Redirects & Rewrites Rule
+To prevent 404 errors or blank pages when refreshing or directly navigating to deep URLs on single-page applications, a `public/_redirects` file is included in the build (`/* /index.html 200`).
+
+If setting up on Render's web dashboard manually, enter this rule under **Service Settings → Redirects / Rewrites**:
+
+| Field | Setting / Value |
+| :--- | :--- |
+| **Source** | `/*` |
+| **Destination** | `/index.html` |
+| **Action** | `Rewrite` |
+
