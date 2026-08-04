@@ -76,14 +76,14 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
             <div className="pt-2 flex flex-wrap items-center gap-3">
               <a
                 href="#projects"
-                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-md bg-indigo-600 hover:bg-indigo-500 text-white font-mono text-xs font-semibold transition-all shadow-md shadow-indigo-900/30 min-h-[44px]"
+                className="btn-primary-hover inline-flex items-center justify-center gap-2 px-5 py-3 rounded-md bg-indigo-600 hover:bg-indigo-500 text-white font-mono text-xs font-semibold shadow-md shadow-indigo-900/30 min-h-[44px]"
               >
                 Explore Case Studies
               </a>
               
               <button
                 onClick={onOpenResume}
-                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-md bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 font-mono text-xs font-medium transition-all min-h-[44px]"
+                className="btn-hover inline-flex items-center justify-center gap-2 px-5 py-3 rounded-md bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 font-mono text-xs font-medium min-h-[44px]"
               >
                 <FileText className="w-4 h-4 text-indigo-400" /> View Resume
               </button>
@@ -91,7 +91,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
               <a
                 href={PERSONAL_INFO.resumePath}
                 download="Toka_Nani_Resume.pdf"
-                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-md bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 font-mono text-xs font-medium transition-all min-h-[44px]"
+                className="btn-hover inline-flex items-center justify-center gap-2 px-5 py-3 rounded-md bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 font-mono text-xs font-medium min-h-[44px]"
               >
                 <Download className="w-4 h-4 text-indigo-400" /> Download PDF
               </a>
@@ -102,7 +102,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="GitHub Profile"
-                  className="p-3 rounded-md bg-slate-900/80 hover:bg-slate-800 text-slate-400 hover:text-slate-100 border border-slate-800 transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
+                  className="btn-hover p-3 rounded-md bg-slate-900/80 hover:bg-slate-800 text-slate-400 hover:text-slate-100 border border-slate-800 min-h-[44px] min-w-[44px] flex items-center justify-center"
                 >
                   <Github className="w-4 h-4" />
                 </a>
@@ -111,14 +111,14 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="LinkedIn Profile"
-                  className="p-3 rounded-md bg-slate-900/80 hover:bg-slate-800 text-slate-400 hover:text-slate-100 border border-slate-800 transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
+                  className="btn-hover p-3 rounded-md bg-slate-900/80 hover:bg-slate-800 text-slate-400 hover:text-slate-100 border border-slate-800 min-h-[44px] min-w-[44px] flex items-center justify-center"
                 >
                   <Linkedin className="w-4 h-4" />
                 </a>
                 <a
                   href={`mailto:${PERSONAL_INFO.email}`}
                   aria-label="Email Toka Nani"
-                  className="p-3 rounded-md bg-slate-900/80 hover:bg-slate-800 text-slate-400 hover:text-slate-100 border border-slate-800 transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
+                  className="btn-hover p-3 rounded-md bg-slate-900/80 hover:bg-slate-800 text-slate-400 hover:text-slate-100 border border-slate-800 min-h-[44px] min-w-[44px] flex items-center justify-center"
                 >
                   <Mail className="w-4 h-4" />
                 </a>
@@ -133,7 +133,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="lg:col-span-5 space-y-4"
           >
-            <div className="glass-card rounded-xl p-5 border-l-4 border-l-indigo-500">
+            <div className="glass-card card-hover rounded-xl p-5 border-l-4 border-l-indigo-500">
               <div className="flex items-center justify-between text-xs font-mono text-indigo-400 mb-1">
                 <span>FLAGSHIP HIGHLIGHT</span>
                 <span className="text-emerald-400 font-semibold">BENCHMARKED</span>
@@ -144,7 +144,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
               </p>
             </div>
 
-            <div className="glass-card rounded-xl p-5 border-l-4 border-l-indigo-500">
+            <div className="glass-card card-hover rounded-xl p-5 border-l-4 border-l-indigo-500">
               <div className="flex items-center justify-between text-xs font-mono text-indigo-400 mb-1">
                 <span>GOOGLE SOLUTION CHALLENGE</span>
                 <span className="text-indigo-300 font-semibold">CLOUD RUN</span>
@@ -155,7 +155,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
               </p>
             </div>
 
-            <div className="glass-card rounded-xl p-5 border-l-4 border-l-indigo-500">
+            <div className="glass-card card-hover rounded-xl p-5 border-l-4 border-l-indigo-500">
               <div className="flex items-center justify-between text-xs font-mono text-indigo-400 mb-1">
                 <span>IMPACT METRIC</span>
                 <span className="text-emerald-400 font-semibold">VERIFIED</span>

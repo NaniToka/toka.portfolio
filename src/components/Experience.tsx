@@ -73,7 +73,7 @@ export const Experience: React.FC = () => {
 
                 {/* Card Container */}
                 <div className="w-full sm:w-[calc(50%-2.25rem)] pl-10 sm:pl-0">
-                  <div className="glass-card rounded-xl p-6 hover:border-indigo-500/40 transition-all space-y-4 relative overflow-hidden group">
+                  <div className="glass-card card-hover rounded-xl p-6 space-y-4 relative overflow-hidden group">
                     
                     {/* Top Badge & Duration */}
                     <div className="flex flex-wrap items-center justify-between gap-2">
@@ -118,14 +118,14 @@ export const Experience: React.FC = () => {
 
                     {/* Verification Link Button for Virtual Simulations & Hackathons */}
                     {item.verifyUrl && (
-                      <div className="pt-3 border-t border-slate-800/80">
+                      <div className="pt-2 border-t border-slate-800/80">
                         <a
                           href={item.verifyUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 font-mono text-xs font-semibold text-indigo-400 hover:text-indigo-300 transition-colors"
+                          className="btn-hover inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-slate-900 hover:bg-slate-800 border border-slate-800 text-indigo-400 font-mono text-xs font-semibold min-h-[38px]"
                         >
-                          Verify Credential / Certificate <ExternalLink className="w-3.5 h-3.5" />
+                          <ExternalLink className="w-3.5 h-3.5" /> Verify Credential
                         </a>
                       </div>
                     )}

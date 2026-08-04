@@ -32,19 +32,19 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, idx }) => {
   };
 
   return (
-    <motion.article
+    <motion.article 
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: idx * 0.1 }}
-      className="glass-card rounded-xl p-6 sm:p-8 relative overflow-hidden group hover:border-indigo-500/40 transition-all"
+      className="glass-card card-hover rounded-xl p-6 sm:p-8 relative overflow-hidden group"
     >
-      {/* Highlight bar */}
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-indigo-600 opacity-80" />
+      {/* Top Accent Indicator */}
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-indigo-500 via-indigo-400 to-transparent" />
 
-      <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6">
+      <div className="flex flex-col lg:flex-row gap-6 lg:items-start justify-between">
         
-        {/* Main Content Area */}
+        {/* Main Content & Tabs Column */}
         <div className="space-y-4 flex-1">
           
           {/* Title, Subtitle & Badges */}
@@ -173,7 +173,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, idx }) => {
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-md bg-indigo-600 hover:bg-indigo-500 text-white font-mono text-xs font-semibold transition-colors min-h-[40px]"
+              className="btn-primary-hover inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-md bg-indigo-600 hover:bg-indigo-500 text-white font-mono text-xs font-semibold min-h-[44px]"
             >
               <ExternalLink className="w-4 h-4" /> Live Application
             </a>
@@ -184,7 +184,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, idx }) => {
               href={project.docsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-md bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 font-mono text-xs font-medium transition-colors min-h-[40px]"
+              className="btn-hover inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-md bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 font-mono text-xs font-medium min-h-[44px]"
             >
               <FileCode className="w-4 h-4 text-indigo-400" /> Swagger Docs
             </a>
@@ -194,7 +194,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, idx }) => {
             href={project.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-md bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 font-mono text-xs font-medium transition-colors min-h-[40px]"
+            className="btn-hover inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-md bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 font-mono text-xs font-medium min-h-[44px]"
           >
             <Github className="w-4 h-4" /> GitHub Source
           </a>

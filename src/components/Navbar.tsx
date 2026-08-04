@@ -58,7 +58,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
         <div className="hidden sm:flex items-center gap-3">
           <button
             onClick={onOpenResume}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-medium rounded-md text-slate-300 bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 transition-all min-h-[38px]"
+            className="btn-hover inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-medium rounded-md text-slate-300 bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 min-h-[38px]"
           >
             <FileText className="w-3.5 h-3.5 text-indigo-400" />
             View Resume
@@ -67,7 +67,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
           <a
             href={PERSONAL_INFO.resumePath}
             download="Toka_Nani_Resume.pdf"
-            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-mono font-semibold rounded-md text-white bg-indigo-600 hover:bg-indigo-500 transition-all shadow-sm shadow-indigo-900/40 min-h-[38px]"
+            className="btn-primary-hover inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-mono font-semibold rounded-md text-white bg-indigo-600 hover:bg-indigo-500 shadow-sm shadow-indigo-900/40 min-h-[38px]"
           >
             <Download className="w-3.5 h-3.5" />
             Download PDF

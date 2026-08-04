@@ -34,7 +34,7 @@ export const About: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="lg:col-span-8 glass-card rounded-xl p-6 sm:p-8 space-y-6"
+            className="lg:col-span-8 glass-card card-hover rounded-xl p-6 sm:p-8 space-y-6"
           >
             {/* Header Avatar & Credential */}
             <div className="flex items-center gap-4 pb-4 border-b border-slate-800">
@@ -84,7 +84,7 @@ export const About: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.15 }}
-            className="lg:col-span-4 glass-card rounded-xl p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden"
+            className="lg:col-span-4 glass-card card-hover rounded-xl p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden"
           >
             <div className="absolute top-0 left-0 w-1 h-full bg-indigo-500" />
             
@@ -119,7 +119,7 @@ export const About: React.FC = () => {
             <div className="mt-6 pt-4 border-t border-slate-800">
               <a
                 href={`mailto:${PERSONAL_INFO.email}`}
-                className="inline-flex items-center justify-center w-full py-2.5 px-4 rounded-md bg-indigo-600 hover:bg-indigo-500 text-white font-mono text-xs font-semibold transition-colors"
+                className="btn-primary-hover inline-flex items-center justify-center w-full py-2.5 px-4 rounded-md bg-indigo-600 hover:bg-indigo-500 text-white font-mono text-xs font-semibold min-h-[44px]"
               >
                 Contact Toka Nani
               </a>
@@ -142,7 +142,7 @@ export const About: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: idx * 0.08 }}
-                className="glass-card rounded-xl p-5 hover:border-indigo-500/40 transition-all flex flex-col justify-between"
+                className="glass-card card-hover rounded-xl p-5 flex flex-col justify-between"
               >
                 <div className="space-y-2">
                   <div className="p-2 rounded-lg bg-indigo-950/60 border border-indigo-800/40 w-fit">
@@ -166,7 +166,7 @@ export const About: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="glass-card rounded-xl p-6 sm:p-8 space-y-4"
+          className="glass-card card-hover rounded-xl p-6 sm:p-8 space-y-4"
         >
           <div className="flex items-center justify-between flex-wrap gap-2 pb-3 border-b border-slate-800">
             <div className="flex items-center gap-2">

@@ -39,7 +39,7 @@ export const Skills: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: idx * 0.08 }}
-              className="glass-card rounded-xl p-6 hover:border-indigo-500/40 transition-all flex flex-col justify-between"
+              className="glass-card card-hover rounded-xl p-6 flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center gap-3 pb-3 mb-4 border-b border-slate-800">
