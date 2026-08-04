@@ -45,6 +45,9 @@ export interface ExperienceItem {
   organization: string;
   period: string;
   location: string;
+  description?: string;
   bullets: string[];
-  type: 'role' | 'hackathon' | 'certification';
+  type: 'role' | 'hackathon' | 'virtual' | 'ambassadorship';
+  badgeLabel?: string;
+  verifyUrl?: string;
 }

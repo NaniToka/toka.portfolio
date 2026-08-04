@@ -237,24 +237,91 @@ export const EXPERIENCE_ITEMS: ExperienceItem[] = [
     organization: "Google",
     period: "May 2026 – Present",
     location: "Vijayawada, India",
+    type: "ambassadorship",
+    badgeLabel: "Leadership & Ambassadorship",
+    description: "Selected at the national level to represent Google AI and Gemini developer initiatives on campus.",
     bullets: [
-      "Selected at national level to represent Google AI and Gemini initiatives on campus as one of a limited cohort of ambassadors across India.",
-      "Advised 100+ peers on Google AI, Cloud, and ML certification pathways; organized hands-on technical workshops.",
-      "Used direct Gemini API access to architect and deploy production-level AI-powered applications."
-    ],
-    type: "role"
+      "Selected at national level to represent Google AI and Gemini initiatives on campus as one of a limited cohort across India.",
+      "Advised 100+ peers on Google AI, Cloud, and ML learning pathways; organized hands-on technical workshops.",
+      "Leveraged direct Gemini API access to architect and deploy production-level AI-powered applications."
+    ]
+  },
+  {
+    id: "jpmorgan-forage-exp",
+    role: "Software Engineering Job Simulation",
+    organization: "JPMorgan Chase & Co. × Forage",
+    period: "Completed 2026",
+    location: "Virtual / Remote",
+    type: "virtual",
+    badgeLabel: "Virtual Engineering Program",
+    verifyUrl: "https://www.theforage.com/completion-certificates/Sj7temL583QAYpHXD/E6McHJDKsQYh79moz_Sj7temL583QAYpHXD_6973b13fb1ee4126d09b7191_1781903103039_completion_certificate.pdf",
+    description: "Completed hands-on software engineering tasks modeled on JPMorgan Chase's real engineering workflows including [PLACEHOLDER: list specific technical exercises completed].",
+    bullets: [
+      "Executed hands-on software engineering tasks modeled after JPMorgan Chase's actual software delivery pipeline.",
+      "Completed technical modules covering [PLACEHOLDER: list tools/frameworks used, e.g., Spring Boot, Kafka, financial data interfaces].",
+      "Issued official Forage completion credential upon passing verification."
+    ]
+  },
+  {
+    id: "walmart-forage-exp",
+    role: "Advanced Software Engineering Simulation",
+    organization: "Walmart Global Tech × Forage",
+    period: "Completed 2026",
+    location: "Virtual / Remote",
+    type: "virtual",
+    badgeLabel: "Virtual Engineering Program",
+    verifyUrl: "https://www.theforage.com/completion-certificates/prBZoAihniNijyD6d/oX6f9BbCL9kJDJzfg_prBZoAihniNijyD6d_6973b13fb1ee4126d09b7191_1781985899780_completion_certificate.pdf",
+    description: "Completed advanced engineering tasks modeled on Walmart Global Tech's enterprise systems including [PLACEHOLDER: list specific technical exercises completed].",
+    bullets: [
+      "Executed advanced software architecture and system design challenges modeled on Walmart Global Tech systems.",
+      "Completed engineering tasks covering [PLACEHOLDER: list specific architecture/data structure exercises].",
+      "Issued official Forage completion credential upon passing verification."
+    ]
+  },
+  {
+    id: "tata-iq-forage-exp",
+    role: "GenAI Data Analytics Simulation",
+    organization: "Tata iQ × Forage",
+    period: "Completed 2026",
+    location: "Virtual / Remote",
+    type: "virtual",
+    badgeLabel: "Virtual Engineering Program",
+    verifyUrl: "https://www.theforage.com/completion-certificates/ifobHAoMjQs9s6bKS/gMTdCXwDdLYoXZ3wG_ifobHAoMjQs9s6bKS_6973b13fb1ee4126d09b7191_1782260307680_completion_certificate.pdf",
+    description: "Completed applied GenAI and data analytics tasks modeled on Tata iQ's workflows including [PLACEHOLDER: list specific technical exercises completed].",
+    bullets: [
+      "Applied generative AI techniques and data analytics workflows modeled on Tata iQ client solutions.",
+      "Completed practical analytics and prompt engineering tasks covering [PLACEHOLDER: list specific tools/models used].",
+      "Issued official Forage completion credential upon passing verification."
+    ]
+  },
+  {
+    id: "hackathon-experience",
+    role: "Hackathon Builder & Competitor (13+ Competitions)",
+    organization: "Google Solution Challenge 2026 • PromptWars",
+    period: "2025 – 2026",
+    location: "Remote / On-site",
+    type: "hackathon",
+    badgeLabel: "Production Hackathon",
+    verifyUrl: "https://certificate.hack2skill.com/verify/2026H2S07SCBWAI-PS06834",
+    description: "Built and submitted production AI platforms under tight hackathon timelines for Google Solution Challenge 2026 (BiasGuard AI) and PromptWars Virtual (TokenFlow AI, StadiumSense AI, Carbon Footprint Tracker).",
+    bullets: [
+      "Built BiasGuard AI solo for Google Solution Challenge 2026 (demographic bias auditing on Cloud Run & Vertex AI).",
+      "Earned PromptWars Virtual Challenge 1 Certificate of Appreciation and Build with AI Chennai Bootcamp Certificate.",
+      "Participated in 13+ hackathons including Meta PyTorch Hackathon and Anvil @ Ascent 2026."
+    ]
   },
   {
     id: "self-directed-dev",
-    role: "Full-Stack & Cloud AI Developer (Self-Directed)",
-    organization: "Personal Projects & Hackathons",
+    role: "Full-Stack & Cloud AI Engineer",
+    organization: "Independent Engineering Focus",
     period: "Jan 2025 – Present",
-    location: "Remote",
+    location: "Vijayawada, India",
+    type: "role",
+    badgeLabel: "Engineering Focus",
+    description: "Architected and deployed 3 production AI applications on Cloud Run and Render using FastAPI, Flask, React 18, and Gemini APIs.",
     bullets: [
-      "Architected and deployed 3 full-stack AI applications as sole engineer on Google Cloud Run and Render.",
-      "Built distributed serverless backends with Flask/FastAPI, Docker containerization, and Firestore real-time synchronization.",
-      "Maintained 30+ GitHub contributions across public repositories."
-    ],
-    type: "role"
+      "Architected TokenFlow AI prompt optimization middleware cutting prompt token overhead by ~74%.",
+      "Maintained containerized deployment pipelines on Google Cloud Run and Render with Swagger OpenAPI documentation."
+    ]
   }
 ];

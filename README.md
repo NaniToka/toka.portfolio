@@ -15,17 +15,27 @@ A modern, production-grade developer portfolio built with **React 18, TypeScript
 
 ---
 
-## 🛠️ Tech Stack & Architecture
+## 📌 Key Architectural Features
+
+- **💼 Redesigned Experience Timeline:** Distinct, premium vertical timeline categorizing Leadership & Ambassadorship, Virtual Engineering Simulations (JPMorgan Chase, Walmart Global Tech, Tata iQ via Forage), and Production Hackathons (Google Solution Challenge 2026, PromptWars Virtual).
+- **📂 Interactive Project Case Study Cards:** 3-tab navigation bar (**"Problem"**, **"Solution"**, **"Tech Stack"**) with Framer Motion crossfade transitions, ARIA tablist keyboard accessibility, and architectural rationale callouts.
+- **📊 Live GitHub Activity:** Integrated tokenless contribution graph (`https://ghchart.rshah.org/4F46E5/NaniToka`) with responsive horizontal scroll container.
+- **🏆 Verified Credentials:** Verified certificates from Google Solution Challenge 2026, Google for Developers × Hack2Skill, Google Cloud, JPMorgan Chase, Walmart Global Tech, and Tata iQ.
+- **🖼️ High-Res Hero Avatar:** Prominent 288px hero profile picture with explicit layout dimensions eliminating Cumulative Layout Shift (CLS).
+
+---
+
+## 🛠️ Tech Stack
 
 - **Core Framework:** React 18 + TypeScript + Vite
-- **Styling:** Tailwind CSS (Vanilla CSS design system, dark mode default `#07080D`, `#4F46E5` indigo accent)
+- **Styling:** Tailwind CSS (Vanilla CSS design system, dark mode default `#07080D`, `#4F46E5` single indigo accent)
 - **Animations:** Framer Motion (page transitions, crossfade tab panels, modal overlays with `useReducedMotion` support)
 - **Icons:** Lucide React
 - **Build Output:** Static SPA bundle compiled into `dist/`
 
 ---
 
-## 📁 Repository Directory Structure
+## 📂 Repository Directory Structure
 
 ```text
 /
@@ -41,16 +51,16 @@ A modern, production-grade developer portfolio built with **React 18, TypeScript
 │   │   ├── Projects.tsx     # Interactive 3-tab project case study cards (Problem / Solution / Stack)
 │   │   ├── Skills.tsx       # Categorized technical skill matrix
 │   │   ├── Certs.tsx        # Verified certification cards with live validation links
-│   │   ├── Experience.tsx   # Structured experience, hackathons & roles timeline
+│   │   ├── Experience.tsx   # Redesigned vertical timeline for ambassadorship, virtual simulations & hackathons
 │   │   ├── ResumeModal.tsx  # Accessible inline PDF preview modal with mobile fallback
 │   │   ├── Contact.tsx      # Direct contact form & channels
 │   │   └── Footer.tsx       # Copyright & quick navigation links
 │   ├── data/
-│   │   └── portfolioData.ts # Strongly-typed centralized portfolio data
+│   │   └── portfolioData.ts # Strongly-typed centralized portfolio data (Projects, Experience, Certs)
 │   ├── hooks/
 │   │   └── useReducedMotion.ts # Accessibility hook for reduced motion preferences
 │   ├── types/
-│   │   └── portfolio.ts     # TypeScript interfaces (Project, Certification, SkillCategory, etc.)
+│   │   └── portfolio.ts     # TypeScript interfaces (Project, Certification, ExperienceItem, etc.)
 │   ├── utils/
 │   │   └── helpers.ts       # Secure link helpers & date formatting utilities
 │   ├── App.tsx              # Main application wrapper with modal state
@@ -68,9 +78,9 @@ A modern, production-grade developer portfolio built with **React 18, TypeScript
 
 ## 🔒 Security & Best Practices
 
-- **Zero API Secrets in Source:** No hardcoded tokens, secret keys, or `.env` files are tracked in version control.
-- **Tabnabbing Prevention:** All external links (`target="_blank"`) enforce `rel="noopener noreferrer"`.
-- **Render Deployment Security Headers:** When deploying to Render static site hosting, attach the following HTTP response headers via a `render.yaml` or header rule:
+- **Zero Hardcoded Credentials:** No API keys, secrets, or `.env` files tracked in version control.
+- **Reverse Tabnabbing Protection:** All external links (`target="_blank"`) enforce `rel="noopener noreferrer"`.
+- **Render Deployment Security Headers:**
   ```yaml
   headers:
     - path: /*
