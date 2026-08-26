@@ -58,4 +58,5 @@ export interface Setback {
   date: string;
   description: string;
   lessons: string[];
+  proofUrl?: string;
 }

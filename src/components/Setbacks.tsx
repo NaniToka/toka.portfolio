@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldAlert } from 'lucide-react';
+import { ShieldAlert, FileText } from 'lucide-react';
 import { SETBACKS } from '../data/portfolioData';
 
 export const Setbacks: React.FC = () => {
@@ -42,6 +42,20 @@ export const Setbacks: React.FC = () => {
                       ))}
                     </ul>
                   </div>
+                  
+                  {setback.proofUrl && (
+                    <div className="mt-6">
+                      <a
+                        href={setback.proofUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-4 py-2 text-sm font-mono font-medium rounded-md text-slate-300 bg-[#1a1d2d] border border-slate-800 hover:border-indigo-500/50 hover:text-indigo-400 transition-all"
+                      >
+                        <FileText className="w-4 h-4" />
+                        Show Proof
+                      </a>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

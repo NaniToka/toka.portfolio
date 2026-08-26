@@ -351,6 +351,7 @@ export const SETBACKS: Setback[] = [
       "Revisiting the official learning resources",
       "Practicing more strategically",
       "Taking the exam again"
-    ]
+    ],
+    proofUrl: "/gcp-exam-result.pdf"
   }
 ];
