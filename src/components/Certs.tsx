@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Award, ExternalLink, CheckCircle, Clock } from 'lucide-react';
+import { Award, FileText, CheckCircle, Clock } from 'lucide-react';
 import { CERTIFICATIONS } from '../data/portfolioData';
 
 export const Certs: React.FC = () => {
@@ -78,9 +78,10 @@ export const Certs: React.FC = () => {
                     href={cert.verifyUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-hover inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-slate-900 hover:bg-slate-800 border border-slate-800 text-indigo-400 font-mono text-xs font-semibold min-h-[38px]"
+                    className="inline-flex items-center gap-2 px-4 py-2 text-sm font-mono font-medium rounded-md text-slate-300 bg-[#1a1d2d] border border-slate-800 hover:border-indigo-500/50 hover:text-indigo-400 transition-all min-h-[38px]"
                   >
-                    Verify Credential <ExternalLink className="w-3.5 h-3.5" />
+                    <FileText className="w-4 h-4" />
+                    Show Proof
                   </a>
                 </div>
               ) : (

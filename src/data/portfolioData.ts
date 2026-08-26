@@ -196,11 +196,14 @@ export const CERTIFICATIONS: Certification[] = [
     verifyUrl: "https://www.coursera.org/account/accomplishments/specialization/HAXF8PBC6D2I"
   },
   {
-    id: "google-gail",
-    title: "Generative AI Leader — Certified",
-    issuer: "Google Cloud",
-    credentialId: "GAIL03-GETCERT/2026.06.29",
-    status: "Verified Official"
+    id: "promptwars-ch3",
+    title: "PromptWars Virtual — Challenge 3 (Top 400)",
+    issuer: "Google for Developers × Hack2Skill",
+    status: "Certificate of Achievement",
+    description: "Verified Generative AI solution submission for Challenge 3 during PromptWars Virtual, ranking in the Top 400 Leaderboard.",
+    date: "11/08/2026",
+    credentialId: "2026H2S06PWVCHL3-AT00275",
+    verifyUrl: "https://lnkd.in/d4bx-BCT"
   },
   {
     id: "jpmorgan-forage",
