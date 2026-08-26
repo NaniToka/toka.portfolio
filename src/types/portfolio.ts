@@ -51,3 +51,11 @@ export interface ExperienceItem {
   badgeLabel?: string;
   verifyUrl?: string;
 }
+
+export interface Setback {
+  id: string;
+  title: string;
+  date: string;
+  description: string;
+  lessons: string[];
+}

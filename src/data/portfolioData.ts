@@ -1,4 +1,4 @@
-import { Project, SkillCategory, Certification, Achievement, ExperienceItem } from '../types/portfolio';
+import { Project, SkillCategory, Certification, Achievement, ExperienceItem, Setback } from '../types/portfolio';
 
 export const PERSONAL_INFO = {
   name: "Toka Nani",
@@ -335,6 +335,22 @@ export const EXPERIENCE_ITEMS: ExperienceItem[] = [
     bullets: [
       "Architected TokenFlow AI prompt optimization middleware cutting prompt token overhead by ~74%.",
       "Maintained containerized deployment pipelines on Google Cloud Run and Render with Swagger OpenAPI documentation."
+    ]
+  }
+];
+
+export const SETBACKS: Setback[] = [
+  {
+    id: "gcp-genai-fail",
+    title: "Google Cloud Certified – Generative AI Leader",
+    date: "August 2026",
+    description: "I didn’t pass the Google Cloud Certified – Generative AI Leader exam. There. I said it. This one hurts. I spent the last few months preparing seriously—not with last-minute cramming, but with consistent effort. I genuinely believed I was ready. But the result reminded me of something important: Preparation and confidence are not the same as readiness. My score report showed that I was borderline in three of the four sections, while meeting the expectations in the fourth. That tells me I wasn’t far away—but I wasn’t there yet. And yes, this attempt cost me $70. As a college student, that isn't a small amount. Losing both the exam fee and the expected result hurts. But I’m choosing to treat it as the cost of learning where my preparation needs to improve. This is also not my first setback. Since starting my B.Tech journey, I’ve faced rejections, failed attempts, and moments where things didn’t go the way I expected. Each one has taught me something different. This one taught me to measure preparation by performance, not by how prepared I feel.",
+    lessons: [
+      "Reviewing my score report section by section",
+      "Identifying the gaps in my understanding",
+      "Revisiting the official learning resources",
+      "Practicing more strategically",
+      "Taking the exam again"
     ]
   }
 ];
