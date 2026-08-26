@@ -72,17 +72,30 @@ export const Certs: React.FC = () => {
                 </div>
               </div>
 
-              {cert.verifyUrl ? (
-                <div className="pt-4 mt-4 border-t border-slate-800">
-                  <a
-                    href={cert.verifyUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 text-sm font-mono font-medium rounded-md text-slate-300 bg-[#1a1d2d] border border-slate-800 hover:border-indigo-500/50 hover:text-indigo-400 transition-all min-h-[38px]"
-                  >
-                    <FileText className="w-4 h-4" />
-                    Show Proof
-                  </a>
+              {(cert.verifyUrl || cert.certificateUrl) ? (
+                <div className="pt-4 mt-4 border-t border-slate-800 flex flex-wrap gap-3">
+                  {cert.verifyUrl && (
+                    <a
+                      href={cert.verifyUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2 text-sm font-mono font-medium rounded-md text-slate-300 bg-[#1a1d2d] border border-slate-800 hover:border-indigo-500/50 hover:text-indigo-400 transition-all min-h-[38px]"
+                    >
+                      <FileText className="w-4 h-4" />
+                      Show Proof
+                    </a>
+                  )}
+                  {cert.certificateUrl && (
+                    <a
+                      href={cert.certificateUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2 text-sm font-mono font-medium rounded-md text-indigo-300 bg-indigo-950/40 border border-indigo-800/50 hover:bg-indigo-900/50 hover:text-indigo-200 transition-all min-h-[38px]"
+                    >
+                      <Award className="w-4 h-4" />
+                      View Certificate
+                    </a>
+                  )}
                 </div>
               ) : (
                 <div className="pt-4 mt-4 border-t border-slate-800">

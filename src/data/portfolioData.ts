@@ -170,7 +170,8 @@ export const CERTIFICATIONS: Certification[] = [
     description: "Verified Generative AI solution submission for Challenge 1 during PromptWars Virtual",
     date: "04/08/2026",
     credentialId: "2026H2S04PWVCHL1-A00285",
-    verifyUrl: "https://certificate.hack2skill.com/verify/2026H2S04PWVCHL1-A00285"
+    verifyUrl: "https://certificate.hack2skill.com/verify/2026H2S04PWVCHL1-A00285",
+    certificateUrl: "/promptwars-ch1.pdf"
   },
   {
     id: "build-with-ai-chennai",

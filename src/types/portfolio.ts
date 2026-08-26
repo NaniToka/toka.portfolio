@@ -29,6 +29,7 @@ export interface Certification {
   date?: string;
   description?: string;
   verifyUrl?: string;
+  certificateUrl?: string;
 }
 
 export interface Achievement {
