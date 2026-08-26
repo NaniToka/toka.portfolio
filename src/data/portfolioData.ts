@@ -48,6 +48,19 @@ export const SPECIALIZATIONS: Specialization[] = [
 
 export const PROJECTS: Project[] = [
   {
+    id: "civicpulse-ai",
+    title: "CivicPulse AI (v2.0)",
+    subtitle: "Multilingual Civic Decision Intelligence Layer",
+    description: "An open-source multilingual civic decision intelligence layer that transforms citizen voices across Indian states into traceable, evidence-backed civic investment priorities.",
+    problem: "Public administration systems across India process millions of fragmented citizen complaints across diverse regional scripts. Traditional municipal systems process complaints in isolated silos—leading to unaddressed infrastructure bottlenecks, misallocated capital investments, and a disconnect between citizen demand signals and municipal budget allocation.",
+    solution: "Built an open-source decision-support platform bridging citizen feedback and municipal public investment planning. It transforms unstructured citizen signals into geographic demand intelligence, cross-referencing demographic census data, infrastructure deficit indices, and existing investment allocations to generate transparent, explainable priority scores.",
+    stackRationale: "FastAPI and Python for robust backend logic and AI orchestration; Google Gemini AI for multilingual text analysis, entity extraction, and summarization; React, Vite, and TypeScript for a highly interactive and responsive 3D dashboard visualization.",
+    stack: ["TypeScript", "React", "Vite", "FastAPI", "Python", "Google Gemini AI"],
+    liveUrl: "https://civicpulse-ai-frontend.onrender.com/",
+    githubUrl: "https://github.com/NaniToka/civicpulse-ai.git",
+    featured: true
+  },
+  {
     id: "tokenflow-ai",
     title: "TokenFlow AI",
     subtitle: "Prompt Memory Optimizer Middleware",
