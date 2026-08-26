@@ -30,6 +30,12 @@ export interface Certification {
   description?: string;
   verifyUrl?: string;
   certificateUrl?: string;
+  subCertifications?: {
+    id: string;
+    title: string;
+    verifyUrl?: string;
+    certificateUrl?: string;
+  }[];
 }
 
 export interface Achievement {

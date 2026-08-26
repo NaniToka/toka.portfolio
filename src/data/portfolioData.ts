@@ -197,43 +197,33 @@ export const CERTIFICATIONS: Certification[] = [
     title: "Google AI Essentials Specialization",
     issuer: "Google via Coursera (5-course specialization)",
     verifyUrl: "https://www.coursera.org/account/accomplishments/specialization/HAXF8PBC6D2I",
-    certificateUrl: "/google-ai-essentials-specialization.pdf"
-  },
-  {
-    id: "google-ai-course-1",
-    title: "Start Writing Prompts like a Pro",
-    issuer: "Google via Coursera",
-    status: "Course Certificate",
-    date: "26/05/2026",
-    verifyUrl: "https://coursera.org/verify/H0Z5SKI3NEPD",
-    certificateUrl: "/start-writing-prompts-like-a-pro.pdf"
-  },
-  {
-    id: "google-ai-course-2",
-    title: "Design Prompts for Everyday Work Tasks",
-    issuer: "Google via Coursera",
-    status: "Course Certificate",
-    date: "29/05/2026",
-    verifyUrl: "https://coursera.org/verify/1XYIJ9Y1VZDU",
-    certificateUrl: "/design-prompts-for-everyday-work-tasks.pdf"
-  },
-  {
-    id: "google-ai-course-3",
-    title: "Speed Up Data Analysis and Presentation Building",
-    issuer: "Google via Coursera",
-    status: "Course Certificate",
-    date: "29/05/2026",
-    verifyUrl: "https://coursera.org/verify/UG6EYMVB72KJ",
-    certificateUrl: "/speed-up-data-analysis-and-presentation-building.pdf"
-  },
-  {
-    id: "google-ai-course-4",
-    title: "Use AI as a Creative or Expert Partner",
-    issuer: "Google via Coursera",
-    status: "Course Certificate",
-    date: "29/05/2026",
-    verifyUrl: "https://coursera.org/verify/L7RUBLDOMP1L",
-    certificateUrl: "/use-ai-as-a-creative-or-expert-partner.pdf"
+    certificateUrl: "/google-ai-essentials-specialization.pdf",
+    subCertifications: [
+      {
+        id: "google-ai-course-1",
+        title: "Start Writing Prompts like a Pro",
+        verifyUrl: "https://coursera.org/verify/H0Z5SKI3NEPD",
+        certificateUrl: "/start-writing-prompts-like-a-pro.pdf"
+      },
+      {
+        id: "google-ai-course-2",
+        title: "Design Prompts for Everyday Work Tasks",
+        verifyUrl: "https://coursera.org/verify/1XYIJ9Y1VZDU",
+        certificateUrl: "/design-prompts-for-everyday-work-tasks.pdf"
+      },
+      {
+        id: "google-ai-course-3",
+        title: "Speed Up Data Analysis and Presentation Building",
+        verifyUrl: "https://coursera.org/verify/UG6EYMVB72KJ",
+        certificateUrl: "/speed-up-data-analysis-and-presentation-building.pdf"
+      },
+      {
+        id: "google-ai-course-4",
+        title: "Use AI as a Creative or Expert Partner",
+        verifyUrl: "https://coursera.org/verify/L7RUBLDOMP1L",
+        certificateUrl: "/use-ai-as-a-creative-or-expert-partner.pdf"
+      }
+    ]
   },
   {
     id: "promptwars-ch3",

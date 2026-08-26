@@ -104,6 +104,31 @@ export const Certs: React.FC = () => {
                   </span>
                 </div>
               )}
+
+              {cert.subCertifications && cert.subCertifications.length > 0 && (
+                <div className="pt-4 mt-4 border-t border-slate-800">
+                  <h4 className="text-xs font-mono text-slate-400 uppercase tracking-wider mb-3">Courses Completed</h4>
+                  <div className="flex flex-col gap-2">
+                    {cert.subCertifications.map(sub => (
+                      <div key={sub.id} className="flex flex-col sm:flex-row sm:items-center justify-between p-3 rounded bg-[#1a1d2d]/50 border border-slate-800/50 gap-2">
+                        <span className="text-sm text-slate-300 font-medium">{sub.title}</span>
+                        <div className="flex gap-2">
+                          {sub.verifyUrl && (
+                            <a href={sub.verifyUrl} target="_blank" rel="noopener noreferrer" className="p-1.5 text-slate-400 hover:text-indigo-400 hover:bg-indigo-500/10 rounded transition-colors" title="Show Proof">
+                              <FileText className="w-4 h-4" />
+                            </a>
+                          )}
+                          {sub.certificateUrl && (
+                            <a href={sub.certificateUrl} target="_blank" rel="noopener noreferrer" className="p-1.5 text-indigo-400 hover:text-indigo-300 hover:bg-indigo-500/10 rounded transition-colors" title="View Certificate">
+                              <Award className="w-4 h-4" />
+                            </a>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </motion.div>
           ))}
         </div>
