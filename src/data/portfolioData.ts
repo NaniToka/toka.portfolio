@@ -181,7 +181,8 @@ export const CERTIFICATIONS: Certification[] = [
     description: "Hands-on bootcamp covering AI agent architecture, workflow design, and generative AI integration into production-ready systems",
     date: "04/08/2026",
     credentialId: "2026H2S08BWAICHN-P00569",
-    verifyUrl: "https://certificate.hack2skill.com/verify/2026H2S08BWAICHN-P00569"
+    verifyUrl: "https://certificate.hack2skill.com/verify/2026H2S08BWAICHN-P00569",
+    certificateUrl: "/build-with-ai-chennai.pdf"
   },
   {
     id: "gsc-2026",
