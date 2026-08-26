@@ -186,10 +186,11 @@ export const CERTIFICATIONS: Certification[] = [
   },
   {
     id: "gsc-2026",
-    title: "BiasGuard AI Prototype Certificate",
+    title: "Google Solution Challenge 2026",
     issuer: "Google Solution Challenge 2026 × Hack2Skill",
     credentialId: "2026H2S07SCBWAI-PS06834",
-    verifyUrl: "https://certificate.hack2skill.com/verify/2026H2S07SCBWAI-PS06834"
+    verifyUrl: "https://certificate.hack2skill.com/verify/2026H2S07SCBWAI-PS06834",
+    certificateUrl: "/solution-challenge-2026.pdf"
   },
   {
     id: "google-ai-essentials",
