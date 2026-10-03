@@ -235,3 +235,37 @@ If setting up on Render's web dashboard manually, enter this rule under **Servic
 | **Destination** | `/index.html` |
 | **Action** | `Rewrite` |
 
+---
+
+## 🌐 Custom Domain Readiness & HTTPS Checklist
+
+When attaching a custom domain (e.g., `tokanani.com`) to this portfolio on Render or Vercel:
+
+1. **DNS Records Setup**:
+   - **Apex / Root Domain (`tokanani.com`)**:
+     - Record Type: `ALIAS` / `ANAME` or `A`
+     - Value: `216.24.57.1` (or provider ALIAS `subdomain.onrender.com`)
+   - **Subdomain (`www.tokanani.com`)**:
+     - Record Type: `CNAME`
+     - Value: `toka-portfolio-2.onrender.com`
+2. **Canonical URL & Formspree Environment Variables**:
+   - Set environment variables in your deployment dashboard:
+     ```bash
+     VITE_SITE_URL=https://www.tokanani.com
+     VITE_FORMSPREE_ID=your_formspree_id_here
+     ```
+3. **Automatic SSL / HTTPS**:
+   - Render automatically provisions TLS certificates via Let's Encrypt once DNS records resolve.
+
+---
+
+## ⚡ Render Cold-Start Keep-Warm Strategy
+
+On free-tier cloud hosting, web services spin down after 15 minutes of inactivity, introducing a ~30–50 second cold-start delay on subsequent initial visits.
+
+### How this portfolio handles cold starts:
+1. **Inline HTML Cold-Start Skeleton**: `index.html` includes a zero-dependency lightweight loading spinner rendered before React bundle initialization, preventing blank white screen states.
+2. **Recommended Uptime Keep-Warm Ping**:
+   Set up a free scheduled HTTP monitor (via UptimeRobot, Cron-job.org, or Better Stack) hitting `https://toka-portfolio-2.onrender.com/` every 10–14 minutes to keep the instance warm 24/7.
+
+

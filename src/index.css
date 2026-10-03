@@ -7,24 +7,95 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    color-scheme: dark;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
 
-  /* Global Base Background (#0a0a0f) with subtle 40px x 40px violet grid pattern */
-  body {
+  /* Default Dark Mode Styling */
+  html.dark body {
     background-color: #0a0a0f;
     background-image: 
       linear-gradient(to right, rgba(139, 92, 246, 0.05) 1px, transparent 1px),
       linear-gradient(to bottom, rgba(139, 92, 246, 0.05) 1px, transparent 1px);
     background-size: 40px 40px;
-    @apply text-slate-100 font-sans antialiased selection:bg-indigo-500/30 selection:text-indigo-200;
+    color: #f8fafc;
+    color-scheme: dark;
+  }
+
+  /* Light Mode Styling */
+  html.light body {
+    background-color: #f8fafc;
+    background-image: 
+      linear-gradient(to right, rgba(124, 58, 237, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(124, 58, 237, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    color: #0f172a;
+    color-scheme: light;
+  }
+
+  body {
+    font-size: 16px;
+    line-height: 1.6;
+    @apply antialiased selection:bg-indigo-500/30 selection:text-indigo-200;
     overflow-x: hidden;
   }
 
   /* Focus visible accessibility outline */
   :focus-visible {
-    @apply outline-none ring-2 ring-indigo-500 ring-offset-2 ring-offset-[#0a0a0f];
+    outline: none;
+    ring: 2px;
+    @apply ring-indigo-500 ring-offset-2;
   }
+
+  html.dark :focus-visible {
+    @apply ring-offset-[#0a0a0f];
+  }
+
+  html.light :focus-visible {
+    @apply ring-offset-slate-50;
+  }
+}
+
+/* Glassmorphism utility for Dark & Light Themes */
+html.dark .glass-card {
+  background: rgba(16, 20, 32, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #f1f5f9;
+}
+
+html.light .glass-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(203, 213, 225, 0.8);
+  color: #0f172a;
+  box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.05);
+}
+
+html.dark .glass-card:hover {
+  border-color: rgba(139, 92, 246, 0.35);
+  background: rgba(24, 30, 48, 0.85);
+}
+
+html.light .glass-card:hover {
+  border-color: rgba(99, 102, 241, 0.4);
+  background: #ffffff;
+  box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.12);
+}
+
+html.dark .glass-nav {
+  background: rgba(10, 10, 15, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+html.light .glass-nav {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.9);
 }
 
 /* Hero section soft radial gradient glow utility */
@@ -33,13 +104,22 @@
   overflow: hidden;
 }
 
-.hero-glow::before {
+html.dark .hero-glow::before {
   content: '';
   position: absolute;
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background: radial-gradient(circle at 25% 20%, rgba(139, 92, 246, 0.22) 0%, transparent 55%);
+  background: radial-gradient(circle at 25% 20%, rgba(139, 92, 246, 0.2) 0%, transparent 55%);
+}
+
+html.light .hero-glow::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 25% 20%, rgba(124, 58, 237, 0.08) 0%, transparent 55%);
 }
 
 .hero-glow > * {
@@ -53,90 +133,71 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0a0f;
+  background: transparent;
 }
 
-::-webkit-scrollbar-thumb {
+html.dark ::-webkit-scrollbar-thumb {
   background: #1e293b;
   border-radius: 4px;
 }
 
+html.light ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
 ::-webkit-scrollbar-thumb:hover {
-  background: #8b5cf6;
-}
-
-/* Glassmorphism utility */
-.glass-card {
-  background: rgba(16, 20, 32, 0.65);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.glass-card:hover {
-  border-color: rgba(139, 92, 246, 0.35);
-  background: rgba(24, 30, 48, 0.75);
-}
-
-.glass-nav {
-  background: rgba(10, 10, 15, 0.88);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: #6366f1;
 }
 
 /* Reusable Micro-Interaction Utility Classes */
-
-/* Primary CTA Button Hover & Press */
 .btn-primary-hover {
   transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease-out, background-color 0.2s ease-out;
   will-change: transform;
 }
 
 .btn-primary-hover:hover {
-  transform: scale(1.04);
-  box-shadow: 0 10px 25px -5px rgba(139, 92, 246, 0.45);
+  transform: scale(1.03);
+  box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.4);
 }
 
 .btn-primary-hover:active {
   transform: scale(0.98);
-  box-shadow: 0 4px 12px -2px rgba(139, 92, 246, 0.3);
 }
 
-/* Secondary Button / Icon Button Hover & Press */
 .btn-hover {
   transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease-out, background-color 0.2s ease-out;
   will-change: transform;
 }
 
 .btn-hover:hover {
-  transform: scale(1.03);
-  border-color: rgba(139, 92, 246, 0.4);
+  transform: scale(1.02);
 }
 
 .btn-hover:active {
   transform: scale(0.98);
 }
 
-/* Card Hover Lift & Shadow Increase */
 .card-hover {
   transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.22s ease-out, background-color 0.22s ease-out, box-shadow 0.22s ease-out;
   will-change: transform;
 }
 
 .card-hover:hover {
-  transform: translateY(-2px) scale(1.015);
-  border-color: rgba(139, 92, 246, 0.4);
-  background: rgba(24, 30, 48, 0.85);
-  box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.6), 0 0 20px -5px rgba(139, 92, 246, 0.25);
-}
-
-.card-hover:active {
-  transform: scale(0.995);
+  transform: translateY(-2px) scale(1.01);
 }
 
 /* Reduced Motion Accessibility Overrides */
 @media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
   .btn-primary-hover:hover,
   .btn-primary-hover:active,
   .btn-hover:hover,
