@@ -164,6 +164,17 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
 
 export const CERTIFICATIONS: Certification[] = [
   {
+    id: "genai-academy-apac-2026",
+    title: "Google Cloud Gen AI Academy APAC 2026 – Cohort 3",
+    issuer: "Google Cloud × Hack2skill",
+    status: "Certificate of Completion (APAC Edition)",
+    description: "Hands-on engineering academy focused on accelerating AI with Cloud Run — building, deploying, and orchestrating intelligent agents on Google Cloud.",
+    date: "03/09/2026",
+    credentialId: "2026H2S09GCGENAIAPACC3-P00601",
+    verifyUrl: "https://certificate.hack2skill.com/verify/2026H2S09GCGENAIAPACC3-P00601",
+    certificateUrl: "/google-cloud-genai-academy-apac.pdf"
+  },
+  {
     id: "iict-ai-readiness",
     title: "Foundation Course on AI Readiness",
     issuer: "MIB (Govt of India) × IICT × Google & YouTube",
@@ -273,6 +284,12 @@ export const CERTIFICATIONS: Certification[] = [
 ];
 
 export const ACHIEVEMENTS: Achievement[] = [
+  {
+    id: "genai-academy-apac-2026",
+    title: "Google Cloud Gen AI Academy APAC 2026 (Cohort 3)",
+    event: "Google Cloud × Hack2skill (APAC Edition)",
+    description: "Completed intensive cohort program on accelerating AI with Cloud Run — building, deploying, and orchestrating intelligent agents on Google Cloud."
+  },
   {
     id: "bluestock-internship",
     title: "Data Analyst Intern at Bluestock Fintech",
