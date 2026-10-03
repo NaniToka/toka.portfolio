@@ -2,18 +2,19 @@ import { Project, SkillCategory, Certification, Achievement, ExperienceItem, Set
 
 export const PERSONAL_INFO = {
   name: "Toka Nani",
-  title: "AI Engineer / Software Engineer",
-  education: "B.Tech CSE, 3rd year (2024–2028)",
+  title: "Cloud & GenAI Developer | Google Gemini Student Ambassador",
+  education: "B.Tech CSE (2024–2028 Expected) • CGPA: 7.3/10",
   institution: "DVR & Dr. HS MIC College of Technology, Vijayawada, India",
-  valueProp: "Building production AI systems, one prompt-driven deploy at a time.",
+  valueProp: "Building production-oriented Generative AI, cloud, and full-stack applications.",
   email: "tokananiy@gmail.com",
+  phone: "+91 9912832776",
   github: "https://github.com/NaniToka",
   linkedin: "https://linkedin.com/in/toka-nani-33a124359",
   resumePath: "/nani.pdf",
   bio: [
-    "Google Student Ambassador (GSA 2026) for the Gemini Program. Self-directed AI engineer building production systems end-to-end using AI-native tools (Antigravity, Codex, Kiro, Windsurf) to ship verified, containerized applications fast.",
-    "Specializing in LLM context optimization middleware, cloud-native microservices on Google Cloud Run, and forensic ML bias auditing platforms.",
-    "Actively seeking SWE / backend / DevOps internships (India-based, no visa sponsorship needed)."
+    "Computer Science undergraduate and Google Gemini Student Ambassador building production-oriented Generative AI, cloud, and full-stack applications with Python, TypeScript, FastAPI, React, and Google Cloud.",
+    "Data Analyst Intern at Bluestock Fintech building SQL-based analytics pipelines. AWS Certified Solutions Architect – Associate.",
+    "Actively seeking SWE, Cloud, GenAI, and Data Analytics internship roles."
   ]
 };
 
@@ -59,6 +60,18 @@ export const PROJECTS: Project[] = [
     liveUrl: "https://civicpulse-ai-frontend.onrender.com/",
     githubUrl: "https://github.com/NaniToka/civicpulse-ai.git",
     linkedinUrl: "https://lnkd.in/dS5RsbUi",
+    featured: true
+  },
+  {
+    id: "mutual-fund-analytics",
+    title: "Mutual Fund Analytics Platform",
+    subtitle: "Bluestock Fintech Capstone Project",
+    description: "End-to-end financial data engineering ETL pipeline and interactive Streamlit analytics dashboard calculating portfolio risk metrics and fund recommendations.",
+    problem: "Financial analysts and retail investors lack unified relational tools to evaluate mutual fund NAV histories, calculate advanced quantitative risk indicators (Sharpe, Sortino, VaR), and perform multi-scheme comparisons.",
+    solution: "Designed a 9-table SQLite star schema loaded through SQLAlchemy (86,000+ rows) and produced 15 exploratory charts with 10 business SQL queries. Computed CAGR, Sharpe, Sortino, Alpha/Beta, maximum drawdown, and VaR/CVaR, and delivered a four-page interactive Streamlit dashboard and risk-appetite fund recommender.",
+    stackRationale: "Python & SQLAlchemy for high-throughput ETL data pipeline execution; SQLite star schema for structured relational queries; Streamlit & AMFI API for real-time financial telemetry visual analytics.",
+    stack: ["Python", "SQL", "SQLite", "SQLAlchemy", "Pandas", "Streamlit", "AMFI API"],
+    githubUrl: "https://github.com/NaniToka",
     featured: true
   },
   {
@@ -131,34 +144,34 @@ export const PROJECTS: Project[] = [
 
 export const SKILL_CATEGORIES: SkillCategory[] = [
   {
-    category: "Cloud / AI Infrastructure",
-    iconName: "Cloud",
-    skills: ["Google Cloud (Cloud Run, GCS)", "Vertex AI", "Gemini API (Flash & Pro)", "AWS"]
-  },
-  {
-    category: "Backend & Systems",
-    iconName: "Server",
-    skills: ["Python", "FastAPI", "Flask", "Cloud Firestore", "REST API Design"]
-  },
-  {
-    category: "Frontend Web",
-    iconName: "Layout",
-    skills: ["React", "TypeScript", "Vite", "Tailwind CSS", "Component Architecture"]
-  },
-  {
-    category: "DevOps & Tooling",
-    iconName: "Container",
-    skills: ["Docker", "Cloud Run Deployment", "Git & GitHub", "CI Basics", "OpenAPI / Swagger"]
-  },
-  {
-    category: "Programming Languages",
+    category: "Languages",
     iconName: "Code",
-    skills: ["Python", "JavaScript", "TypeScript", "SQL", "C++"]
+    skills: ["Python", "Java", "C/C++", "JavaScript", "TypeScript", "SQL"]
   },
   {
-    category: "CS Fundamentals",
+    category: "AI / GenAI",
+    iconName: "Sparkles",
+    skills: ["Generative AI", "Google Gemini API", "Vertex AI", "Prompt Engineering"]
+  },
+  {
+    category: "Web / Backend",
+    iconName: "Server",
+    skills: ["React", "FastAPI", "Flask", "REST APIs", "Streamlit", "HTML", "CSS"]
+  },
+  {
+    category: "Cloud / DevOps",
+    iconName: "Cloud",
+    skills: ["AWS", "Google Cloud", "Cloud Run", "Docker", "Render", "Vercel"]
+  },
+  {
+    category: "Data & Databases",
+    iconName: "Database",
+    skills: ["SQL", "MySQL", "SQLite", "SQLAlchemy", "Firestore", "Firebase", "Pandas", "NumPy"]
+  },
+  {
+    category: "Developer Tools & CS",
     iconName: "Cpu",
-    skills: ["Data Structures & Algorithms (Daily LeetCode Practice)", "System Design", "OOP", "DBMS"]
+    skills: ["Git", "GitHub", "Vite", "Vitest", "pytest", "VS Code", "DSA", "OOP", "DBMS", "SDLC"]
   }
 ];
 
@@ -312,36 +325,33 @@ export const ACHIEVEMENTS: Achievement[] = [
 
 export const EXPERIENCE_ITEMS: ExperienceItem[] = [
   {
+    id: "gsa-2026",
+    role: "Google Gemini Student Ambassador",
+    organization: "Google, India",
+    period: "May 2026 – Present",
+    location: "Vijayawada, India",
+    type: "ambassadorship",
+    badgeLabel: "Leadership & Ambassadorship",
+    description: "Selected through a multi-stage evaluation to represent Google Gemini in the Student Ambassador program on campus.",
+    bullets: [
+      "Selected through a multi-stage evaluation to represent Google Gemini in the Student Ambassador program.",
+      "Represent Gemini on campus through workshops and developer sessions on AI application development."
+    ]
+  },
+  {
     id: "bluestock-internship",
     role: "Data Analyst Intern",
     organization: "Bluestock Fintech",
-    period: "Oct 2026 – Dec 2026",
+    period: "Sep 2026 – Oct 2026",
     location: "Remote",
     type: "internship",
     badgeLabel: "Corporate Internship",
     proofUrl: "/bluestock-internship-offer.pdf",
     offerId: "BFDA157579",
-    description: "Accepted part-time Data Analyst Internship role at Bluestock Fintech (Offer ID: BFDA157579). Collaborating with leadership to build financial data pipelines, analytics models, and market intelligence metrics.",
+    description: "Built an end-to-end mutual fund analytics pipeline in Python and SQL, generating synthetic datasets and integrating live AMFI NAV data.",
     bullets: [
-      "Selected as Data Analyst Intern at Bluestock Fintech for a 2-month engineering & analytics internship (Oct 2026 – Dec 2026).",
-      "Collaborating closely with the Bluestock Fintech leadership team on financial data analysis, market performance modeling, and risk metrics.",
-      "Applying Python, SQL, and data visualization tools to process complex financial datasets and deliver actionable business intelligence.",
-      "Verified via official digitally signed offer document (Offer ID: BFDA157579)."
-    ]
-  },
-  {
-    id: "gsa-2026",
-    role: "Google Student Ambassador — Gemini Program",
-    organization: "Google",
-    period: "May 2026 – Present",
-    location: "Vijayawada, India",
-    type: "ambassadorship",
-    badgeLabel: "Leadership & Ambassadorship",
-    description: "Selected at the national level to represent Google AI and Gemini developer initiatives on campus.",
-    bullets: [
-      "Selected at national level to represent Google AI and Gemini initiatives on campus as one of a limited cohort across India.",
-      "Advised 100+ peers on Google AI, Cloud, and ML learning pathways; organized hands-on technical workshops.",
-      "Leveraged direct Gemini API access to architect and deploy production-level AI-powered applications."
+      "Built an end-to-end mutual fund analytics pipeline in Python and SQL, generating synthetic datasets (50,000 transactions, 2,000 investors, 12,000+ NAV rows) and integrating live AMFI NAV data for 6 scheme codes.",
+      "Cleaned and validated all datasets using forward-fill, deduplication, KYC flagging, and expense-ratio cap checks."
     ]
   },
   {
