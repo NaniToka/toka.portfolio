@@ -55,9 +55,11 @@ export interface ExperienceItem {
   location: string;
   description?: string;
   bullets: string[];
-  type: 'role' | 'hackathon' | 'virtual' | 'ambassadorship';
+  type: 'internship' | 'role' | 'hackathon' | 'virtual' | 'ambassadorship';
   badgeLabel?: string;
   verifyUrl?: string;
+  proofUrl?: string;
+  offerId?: string;
 }
 
 export interface Setback {

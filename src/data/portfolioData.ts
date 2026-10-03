@@ -264,6 +264,12 @@ export const CERTIFICATIONS: Certification[] = [
 
 export const ACHIEVEMENTS: Achievement[] = [
   {
+    id: "bluestock-internship",
+    title: "Data Analyst Intern at Bluestock Fintech",
+    event: "Bluestock Fintech (Offer ID: BFDA157579)",
+    description: "Selected for part-time remote Data Analyst Internship (Oct 2026 – Dec 2026), working on financial data analytics and market performance modeling."
+  },
+  {
     id: "hackathons-13",
     title: "13+ Hackathons & Engineering Competitions",
     event: "Google Solution Challenge, PromptWars, Meta PyTorch Hackathon, Ascent 2026",
@@ -278,6 +284,24 @@ export const ACHIEVEMENTS: Achievement[] = [
 ];
 
 export const EXPERIENCE_ITEMS: ExperienceItem[] = [
+  {
+    id: "bluestock-internship",
+    role: "Data Analyst Intern",
+    organization: "Bluestock Fintech",
+    period: "Oct 2026 – Dec 2026",
+    location: "Remote",
+    type: "internship",
+    badgeLabel: "Corporate Internship",
+    proofUrl: "/bluestock-internship-offer.pdf",
+    offerId: "BFDA157579",
+    description: "Accepted part-time Data Analyst Internship role at Bluestock Fintech (Offer ID: BFDA157579). Collaborating with leadership to build financial data pipelines, analytics models, and market intelligence metrics.",
+    bullets: [
+      "Selected as Data Analyst Intern at Bluestock Fintech for a 2-month engineering & analytics internship (Oct 2026 – Dec 2026).",
+      "Collaborating closely with the Bluestock Fintech leadership team on financial data analysis, market performance modeling, and risk metrics.",
+      "Applying Python, SQL, and data visualization tools to process complex financial datasets and deliver actionable business intelligence.",
+      "Verified via official digitally signed offer document (Offer ID: BFDA157579)."
+    ]
+  },
   {
     id: "gsa-2026",
     role: "Google Student Ambassador — Gemini Program",
