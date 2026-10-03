@@ -58,6 +58,7 @@ export const PROJECTS: Project[] = [
     stack: ["TypeScript", "React", "Vite", "FastAPI", "Python", "Google Gemini AI"],
     liveUrl: "https://civicpulse-ai-frontend.onrender.com/",
     githubUrl: "https://github.com/NaniToka/civicpulse-ai.git",
+    linkedinUrl: "https://lnkd.in/dS5RsbUi",
     featured: true
   },
   {

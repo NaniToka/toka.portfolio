@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Github, FileCode } from 'lucide-react';
+import { ExternalLink, Github, FileCode, Linkedin } from 'lucide-react';
 import { PROJECTS } from '../data/portfolioData';
 import { Project } from '../types/portfolio';
 
@@ -198,6 +198,17 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, idx }) => {
           >
             <Github className="w-4 h-4" /> GitHub Source
           </a>
+
+          {project.linkedinUrl && (
+            <a
+              href={project.linkedinUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-hover inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-md bg-[#0a66c2]/10 hover:bg-[#0a66c2]/20 text-[#70b5f9] border border-[#0a66c2]/30 font-mono text-xs font-medium min-h-[44px] transition-all"
+            >
+              <Linkedin className="w-4 h-4" /> LinkedIn Post
+            </a>
+          )}
         </div>
 
       </div>

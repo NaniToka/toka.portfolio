@@ -11,6 +11,7 @@ export interface Project {
   liveUrl?: string;
   docsUrl?: string;
   githubUrl: string;
+  linkedinUrl?: string;
   featured: boolean;
 }
 
