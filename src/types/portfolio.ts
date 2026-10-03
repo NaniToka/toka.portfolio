@@ -60,6 +60,10 @@ export interface ExperienceItem {
   verifyUrl?: string;
   proofUrl?: string;
   offerId?: string;
+  eventsRun?: number;
+  attendeesCount?: number;
+  workshopsCount?: number;
+  programLink?: string;
 }
 
 export interface Setback {

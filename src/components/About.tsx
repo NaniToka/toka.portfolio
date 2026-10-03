@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Sparkles, Zap, Cloud, ShieldCheck, MapPin, ExternalLink, Github, CheckCircle2 } from 'lucide-react';
+import { Sparkles, Zap, Cloud, ShieldCheck, MapPin, ExternalLink, Github } from 'lucide-react';
 import { PERSONAL_INFO, SPECIALIZATIONS } from '../data/portfolioData';
 
 const specIconMap: Record<string, React.ReactNode> = {
@@ -103,15 +103,15 @@ export const About: React.FC = () => {
                 </div>
 
                 <div className="p-3 rounded-lg bg-slate-900/80 border border-slate-800">
-                  <span className="text-slate-500 uppercase text-[10px] block mb-0.5">Location & Visa</span>
+                  <span className="text-slate-500 uppercase text-[10px] block mb-0.5">Location & Availability</span>
                   <span className="text-slate-100 font-bold text-xs flex items-center gap-1.5 mt-0.5">
-                    <MapPin className="w-3.5 h-3.5 text-indigo-400 shrink-0" /> India-based (No Visa Needed)
+                    <MapPin className="w-3.5 h-3.5 text-indigo-400 shrink-0" /> Based in India · Remote & Relocation
                   </span>
                 </div>
 
                 <div className="p-3 rounded-lg bg-slate-900/80 border border-slate-800">
                   <span className="text-slate-500 uppercase text-[10px] block mb-0.5">Degree & Track</span>
-                  <span className="text-slate-100 font-bold text-xs">B.Tech CSE (3rd Year, 2024–2028)</span>
+                  <span className="text-slate-100 font-bold text-xs">B.Tech CSE (2024–2028 Expected)</span>
                 </div>
               </div>
             </div>
@@ -160,19 +160,19 @@ export const About: React.FC = () => {
           </div>
         </div>
 
-        {/* Live GitHub Daily Activity Section */}
+        {/* Pinned Repositories Grid (Task 8) */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="glass-card card-hover rounded-xl p-6 sm:p-8 space-y-4"
+          className="space-y-4 pt-4"
         >
-          <div className="flex items-center justify-between flex-wrap gap-2 pb-3 border-b border-slate-800">
+          <div className="flex items-center justify-between flex-wrap gap-2 pb-2">
             <div className="flex items-center gap-2">
               <Github className="w-5 h-5 text-indigo-400" />
-              <h3 className="font-mono text-sm font-semibold text-slate-100 uppercase tracking-wider">
-                Live GitHub Activity
+              <h3 className="font-mono text-xs font-semibold text-indigo-400 uppercase tracking-wider">
+                Pinned Open-Source Repositories
               </h3>
             </div>
             <a
@@ -185,23 +185,72 @@ export const About: React.FC = () => {
             </a>
           </div>
 
-          {/* GitHub Contribution Graph Embed Container (Responsive Horizontal Scroll) */}
-          <div className="w-full overflow-x-auto py-2 scrollbar-thin scrollbar-thumb-slate-800">
-            <div className="min-w-[680px] p-4 rounded-lg bg-[#0C0E16] border border-slate-800/80 flex justify-center items-center">
-              <img
-                src="https://ghchart.rshah.org/4F46E5/NaniToka"
-                alt="Toka Nani Live GitHub Activity Chart"
-                className="w-full max-w-4xl h-auto filter saturate-150 contrast-125 transition-opacity duration-300"
-                loading="lazy"
-              />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="glass-card card-hover rounded-xl p-5 flex flex-col justify-between space-y-3">
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <h4 className="font-mono font-bold text-slate-100 text-sm flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-blue-400" /> TokenFlow-AI
+                  </h4>
+                  <span className="font-mono text-[10px] text-slate-400 border border-slate-800 px-2 py-0.5 rounded">Python / FastAPI</span>
+                </div>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  Prompt memory optimizer middleware reducing token overhead by ~74% via vector decay scoring.
+                </p>
+              </div>
+              <a
+                href="https://github.com/NaniToka/TokenFlow-AI"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 font-mono text-xs text-indigo-400 hover:text-indigo-300 pt-2 border-t border-slate-800/80"
+              >
+                <Github className="w-3.5 h-3.5" /> View Repository
+              </a>
             </div>
-          </div>
 
-          <div className="flex items-center justify-between text-xs font-mono text-slate-500 pt-1">
-            <span>Real-time public contribution history</span>
-            <span className="flex items-center gap-1">
-              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /> Tokenless Live Feed
-            </span>
+            <div className="glass-card card-hover rounded-xl p-5 flex flex-col justify-between space-y-3">
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <h4 className="font-mono font-bold text-slate-100 text-sm flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-indigo-400" /> BiasGuard-AI
+                  </h4>
+                  <span className="font-mono text-[10px] text-slate-400 border border-slate-800 px-2 py-0.5 rounded">Python / Cloud Run</span>
+                </div>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  Forensic ML bias auditing platform streaming decision logs on Cloud Run & Vertex AI for UN SDG fairness metrics.
+                </p>
+              </div>
+              <a
+                href="https://github.com/NaniToka/unbiased-ai-decision"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 font-mono text-xs text-indigo-400 hover:text-indigo-300 pt-2 border-t border-slate-800/80"
+              >
+                <Github className="w-3.5 h-3.5" /> View Repository
+              </a>
+            </div>
+
+            <div className="glass-card card-hover rounded-xl p-5 flex flex-col justify-between space-y-3">
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <h4 className="font-mono font-bold text-slate-100 text-sm flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400" /> CivicPulse-AI
+                  </h4>
+                  <span className="font-mono text-[10px] text-slate-400 border border-slate-800 px-2 py-0.5 rounded">TypeScript / React</span>
+                </div>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  Multilingual civic decision intelligence layer converting citizen feedback into evidence-backed priority metrics.
+                </p>
+              </div>
+              <a
+                href="https://github.com/NaniToka/civicpulse-ai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 font-mono text-xs text-indigo-400 hover:text-indigo-300 pt-2 border-t border-slate-800/80"
+              >
+                <Github className="w-3.5 h-3.5" /> View Repository
+              </a>
+            </div>
           </div>
         </motion.div>
 

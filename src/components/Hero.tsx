@@ -27,7 +27,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
             <div className="flex flex-wrap items-center gap-2.5">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-950/60 border border-indigo-800/40 text-indigo-400 font-mono text-xs font-medium">
                 <span className="w-2 h-2 rounded-full bg-indigo-400 animate-ping" />
-                <span>Available for SWE / DevOps Internships</span>
+                <span>Available for SWE / Cloud / GenAI Roles</span>
               </div>
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-slate-300 font-mono text-xs">
                 Google Student Ambassador
@@ -41,7 +41,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                   <source srcSet="/toka-profile.webp" type="image/webp" />
                   <img
                     src="/toka-profile.jpg"
-                    alt="Toka Nani, Software Engineer"
+                    alt="Toka Nani, Cloud & GenAI Engineer"
                     width={288}
                     height={288}
                     loading="eager"
@@ -55,20 +55,20 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-100 tracking-tight leading-none">
                   {PERSONAL_INFO.name}
                 </h1>
-                <div className="flex items-center gap-2 text-indigo-400 font-mono text-base sm:text-lg font-semibold">
-                  <Terminal className="w-5 h-5 text-indigo-500" />
+                <div className="flex items-center gap-2 text-indigo-400 font-mono text-sm sm:text-base lg:text-lg font-semibold">
+                  <Terminal className="w-5 h-5 text-indigo-500 shrink-0" />
                   <span>{PERSONAL_INFO.title}</span>
                 </div>
               </div>
             </div>
 
-            {/* Value Proposition & Education */}
+            {/* Value Proposition Pitch & Footer line */}
             <div className="space-y-3">
-              <p className="text-lg sm:text-xl font-medium text-slate-200 leading-snug">
-                "{PERSONAL_INFO.valueProp}"
+              <p className="text-base sm:text-lg font-medium text-slate-200 leading-relaxed max-w-2xl">
+                {PERSONAL_INFO.pitch}
               </p>
-              <p className="text-sm sm:text-base text-slate-400 max-w-2xl leading-relaxed">
-                {PERSONAL_INFO.institution} • {PERSONAL_INFO.education}
+              <p className="text-xs sm:text-sm font-mono text-indigo-300/90 max-w-2xl pt-1">
+                {PERSONAL_INFO.footerLine}
               </p>
             </div>
 

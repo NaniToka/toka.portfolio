@@ -145,6 +145,30 @@ export const Experience: React.FC = () => {
                       ))}
                     </ul>
 
+                    {/* Ambassador Structured Metrics Panel (Task 9 - Hidden when empty) */}
+                    {(item.eventsRun !== undefined || item.attendeesCount !== undefined || item.workshopsCount !== undefined || item.programLink) && (
+                      <div className="grid grid-cols-3 gap-2 pt-2 border-t border-slate-800/80 font-mono text-xs">
+                        {item.eventsRun !== undefined && (
+                          <div className="p-2 bg-slate-950/60 rounded border border-slate-800 text-center">
+                            <span className="text-slate-500 text-[10px] block uppercase">Events</span>
+                            <span className="text-indigo-400 font-bold">{item.eventsRun}</span>
+                          </div>
+                        )}
+                        {item.workshopsCount !== undefined && (
+                          <div className="p-2 bg-slate-950/60 rounded border border-slate-800 text-center">
+                            <span className="text-slate-500 text-[10px] block uppercase">Workshops</span>
+                            <span className="text-indigo-400 font-bold">{item.workshopsCount}</span>
+                          </div>
+                        )}
+                        {item.attendeesCount !== undefined && (
+                          <div className="p-2 bg-slate-950/60 rounded border border-slate-800 text-center">
+                            <span className="text-slate-500 text-[10px] block uppercase">Attendees</span>
+                            <span className="text-indigo-400 font-bold">{item.attendeesCount}+</span>
+                          </div>
+                        )}
+                      </div>
+                    )}
+
                     {/* Proof & Verification Buttons */}
                     {(item.proofUrl || item.verifyUrl) && (
                       <div className="pt-3 border-t border-slate-800/80 flex flex-wrap items-center gap-2.5">

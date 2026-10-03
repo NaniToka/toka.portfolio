@@ -217,6 +217,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, idx }) => {
 };
 
 export const Projects: React.FC = () => {
+  const [showMore, setShowMore] = useState(false);
+
+  const featuredProjects = PROJECTS.filter((p) => p.featured);
+  const otherProjects = PROJECTS.filter((p) => !p.featured);
+
   return (
     <section id="projects" className="py-20 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -227,19 +232,78 @@ export const Projects: React.FC = () => {
             03. Production Case Studies
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-100 tracking-tight">
-            Featured Projects
+            Flagship Case Studies
           </h2>
           <p className="text-slate-400 text-sm mt-2 max-w-2xl">
-            Real production systems built with AI-native workflows, containerized architectures, and verified benchmarks.
+            Production systems built with AI-native workflows, cloud-native containerized architectures, and verified benchmarks.
           </p>
         </div>
 
-        {/* Projects Stack */}
+        {/* Flagship Projects Stack */}
         <div className="space-y-8">
-          {PROJECTS.map((project, idx) => (
+          {featuredProjects.map((project, idx) => (
             <ProjectCard key={project.id} project={project} idx={idx} />
           ))}
         </div>
+
+        {/* Collapsed More Projects Section (Task 5) */}
+        {otherProjects.length > 0 && (
+          <div className="mt-12 pt-8 border-t border-slate-800/80">
+            <div className="flex items-center justify-between mb-6">
+              <div>
+                <h3 className="text-xl font-bold text-slate-100">Additional Engineering Projects</h3>
+                <p className="text-xs text-slate-400 font-mono">Specialized analytics pipelines, governance portals, and hackathon prototypes</p>
+              </div>
+              <button
+                onClick={() => setShowMore(!showMore)}
+                className="btn-hover inline-flex items-center gap-2 px-4 py-2 rounded-md bg-slate-900 hover:bg-slate-800 border border-slate-800 text-indigo-400 font-mono text-xs font-semibold"
+              >
+                {showMore ? 'Hide Additional Projects' : `Show All Projects (${otherProjects.length})`}
+              </button>
+            </div>
+
+            {showMore && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2"
+              >
+                {otherProjects.map((proj) => (
+                  <div key={proj.id} className="glass-card rounded-lg p-4 border border-slate-800/80 flex flex-col justify-between space-y-3">
+                    <div className="space-y-1">
+                      <div className="flex items-center justify-between">
+                        <h4 className="font-mono font-bold text-slate-100 text-sm">{proj.title}</h4>
+                        <span className="font-mono text-[10px] text-indigo-400 bg-indigo-950/60 px-2 py-0.5 rounded border border-indigo-800/40">
+                          {proj.subtitle}
+                        </span>
+                      </div>
+                      <p className="text-xs text-slate-300 leading-relaxed">{proj.description}</p>
+                    </div>
+
+                    <div className="flex items-center justify-between pt-2 border-t border-slate-800/60 text-xs font-mono">
+                      <div className="flex flex-wrap gap-1">
+                        {proj.stack.slice(0, 3).map((t) => (
+                          <span key={t} className="text-[10px] text-slate-400 bg-slate-950 px-1.5 py-0.5 rounded border border-slate-800">
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                      <a
+                        href={proj.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-indigo-400 hover:text-indigo-300 font-semibold"
+                      >
+                        <Github className="w-3.5 h-3.5" /> Source
+                      </a>
+                    </div>
+                  </div>
+                ))}
+              </motion.div>
+            )}
+          </div>
+        )}
 
       </div>
     </section>

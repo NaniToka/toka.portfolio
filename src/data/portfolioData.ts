@@ -2,10 +2,13 @@ import { Project, SkillCategory, Certification, Achievement, ExperienceItem, Set
 
 export const PERSONAL_INFO = {
   name: "Toka Nani",
-  title: "Cloud & GenAI Developer | Google Gemini Student Ambassador",
-  education: "B.Tech CSE (2024–2028 Expected) • CGPA: 7.3/10",
+  title: "Cloud & GenAI Engineer · Google Student Ambassador (Gemini, 2026)",
+  pitch: "I build LLM cost-optimization and ML fairness tooling on Google Cloud. TokenFlow AI reduces prompt tokens ~74% (see benchmark). BiasGuard AI audits decision logs against UN SDG fairness metrics on Cloud Run + Vertex AI.",
+  footerLine: "B.Tech CSE '28 · Open to remote & relocation · Based in India (IST, UTC+5:30)",
+  education: "B.Tech, Computer Science and Engineering (2024–2028 Expected)",
+  cgpa: "7.3 / 10",
   institution: "DVR & Dr. HS MIC College of Technology, Vijayawada, India",
-  valueProp: "Building production-oriented Generative AI, cloud, and full-stack applications.",
+  valueProp: "I build LLM cost-optimization and ML fairness tooling on Google Cloud.",
   email: "tokananiy@gmail.com",
   phone: "+91 9912832776",
   github: "https://github.com/NaniToka",
@@ -13,8 +16,8 @@ export const PERSONAL_INFO = {
   resumePath: "/nani.pdf",
   bio: [
     "Computer Science undergraduate and Google Gemini Student Ambassador building production-oriented Generative AI, cloud, and full-stack applications with Python, TypeScript, FastAPI, React, and Google Cloud.",
-    "Data Analyst Intern at Bluestock Fintech building SQL-based analytics pipelines. AWS Certified Solutions Architect – Associate.",
-    "Actively seeking SWE, Cloud, GenAI, and Data Analytics internship roles."
+    "Data Analyst Intern at Bluestock Fintech building SQL-based analytics pipelines. AWS Certified Solutions Architect – Associate (In progress).",
+    "Open to remote engineering roles & relocation worldwide."
   ]
 };
 
@@ -49,38 +52,12 @@ export const SPECIALIZATIONS: Specialization[] = [
 
 export const PROJECTS: Project[] = [
   {
-    id: "civicpulse-ai",
-    title: "CivicPulse AI (v2.0)",
-    subtitle: "Multilingual Civic Decision Intelligence Layer",
-    description: "An open-source multilingual civic decision intelligence layer that transforms citizen voices across Indian states into traceable, evidence-backed civic investment priorities.",
-    problem: "Public administration systems across India process millions of fragmented citizen complaints across diverse regional scripts. Traditional municipal systems process complaints in isolated silos—leading to unaddressed infrastructure bottlenecks, misallocated capital investments, and a disconnect between citizen demand signals and municipal budget allocation.",
-    solution: "Built an open-source decision-support platform bridging citizen feedback and municipal public investment planning. It transforms unstructured citizen signals into geographic demand intelligence, cross-referencing demographic census data, infrastructure deficit indices, and existing investment allocations to generate transparent, explainable priority scores.",
-    stackRationale: "FastAPI and Python for robust backend logic and AI orchestration; Google Gemini AI for multilingual text analysis, entity extraction, and summarization; React, Vite, and TypeScript for a highly interactive and responsive 3D dashboard visualization.",
-    stack: ["TypeScript", "React", "Vite", "FastAPI", "Python", "Google Gemini AI"],
-    liveUrl: "https://civicpulse-ai-frontend.onrender.com/",
-    githubUrl: "https://github.com/NaniToka/civicpulse-ai.git",
-    linkedinUrl: "https://lnkd.in/dS5RsbUi",
-    featured: true
-  },
-  {
-    id: "mutual-fund-analytics",
-    title: "Mutual Fund Analytics Platform",
-    subtitle: "Bluestock Fintech Capstone Project",
-    description: "End-to-end financial data engineering ETL pipeline and interactive Streamlit analytics dashboard calculating portfolio risk metrics and fund recommendations.",
-    problem: "Financial analysts and retail investors lack unified relational tools to evaluate mutual fund NAV histories, calculate advanced quantitative risk indicators (Sharpe, Sortino, VaR), and perform multi-scheme comparisons.",
-    solution: "Designed a 9-table SQLite star schema loaded through SQLAlchemy (86,000+ rows) and produced 15 exploratory charts with 10 business SQL queries. Computed CAGR, Sharpe, Sortino, Alpha/Beta, maximum drawdown, and VaR/CVaR, and delivered a four-page interactive Streamlit dashboard and risk-appetite fund recommender.",
-    stackRationale: "Python & SQLAlchemy for high-throughput ETL data pipeline execution; SQLite star schema for structured relational queries; Streamlit & AMFI API for real-time financial telemetry visual analytics.",
-    stack: ["Python", "SQL", "SQLite", "SQLAlchemy", "Pandas", "Streamlit", "AMFI API"],
-    githubUrl: "https://github.com/NaniToka",
-    featured: true
-  },
-  {
     id: "tokenflow-ai",
     title: "TokenFlow AI",
     subtitle: "Prompt Memory Optimizer Middleware",
     description: "Production-grade semantic vector ranking & real-time context condensation middleware that prunes redundant prompt tokens before LLM completion API calls.",
-    problem: "Conversational LLM applications repeatedly resend growing prompt histories across chat sessions, racking up high token costs and latency spikes. This results in API rate-limit throttling, context window saturation, and degraded response accuracy due to noisy background prompt data.",
-    solution: "Built a production-grade FastAPI and React 18 middleware pipeline combining Gemini text-embedding-004 vector representations with an exponential recency-decay formula. The algorithm dynamically calculates similarity and half-life decay to condense prompt history in-memory before invoking completion endpoints—achieving ~74% token overhead reduction with zero database storage cost.",
+    problem: "Conversational LLM applications repeatedly resend growing prompt histories across chat sessions, racking up high token costs and latency spikes.",
+    solution: "Built a production-grade FastAPI and React 18 middleware pipeline combining Gemini text-embedding-004 vector representations with an exponential recency-decay formula. Condenses prompt history in-memory before invoking completion endpoints—achieving ~74% token overhead reduction.",
     stackRationale: "FastAPI for high-throughput asynchronous request handling; Gemini text-embedding-004 for semantic vector precision over keyword matching; React 18 for real-time frontend telemetry.",
     stack: ["FastAPI", "Gemini text-embedding-004", "Gemini 1.5 Flash", "React 18", "Swagger", "Render"],
     metrics: "~74% average reduction in prompt token overhead via exponential recency decay vector scoring",
@@ -94,9 +71,9 @@ export const PROJECTS: Project[] = [
     title: "BiasGuard AI",
     subtitle: "Forensic ML Bias Auditing Platform",
     description: "Forensic auditing platform ingesting ML decision logs and detecting automated bias patterns using Vertex AI and Gemini explainability engines.",
-    problem: "Black-box automated decision systems in hiring, credit scoring, and admissions risk embedding unseen demographic bias after deployment. Without forensic audit trails or explainability engines, engineering and compliance teams struggle to detect disparity or generate human-readable regulatory reports.",
-    solution: "Built a serverless forensic auditing platform on Google Cloud Run that streams decision logs through a statistical evaluator calculating demographic parity and equalized odds metrics. Paired calculations with Gemini 1.5 Flash structured prompts to generate human-readable compliance audit reports and retraining recommendations in under 30 seconds. Built solo for Google Solution Challenge 2026.",
-    stackRationale: "Google Cloud Run & Cloud Storage for event-driven serverless audit log processing; Vertex AI & Gemini 1.5 Flash for automated disparity evaluation and natural-language compliance reporting; Cloud Firestore for cross-region report sync.",
+    problem: "Black-box automated decision systems in hiring, credit scoring, and admissions risk embedding unseen demographic bias after deployment without forensic audit trails.",
+    solution: "Built a serverless forensic auditing platform on Google Cloud Run that streams decision logs through a statistical evaluator calculating demographic parity and equalized odds metrics. Paired calculations with Gemini 1.5 Flash structured prompts to generate human-readable compliance audit reports in under 30 seconds. Built solo for Google Solution Challenge 2026.",
+    stackRationale: "Google Cloud Run & Cloud Storage for event-driven serverless audit log processing; Vertex AI & Gemini 1.5 Flash for automated disparity evaluation and natural-language compliance reporting.",
     stack: ["Vertex AI", "Gemini 1.5 Flash", "Flask", "Firestore", "Cloud Storage", "Cloud Run", "Docker"],
     metrics: "<30s audit cycle with automated UN SDG-5 & SDG-10 fairness reports",
     liveUrl: "https://biasguard-rzpoqg6s6a-uc.a.run.app",
@@ -104,26 +81,52 @@ export const PROJECTS: Project[] = [
     featured: true
   },
   {
+    id: "civicpulse-ai",
+    title: "CivicPulse AI",
+    subtitle: "Multilingual Civic Decision Intelligence Layer",
+    description: "An open-source multilingual civic decision intelligence layer that transforms citizen voices into traceable, evidence-backed civic investment priorities.",
+    problem: "Public administration systems process millions of fragmented citizen complaints across diverse regional scripts without automated categorization or objective demand-prioritization models.",
+    solution: "Built an open-source platform that turns multilingual citizen requests into evidence-backed infrastructure priorities using Gemini for language detection, translation, and intent/urgency extraction. Engineered a deterministic 4-part scoring engine (35% demand, 25% infra gap, 20% vulnerability, 20% investment overlap) with a state-machine anti-fake-closure workflow validated by 37 passing pytest tests.",
+    stackRationale: "FastAPI and Python for backend logic and AI orchestration; Gemini AI for multilingual text analysis; React, Vite, and TypeScript for dashboard visualization.",
+    stack: ["TypeScript", "React", "Vite", "FastAPI", "Python", "Google Gemini AI"],
+    liveUrl: "https://civicpulse-ai-frontend.onrender.com/",
+    githubUrl: "https://github.com/NaniToka/civicpulse-ai.git",
+    linkedinUrl: "https://lnkd.in/dS5RsbUi",
+    featured: true
+  },
+  {
+    id: "mutual-fund-analytics",
+    title: "Mutual Fund Analytics Platform",
+    subtitle: "Bluestock Fintech Capstone Project",
+    description: "End-to-end financial data engineering ETL pipeline and interactive Streamlit analytics dashboard calculating portfolio risk metrics and fund recommendations.",
+    problem: "Financial analysts and retail investors lack unified relational tools to evaluate mutual fund NAV histories, calculate quantitative risk indicators, and perform multi-scheme comparisons.",
+    solution: "Designed a 9-table SQLite star schema loaded through SQLAlchemy (86,000+ rows) producing 15 exploratory charts and 10 business SQL queries. Computed CAGR, Sharpe, Sortino, Alpha/Beta, Max Drawdown, and VaR/CVaR in an interactive 4-page Streamlit dashboard.",
+    stackRationale: "Python & SQLAlchemy for ETL execution; SQLite star schema for structured queries; Streamlit & AMFI API for telemetry.",
+    stack: ["Python", "SQL", "SQLite", "SQLAlchemy", "Pandas", "Streamlit", "AMFI API"],
+    githubUrl: "https://github.com/NaniToka",
+    featured: false
+  },
+  {
     id: "janvoice-ai",
     title: "JanVoice AI",
     subtitle: "National AI Governance Suite",
     description: "Governance platform enabling citizens and Members of Parliament to report, track, and analyze constituency issues in real time.",
-    problem: "Indian parliamentary constituencies lack unified digital tools for direct citizen grievance reporting and constituency-level governance analytics. Representatives and administrative offices are overwhelmed by unstructured constituent feedback without automated categorization or daily executive briefings.",
-    solution: "Developed a national AI governance platform providing role-based portals for citizens, Members of Parliament (MPs), and administrators. Built MP executive dashboards featuring AI-generated daily constituency briefings, automated report routing, and natural-language smart search across citizen submissions.",
-    stackRationale: "React & Netlify for fast, component-driven dashboard interfaces; Gemini AI for automated daily briefing summarization and natural-language search query parsing; SVG chart visualizers for real-time constituency data rendering.",
+    problem: "Parliamentary constituencies lack unified digital tools for direct citizen grievance reporting and constituency-level governance analytics.",
+    solution: "Developed role-based portals for citizens, MPs, and administrators featuring AI-generated daily constituency briefings, automated report routing, and natural-language smart search across citizen submissions.",
+    stackRationale: "React & Netlify for dashboard UI; Gemini AI for daily briefing summarization; SVG charts for real-time visualization.",
     stack: ["React", "Gemini AI", "JavaScript", "SVG Charts", "Netlify"],
     liveUrl: "https://spontaneous-raindrop-8a7198.netlify.app/dashboard",
     githubUrl: "https://github.com/NaniToka/Ai-agent",
-    featured: true
+    featured: false
   },
   {
     id: "stadiumsense-ai",
     title: "StadiumSense AI",
     subtitle: "FIFA World Cup 2026 GenAI Operations",
-    description: "GenAI stadium operations platform providing real-time crowd telemetry and automated incident response briefings. Built for PromptWars.",
-    problem: "Large sports venues and FIFA World Cup stadium operations struggle to coordinate real-time crowd flow telemetry, safety incident dispatch, and multi-agency briefings. Incident logs are often fragmented across disparate communication channels, delaying emergency response.",
-    solution: "Integrated Gemini 1.5 Flash with Firestore real-time data streams and FastAPI microservices to deliver predictive crowd telemetry and automated operational incident briefings. Built for PromptWars hackathon to streamline stadium operations management.",
-    stackRationale: "FastAPI & TypeScript for type-safe real-time telemetry pipelines; Firestore for live incident state synchronization; Gemini 1.5 Flash for automated operational briefing generation.",
+    description: "GenAI stadium operations platform providing real-time crowd telemetry and automated incident response briefings.",
+    problem: "Large sports venues struggle to coordinate real-time crowd flow telemetry, safety incident dispatch, and multi-agency briefings under operational pressure.",
+    solution: "Integrated Gemini 1.5 Flash with Firestore real-time data streams and FastAPI microservices to deliver predictive crowd telemetry and automated incident briefings.",
+    stackRationale: "FastAPI & TypeScript for telemetry pipelines; Firestore for live incident state sync; Gemini 1.5 Flash for briefings.",
     stack: ["React", "TypeScript", "FastAPI", "Gemini 1.5 Flash", "Firestore", "Render"],
     githubUrl: "https://github.com/NaniToka",
     featured: false
@@ -132,10 +135,10 @@ export const PROJECTS: Project[] = [
     id: "carbon-tracker",
     title: "Carbon Footprint Tracker",
     subtitle: "Environmental Impact Monitoring Dashboard",
-    description: "Full-stack environmental impact monitoring web application calculating lifestyle carbon emissions with real-time reduction analytics. Built for PromptWars (Challenge 3).",
-    problem: "Individuals and organizations lack actionable real-time visibility into daily carbon emissions generated by transportation, energy usage, and workplace habits. Existing tools rely on manual static estimation rather than interactive analytics.",
-    solution: "Built a containerized full-stack web application providing real-time carbon emission calculations and interactive reduction analytics. Deployed on Google Cloud Run for PromptWars (Challenge 3) to provide instant visual feedback on lifestyle emissions.",
-    stackRationale: "React & Vite for high-performance interactive charting UI; Tailwind CSS for responsive dark UI layout; Docker & Google Cloud Run for containerized serverless hosting.",
+    description: "Full-stack environmental impact monitoring web application calculating lifestyle carbon emissions with real-time reduction analytics.",
+    problem: "Individuals and organizations lack actionable real-time visibility into daily carbon emissions generated by transportation and energy usage.",
+    solution: "Built a containerized full-stack web application providing real-time carbon emission calculations and interactive reduction analytics deployed on Google Cloud Run.",
+    stackRationale: "React & Vite for charting UI; Tailwind CSS for layout; Docker & Google Cloud Run for containerized serverless hosting.",
     stack: ["React", "Vite", "Tailwind CSS", "Docker", "Google Cloud Run"],
     githubUrl: "https://github.com/NaniToka/carbon-footprint-tracker.git",
     featured: false
@@ -177,6 +180,12 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
 
 export const CERTIFICATIONS: Certification[] = [
   {
+    id: "aws-saa",
+    title: "AWS Certified Solutions Architect – Associate (SAA-C03)",
+    issuer: "Amazon Web Services",
+    status: "In progress / planned"
+  },
+  {
     id: "genai-academy-apac-2026",
     title: "Google Cloud Gen AI Academy APAC 2026 – Cohort 3",
     issuer: "Google Cloud × Hack2skill",
@@ -196,36 +205,6 @@ export const CERTIFICATIONS: Certification[] = [
     date: "09/09/2026",
     credentialId: "IICT-19052613476",
     certificateUrl: "/iict-foundation-course-ai-readiness.pdf"
-  },
-  {
-    id: "promptwars-ch1",
-    title: "PromptWars Virtual — Challenge 1",
-    issuer: "Google for Developers × Hack2Skill",
-    status: "Certificate of Appreciation",
-    description: "Verified Generative AI solution submission for Challenge 1 during PromptWars Virtual",
-    date: "04/08/2026",
-    credentialId: "2026H2S04PWVCHL1-A00285",
-    verifyUrl: "https://certificate.hack2skill.com/verify/2026H2S04PWVCHL1-A00285",
-    certificateUrl: "/promptwars-ch1.pdf"
-  },
-  {
-    id: "build-with-ai-chennai",
-    title: "Build with AI Bootcamp, Chennai",
-    issuer: "Google for Developers × Hack2Skill",
-    status: "Certificate of Participation",
-    description: "Hands-on bootcamp covering AI agent architecture, workflow design, and generative AI integration into production-ready systems",
-    date: "04/08/2026",
-    credentialId: "2026H2S08BWAICHN-P00569",
-    verifyUrl: "https://certificate.hack2skill.com/verify/2026H2S08BWAICHN-P00569",
-    certificateUrl: "/build-with-ai-chennai.pdf"
-  },
-  {
-    id: "gsc-2026",
-    title: "Google Solution Challenge 2026",
-    issuer: "Google Solution Challenge 2026 × Hack2Skill",
-    credentialId: "2026H2S07SCBWAI-PS06834",
-    verifyUrl: "https://certificate.hack2skill.com/verify/2026H2S07SCBWAI-PS06834",
-    certificateUrl: "/solution-challenge-2026.pdf"
   },
   {
     id: "google-ai-essentials",
@@ -261,6 +240,17 @@ export const CERTIFICATIONS: Certification[] = [
     ]
   },
   {
+    id: "promptwars-ch1",
+    title: "PromptWars Virtual — Challenge 1",
+    issuer: "Google for Developers × Hack2Skill",
+    status: "Certificate of Appreciation",
+    description: "Verified Generative AI solution submission for Challenge 1 during PromptWars Virtual",
+    date: "04/08/2026",
+    credentialId: "2026H2S04PWVCHL1-A00285",
+    verifyUrl: "https://certificate.hack2skill.com/verify/2026H2S04PWVCHL1-A00285",
+    certificateUrl: "/promptwars-ch1.pdf"
+  },
+  {
     id: "promptwars-ch3",
     title: "PromptWars Virtual — Challenge 3 (Top 400)",
     issuer: "Google for Developers × Hack2Skill",
@@ -269,6 +259,25 @@ export const CERTIFICATIONS: Certification[] = [
     date: "11/08/2026",
     credentialId: "2026H2S06PWVCHL3-AT00275",
     verifyUrl: "https://lnkd.in/d4bx-BCT"
+  },
+  {
+    id: "build-with-ai-chennai",
+    title: "Build with AI Bootcamp, Chennai",
+    issuer: "Google for Developers × Hack2Skill",
+    status: "Certificate of Participation",
+    description: "Hands-on bootcamp covering AI agent architecture, workflow design, and generative AI integration into production-ready systems",
+    date: "04/08/2026",
+    credentialId: "2026H2S08BWAICHN-P00569",
+    verifyUrl: "https://certificate.hack2skill.com/verify/2026H2S08BWAICHN-P00569",
+    certificateUrl: "/build-with-ai-chennai.pdf"
+  },
+  {
+    id: "gsc-2026",
+    title: "Google Solution Challenge 2026",
+    issuer: "Google Solution Challenge 2026 × Hack2Skill",
+    credentialId: "2026H2S07SCBWAI-PS06834",
+    verifyUrl: "https://certificate.hack2skill.com/verify/2026H2S07SCBWAI-PS06834",
+    certificateUrl: "/solution-challenge-2026.pdf"
   },
   {
     id: "jpmorgan-forage",
@@ -287,39 +296,33 @@ export const CERTIFICATIONS: Certification[] = [
     title: "GenAI Data Analytics Simulation",
     issuer: "Tata iQ × Forage",
     verifyUrl: "https://www.theforage.com/completion-certificates/ifobHAoMjQs9s6bKS/gMTdCXwDdLYoXZ3wG_ifobHAoMjQs9s6bKS_6973b13fb1ee4126d09b7191_1782260307680_completion_certificate.pdf"
-  },
-  {
-    id: "aws-saa",
-    title: "AWS Certified Solutions Architect – Associate (SAA-C03)",
-    issuer: "Amazon Web Services",
-    status: "Exam Scheduled September 2026"
   }
 ];
 
 export const ACHIEVEMENTS: Achievement[] = [
   {
-    id: "genai-academy-apac-2026",
-    title: "Google Cloud Gen AI Academy APAC 2026 (Cohort 3)",
-    event: "Google Cloud × Hack2skill (APAC Edition)",
-    description: "Completed intensive cohort program on accelerating AI with Cloud Run — building, deploying, and orchestrating intelligent agents on Google Cloud."
+    id: "anvil-ascent-2026",
+    title: "Grand Finale Qualifier — Anvil Hackathon",
+    event: "Scaler School of Technology (Anvil @ Ascent 2026)",
+    description: "Selected for the Grand Finale of the Anvil Hackathon at Scaler School of Technology out of competitive nationwide submissions."
   },
   {
-    id: "bluestock-internship",
-    title: "Data Analyst Intern at Bluestock Fintech",
-    event: "Bluestock Fintech (Offer ID: BFDA157579)",
-    description: "Selected for part-time remote Data Analyst Internship (Oct 2026 – Dec 2026), working on financial data analytics and market performance modeling."
+    id: "gsc-2026-hackathon",
+    title: "Google Solution Challenge 2026 Submission",
+    event: "Google Solution Challenge 2026",
+    description: "Architected and submitted BiasGuard AI solo (demographic bias auditing on Cloud Run & Vertex AI)."
+  },
+  {
+    id: "promptwars-hackathon",
+    title: "PromptWars Virtual — Challenge 1 & 3 (Top 400)",
+    event: "Google for Developers × Hack2Skill",
+    description: "Earned Challenge 1 Certificate of Appreciation and Challenge 3 Certificate of Achievement, ranking in the Top 400 Leaderboard."
   },
   {
     id: "hackathons-13",
     title: "13+ Hackathons & Engineering Competitions",
     event: "Google Solution Challenge, PromptWars, Meta PyTorch Hackathon, Ascent 2026",
-    description: "Participated in 13+ hackathons including Google Solution Challenge 2026, PromptWars (Challenges 1 & 3), Meta PyTorch Hackathon, and Anvil @ Ascent 2026 (Grand Finale)."
-  },
-  {
-    id: "build-with-ai",
-    title: "Build with AI Bootcamp Participant",
-    event: "Google for Developers × Hack2skill (Chennai)",
-    description: "Attended intensive hands-on technical workshop on building production AI applications using Gemini API and Vertex AI."
+    description: "Participated in 13+ hackathons including Google Solution Challenge 2026, PromptWars (Challenges 1 & 3), Meta PyTorch Hackathon, and Anvil @ Ascent 2026."
   }
 ];
 
@@ -355,70 +358,6 @@ export const EXPERIENCE_ITEMS: ExperienceItem[] = [
     ]
   },
   {
-    id: "jpmorgan-forage-exp",
-    role: "Software Engineering Job Simulation",
-    organization: "JPMorgan Chase & Co. × Forage",
-    period: "Completed 2026",
-    location: "Virtual / Remote",
-    type: "virtual",
-    badgeLabel: "Virtual Engineering Program",
-    verifyUrl: "https://www.theforage.com/completion-certificates/Sj7temL583QAYpHXD/E6McHJDKsQYh79moz_Sj7temL583QAYpHXD_6973b13fb1ee4126d09b7191_1781903103039_completion_certificate.pdf",
-    description: "Completed hands-on software engineering tasks modeled on JPMorgan Chase's real engineering workflows including [PLACEHOLDER: list specific technical exercises completed].",
-    bullets: [
-      "Executed hands-on software engineering tasks modeled after JPMorgan Chase's actual software delivery pipeline.",
-      "Completed technical modules covering [PLACEHOLDER: list tools/frameworks used, e.g., Spring Boot, Kafka, financial data interfaces].",
-      "Issued official Forage completion credential upon passing verification."
-    ]
-  },
-  {
-    id: "walmart-forage-exp",
-    role: "Advanced Software Engineering Simulation",
-    organization: "Walmart Global Tech × Forage",
-    period: "Completed 2026",
-    location: "Virtual / Remote",
-    type: "virtual",
-    badgeLabel: "Virtual Engineering Program",
-    verifyUrl: "https://www.theforage.com/completion-certificates/prBZoAihniNijyD6d/oX6f9BbCL9kJDJzfg_prBZoAihniNijyD6d_6973b13fb1ee4126d09b7191_1781985899780_completion_certificate.pdf",
-    description: "Completed advanced engineering tasks modeled on Walmart Global Tech's enterprise systems including [PLACEHOLDER: list specific technical exercises completed].",
-    bullets: [
-      "Executed advanced software architecture and system design challenges modeled on Walmart Global Tech systems.",
-      "Completed engineering tasks covering [PLACEHOLDER: list specific architecture/data structure exercises].",
-      "Issued official Forage completion credential upon passing verification."
-    ]
-  },
-  {
-    id: "tata-iq-forage-exp",
-    role: "GenAI Data Analytics Simulation",
-    organization: "Tata iQ × Forage",
-    period: "Completed 2026",
-    location: "Virtual / Remote",
-    type: "virtual",
-    badgeLabel: "Virtual Engineering Program",
-    verifyUrl: "https://www.theforage.com/completion-certificates/ifobHAoMjQs9s6bKS/gMTdCXwDdLYoXZ3wG_ifobHAoMjQs9s6bKS_6973b13fb1ee4126d09b7191_1782260307680_completion_certificate.pdf",
-    description: "Completed applied GenAI and data analytics tasks modeled on Tata iQ's workflows including [PLACEHOLDER: list specific technical exercises completed].",
-    bullets: [
-      "Applied generative AI techniques and data analytics workflows modeled on Tata iQ client solutions.",
-      "Completed practical analytics and prompt engineering tasks covering [PLACEHOLDER: list specific tools/models used].",
-      "Issued official Forage completion credential upon passing verification."
-    ]
-  },
-  {
-    id: "hackathon-experience",
-    role: "Hackathon Builder & Competitor (13+ Competitions)",
-    organization: "Google Solution Challenge 2026 • PromptWars",
-    period: "2025 – 2026",
-    location: "Remote / On-site",
-    type: "hackathon",
-    badgeLabel: "Production Hackathon",
-    verifyUrl: "https://certificate.hack2skill.com/verify/2026H2S07SCBWAI-PS06834",
-    description: "Built and submitted production AI platforms under tight hackathon timelines for Google Solution Challenge 2026 (BiasGuard AI) and PromptWars Virtual (TokenFlow AI, StadiumSense AI, Carbon Footprint Tracker).",
-    bullets: [
-      "Built BiasGuard AI solo for Google Solution Challenge 2026 (demographic bias auditing on Cloud Run & Vertex AI).",
-      "Earned PromptWars Virtual Challenge 1 Certificate of Appreciation and Build with AI Chennai Bootcamp Certificate.",
-      "Participated in 13+ hackathons including Meta PyTorch Hackathon and Anvil @ Ascent 2026."
-    ]
-  },
-  {
     id: "self-directed-dev",
     role: "Full-Stack & Cloud AI Engineer",
     organization: "Independent Engineering Focus",
@@ -426,7 +365,7 @@ export const EXPERIENCE_ITEMS: ExperienceItem[] = [
     location: "Vijayawada, India",
     type: "role",
     badgeLabel: "Engineering Focus",
-    description: "Architected and deployed 3 production AI applications on Cloud Run and Render using FastAPI, Flask, React 18, and Gemini APIs.",
+    description: "Architected and deployed production AI applications on Cloud Run and Render using FastAPI, Flask, React 18, and Gemini APIs.",
     bullets: [
       "Architected TokenFlow AI prompt optimization middleware cutting prompt token overhead by ~74%.",
       "Maintained containerized deployment pipelines on Google Cloud Run and Render with Swagger OpenAPI documentation."
@@ -439,13 +378,11 @@ export const SETBACKS: Setback[] = [
     id: "gcp-genai-fail",
     title: "Google Cloud Certified – Generative AI Leader",
     date: "August 2026",
-    description: "I didn’t pass the Google Cloud Certified – Generative AI Leader exam. There. I said it. This one hurts. I spent the last few months preparing seriously—not with last-minute cramming, but with consistent effort. I genuinely believed I was ready. But the result reminded me of something important: Preparation and confidence are not the same as readiness. My score report showed that I was borderline in three of the four sections, while meeting the expectations in the fourth. That tells me I wasn’t far away—but I wasn’t there yet. And yes, this attempt cost me $70. As a college student, that isn't a small amount. Losing both the exam fee and the expected result hurts. But I’m choosing to treat it as the cost of learning where my preparation needs to improve. This is also not my first setback. Since starting my B.Tech journey, I’ve faced rejections, failed attempts, and moments where things didn’t go the way I expected. Each one has taught me something different. This one taught me to measure preparation by performance, not by how prepared I feel.",
+    description: "Did not pass the Google Cloud Certified – Generative AI Leader exam in August 2026 (borderline score in 3 of 4 domain sections).\nLearned that preparation confidence must be measured against empirical practice scores and detailed section breakdowns.\nCurrently reviewing domain gaps, revisiting official GCP documentation, and preparing for a retake.",
     lessons: [
-      "Reviewing my score report section by section",
-      "Identifying the gaps in my understanding",
-      "Revisiting the official learning resources",
-      "Practicing more strategically",
-      "Taking the exam again"
+      "Reviewing score report domain by domain to target specific gaps",
+      "Revisiting official GCP documentation and hands-on labs",
+      "Scheduling exam retake with structured practice tests"
     ],
     proofUrl: "/gcp-exam-result.pdf"
   }
