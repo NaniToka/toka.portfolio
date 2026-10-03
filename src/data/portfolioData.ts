@@ -164,6 +164,16 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
 
 export const CERTIFICATIONS: Certification[] = [
   {
+    id: "iict-ai-readiness",
+    title: "Foundation Course on AI Readiness",
+    issuer: "MIB (Govt of India) × IICT × Google & YouTube",
+    status: "Certificate of Completion",
+    description: "Successfully completed Foundation Course on AI Readiness issued by Ministry of Information & Broadcasting and Indian Institute of Creative Technologies (IICT) in partnership with Google and YouTube.",
+    date: "09/09/2026",
+    credentialId: "IICT-19052613476",
+    certificateUrl: "/iict-foundation-course-ai-readiness.pdf"
+  },
+  {
     id: "promptwars-ch1",
     title: "PromptWars Virtual — Challenge 1",
     issuer: "Google for Developers × Hack2Skill",
