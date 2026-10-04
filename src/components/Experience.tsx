@@ -189,7 +189,7 @@ export const Experience: React.FC = () => {
                             href={item.proofUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="btn-hover inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-white font-mono text-xs font-medium min-h-[38px]"
+                            className="btn-hover inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-slate-100 font-mono text-xs font-medium min-h-[38px]"
                             title="Open PDF directly in new window"
                           >
                             <ExternalLink className="w-3.5 h-3.5" /> PDF
@@ -263,7 +263,7 @@ export const Experience: React.FC = () => {
 
                 <button
                   onClick={() => setSelectedProof(null)}
-                  className="p-1.5 text-slate-400 hover:text-white rounded-md hover:bg-slate-800 transition-colors"
+                  className="p-1.5 text-slate-400 hover:text-slate-100 rounded-md hover:bg-slate-800 transition-colors"
                   aria-label="Close modal"
                 >
                   <X className="w-5 h-5" />
