@@ -307,6 +307,15 @@ export const CERTIFICATIONS: Certification[] = [
     title: "GenAI Data Analytics Simulation",
     issuer: "Tata iQ × Forage",
     verifyUrl: "https://www.theforage.com/completion-certificates/ifobHAoMjQs9s6bKS/gMTdCXwDdLYoXZ3wG_ifobHAoMjQs9s6bKS_6973b13fb1ee4126d09b7191_1782260307680_completion_certificate.pdf"
+  },
+  {
+    id: "hackace-2026",
+    title: "HackACE 2026 — International Level Hackathon",
+    issuer: "KPR Institute of Engineering & Technology × Allcollegeevent.com",
+    status: "Certificate of Participation",
+    description: "Participated in Round 1 of HackACE 2026, an international level hackathon jointly organized by CSE (AI & ML) and Computer Science and Business Systems departments, KPR Institute of Engineering and Technology, Coimbatore, Tamil Nadu, in association with Allcollegeevent.com.",
+    credentialId: "NXAIWDA0ZCC47",
+    certificateUrl: "/hackace-2026.pdf"
   }
 ];
 
