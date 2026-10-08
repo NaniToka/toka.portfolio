@@ -186,6 +186,17 @@ export const CERTIFICATIONS: Certification[] = [
     status: "In progress / planned"
   },
   {
+    id: "amrita-agentic-leap-2026",
+    title: "Amrita Agentic Leap 2026 — Agentic AI Bootcamp",
+    issuer: "Amrita School of Computing, Amrita Vishwa Vidyapeetham",
+    status: "Certificate of Participation",
+    description: "Five-day Agentic AI Bootcamp organized by Amrita School of Computing, Amrita Vishwa Vidyapeetham, Amritapuri Campus, Kerala. Covered agentic AI architectures, multi-agent systems, and real-world AI deployment workflows.",
+    date: "07–11/09/2026",
+    credentialId: "359876",
+    verifyUrl: "https://certificate.amritauniversity.in/verify/359876",
+    certificateUrl: "/amrita-agentic-leap-2026.pdf"
+  },
+  {
     id: "genai-academy-apac-2026",
     title: "Google Cloud Gen AI Academy APAC 2026 – Cohort 3",
     issuer: "Google Cloud × Hack2skill",
