@@ -31,6 +31,7 @@ export interface Certification {
   description?: string;
   verifyUrl?: string;
   certificateUrl?: string;
+  linkedinUrl?: string;
   subCertifications?: {
     id: string;
     title: string;

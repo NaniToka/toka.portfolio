@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Award, FileText, CheckCircle, Clock, ExternalLink, Download, X } from 'lucide-react';
+import { Award, FileText, CheckCircle, Clock, ExternalLink, Download, X, Linkedin } from 'lucide-react';
 import { CERTIFICATIONS } from '../data/portfolioData';
 
 export const Certs: React.FC = () => {
@@ -78,8 +78,15 @@ export const Certs: React.FC = () => {
 
                 <div className="flex flex-wrap items-center gap-2">
                   {cert.status && (
-                    <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-indigo-950/80 border border-indigo-800/40 text-indigo-300 font-mono text-xs">
-                      <Clock className="w-3.5 h-3.5" />
+                    <div className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded font-mono text-xs border ${
+                      cert.status.toLowerCase().includes('active') || cert.status.toLowerCase().includes('certified')
+                        ? 'bg-emerald-950/80 border-emerald-800/40 text-emerald-300'
+                        : 'bg-indigo-950/80 border-indigo-800/40 text-indigo-300'
+                    }`}>
+                      {cert.status.toLowerCase().includes('active') || cert.status.toLowerCase().includes('certified')
+                        ? <CheckCircle className="w-3.5 h-3.5" />
+                        : <Clock className="w-3.5 h-3.5" />
+                      }
                       <span>{cert.status}</span>
                     </div>
                   )}
@@ -92,7 +99,7 @@ export const Certs: React.FC = () => {
                 </div>
               </div>
 
-              {(cert.verifyUrl || cert.certificateUrl) ? (
+              {(cert.verifyUrl || cert.certificateUrl || cert.linkedinUrl) ? (
                 <div className="pt-4 mt-4 border-t border-slate-800 flex flex-wrap gap-2.5">
                   {cert.certificateUrl && (
                     <button
@@ -128,6 +135,17 @@ export const Certs: React.FC = () => {
                     >
                       <FileText className="w-4 h-4" />
                       Verify Link
+                    </a>
+                  )}
+                  {cert.linkedinUrl && (
+                    <a
+                      href={cert.linkedinUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-mono font-medium rounded-md text-[#0A66C2] bg-[#0A66C2]/10 border border-[#0A66C2]/30 hover:bg-[#0A66C2]/20 hover:border-[#0A66C2]/60 transition-all min-h-[38px]"
+                    >
+                      <Linkedin className="w-4 h-4" />
+                      LinkedIn Post
                     </a>
                   )}
                 </div>

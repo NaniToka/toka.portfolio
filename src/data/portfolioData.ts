@@ -2,7 +2,7 @@ import { Project, SkillCategory, Certification, Achievement, ExperienceItem, Set
 
 export const PERSONAL_INFO = {
   name: "Toka Nani",
-  title: "Cloud & GenAI Engineer · Google Student Ambassador (Gemini, 2026)",
+  title: "AWS Certified Solutions Architect – Associate | Google Student Ambassador (Gemini, 2026)",
   pitch: "I build LLM cost-optimization and ML fairness tooling on Google Cloud. TokenFlow AI reduces prompt tokens ~74% (see benchmark). BiasGuard AI audits decision logs against UN SDG fairness metrics on Cloud Run + Vertex AI.",
   footerLine: "B.Tech CSE '28 · Open to remote & relocation · Based in India (IST, UTC+5:30)",
   education: "B.Tech, Computer Science and Engineering (2024–2028 Expected)",
@@ -16,7 +16,7 @@ export const PERSONAL_INFO = {
   resumePath: "/nani.pdf",
   bio: [
     "Computer Science undergraduate and Google Gemini Student Ambassador building production-oriented Generative AI, cloud, and full-stack applications with Python, TypeScript, FastAPI, React, and Google Cloud.",
-    "Data Analyst Intern at Bluestock Fintech building SQL-based analytics pipelines. AWS Certified Solutions Architect – Associate (In progress).",
+    "Data Analyst Intern at Bluestock Fintech building SQL-based analytics pipelines. AWS Certified Solutions Architect – Associate (SAA-C03).",
     "Open to remote engineering roles & relocation worldwide."
   ]
 };
@@ -183,7 +183,12 @@ export const CERTIFICATIONS: Certification[] = [
     id: "aws-saa",
     title: "AWS Certified Solutions Architect – Associate (SAA-C03)",
     issuer: "Amazon Web Services",
-    status: "In progress / planned"
+    status: "Certified — Active",
+    description: "Validates expertise in designing secure, cost-optimized, high-performing, and resilient architectures on AWS. Covers EC2, S3, VPC, IAM, RDS, Lambda, and cloud architecture best practices.",
+    date: "09/2026",
+    credentialId: "24807f2f-d801-4f20-9c7e-ab40c2fa6b35",
+    verifyUrl: "https://www.credly.com/badges/24807f2f-d801-4f20-9c7e-ab40c2fa6b35/linked_in_profile",
+    linkedinUrl: "https://lnkd.in/p/d8u3kDXn"
   },
   {
     id: "amrita-agentic-leap-2026",
