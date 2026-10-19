@@ -392,26 +392,49 @@ export const Certs: React.FC = () => {
               </div>
             </div>
 
-            {/* Modal body */}
-            <div className="flex-1 bg-[#181B24] relative">
-              <object data={selectedCert.pdfUrl} type="application/pdf" className="w-full h-full border-none">
-                <iframe src={`${selectedCert.pdfUrl}#toolbar=1&navpanes=0`} title="Certificate Preview" className="w-full h-full border-none">
-                  <div className="flex flex-col items-center justify-center h-full p-6 text-center bg-[#0C0F17]">
-                    <Award className="w-12 h-12 text-indigo-400 mb-3" />
-                    <p className="text-sm text-slate-400 mb-6">Your browser can't embed this PDF.</p>
-                    <div className="flex flex-wrap gap-3 justify-center">
-                      <a href={selectedCert.pdfUrl} target="_blank" rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-4 py-2 text-xs font-mono font-semibold rounded-md bg-indigo-600 hover:bg-indigo-500 text-white transition-colors">
-                        <ExternalLink className="w-4 h-4" /> Open PDF
-                      </a>
-                      <a href={selectedCert.pdfUrl} download={`${selectedCert.title.replace(/\s+/g, '_')}_Certificate.pdf`}
-                        className="inline-flex items-center gap-2 px-4 py-2 text-xs font-mono font-semibold rounded-md bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors">
-                        <Download className="w-4 h-4" /> Download
-                      </a>
-                    </div>
-                  </div>
-                </iframe>
-              </object>
+            {/* Modal body — iframe for desktop, action cards for mobile */}
+            <div className="flex-1 bg-[#181B24] relative flex flex-col overflow-hidden">
+
+              {/* Desktop: iframe embed */}
+              <iframe
+                src={`${selectedCert.pdfUrl}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
+                title="Certificate Preview"
+                className="hidden sm:block w-full h-full border-none"
+              />
+
+              {/* Mobile: clean action view — iframes for PDFs don't work on mobile */}
+              <div className="flex sm:hidden flex-col items-center justify-center h-full gap-5 p-8 text-center">
+                <div className="w-16 h-16 rounded-2xl bg-indigo-950/80 border border-indigo-800/40 flex items-center justify-center">
+                  <Award className="w-8 h-8 text-indigo-400" />
+                </div>
+                <div>
+                  <h4 className="text-base font-bold text-slate-100 mb-1">{selectedCert.title}</h4>
+                  <p className="text-xs text-slate-400">{selectedCert.issuer}</p>
+                  {selectedCert.credentialId && (
+                    <p className="font-mono text-[10px] text-slate-500 mt-1">ID: {selectedCert.credentialId}</p>
+                  )}
+                </div>
+                <p className="text-xs text-slate-500 max-w-xs">
+                  PDF preview isn't supported on mobile browsers. Open or download the certificate directly.
+                </p>
+                <div className="flex flex-col w-full max-w-xs gap-3">
+                  <a
+                    href={selectedCert.pdfUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 w-full px-4 py-3 text-sm font-mono font-semibold rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white transition-colors"
+                  >
+                    <ExternalLink className="w-4 h-4" /> Open PDF in Browser
+                  </a>
+                  <a
+                    href={selectedCert.pdfUrl}
+                    download={`${selectedCert.title.replace(/\s+/g, '_')}_Certificate.pdf`}
+                    className="inline-flex items-center justify-center gap-2 w-full px-4 py-3 text-sm font-mono font-semibold rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors"
+                  >
+                    <Download className="w-4 h-4" /> Download PDF
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
