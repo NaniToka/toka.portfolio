@@ -2,7 +2,7 @@ import { Project, SkillCategory, Certification, Achievement, ExperienceItem, Set
 
 export const PERSONAL_INFO = {
   name: "Toka Nani",
-  title: "AWS Certified Solutions Architect – Associate | Google Student Ambassador (Gemini, 2026)",
+  title: "AWS & Azure Certified Cloud AI Engineer · Google Student Ambassador (Gemini, 2026)",
   pitch: "I build LLM cost-optimization and ML fairness tooling on Google Cloud. TokenFlow AI reduces prompt tokens ~74% (see benchmark). BiasGuard AI audits decision logs against UN SDG fairness metrics on Cloud Run + Vertex AI.",
   footerLine: "B.Tech CSE '28 · Open to remote & relocation · Based in India (IST, UTC+5:30)",
   education: "B.Tech, Computer Science and Engineering (2024–2028 Expected)",
@@ -16,7 +16,7 @@ export const PERSONAL_INFO = {
   resumePath: "/nani.pdf",
   bio: [
     "Computer Science undergraduate and Google Gemini Student Ambassador building production-oriented Generative AI, cloud, and full-stack applications with Python, TypeScript, FastAPI, React, and Google Cloud.",
-    "Data Analyst Intern at Bluestock Fintech building SQL-based analytics pipelines. AWS Certified Solutions Architect – Associate (SAA-C03).",
+    "Data Analyst Intern at Bluestock Fintech. AWS Certified Solutions Architect – Associate & Microsoft Certified: Azure AI Cloud Developer Associate. Failed the Google Cloud GenAI Leader exam, rebuilt, and came back with two certs.",
     "Open to remote engineering roles & relocation worldwide."
   ]
 };
@@ -179,6 +179,18 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
 ];
 
 export const CERTIFICATIONS: Certification[] = [
+  {
+    id: "azure-ai-developer",
+    title: "Microsoft Certified: Azure AI Cloud Developer Associate",
+    issuer: "Microsoft",
+    status: "Certified — Active",
+    description: "Passed all requirements for Azure AI Cloud Developer Associate. Validates skills in designing and implementing AI solutions on Azure using Azure OpenAI, Cognitive Services, and cloud-native AI pipelines.",
+    date: "11/10/2026",
+    credentialId: "8191A9785202DDCB",
+    verifyUrl: "https://learn.microsoft.com/en-in/users/tokanani-0812/credentials/8191a9785202ddcb",
+    linkedinUrl: "https://lnkd.in/p/d-AVqTBX",
+    certificateUrl: "/azure-ai-developer-associate.pdf"
+  },
   {
     id: "aws-saa",
     title: "AWS Certified Solutions Architect – Associate (SAA-C03)",

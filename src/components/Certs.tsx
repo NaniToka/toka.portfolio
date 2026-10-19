@@ -37,7 +37,7 @@ const CATEGORIES: Category[] = [
     accent: 'text-sky-400',
     border: 'border-sky-800/60',
     bg: 'bg-sky-950/70',
-    ids: ['aws-saa'],
+    ids: ['azure-ai-developer', 'aws-saa'],
   },
   {
     key: 'bootcamp',
