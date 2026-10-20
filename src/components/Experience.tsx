@@ -56,7 +56,7 @@ export const Experience: React.FC = () => {
   }, [selectedProof]);
 
   return (
-    <section id="experience" className="py-20 relative">
+    <section id="experience" className="py-12 sm:py-20 relative">
       {/* Background Soft Glow Orb */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/10 blur-[160px] rounded-full pointer-events-none z-0" />
 
@@ -75,8 +75,8 @@ export const Experience: React.FC = () => {
           </p>
         </div>
 
-        {/* Timeline Container */}
-        <div className="relative space-y-10 before:absolute before:inset-0 before:left-3.5 sm:before:left-1/2 before:-translate-x-px before:w-0.5 before:bg-gradient-to-b before:from-blue-500/60 before:via-blue-500/20 before:to-slate-800">
+        {/* Timeline Container — single col on mobile/tablet, alternating on lg+ */}
+        <div className="relative space-y-8 sm:space-y-10 before:absolute before:inset-0 before:left-3.5 lg:before:left-1/2 before:-translate-x-px before:w-0.5 before:bg-gradient-to-b before:from-blue-500/60 before:via-blue-500/20 before:to-slate-800">
           {EXPERIENCE_ITEMS.map((item, idx) => {
             const isEven = idx % 2 === 0;
             return (
@@ -86,17 +86,17 @@ export const Experience: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.08 }}
-                className={`relative flex flex-col sm:flex-row items-start ${
-                  isEven ? 'sm:flex-row-reverse' : ''
+                className={`relative flex flex-col lg:flex-row items-start ${
+                  isEven ? 'lg:flex-row-reverse' : ''
                 }`}
               >
-                {/* Timeline Center Dot */}
-                <div className="absolute left-3.5 sm:left-1/2 -translate-x-1/2 top-2 w-8 h-8 rounded-full bg-[#0F1115] border-2 border-blue-500 flex items-center justify-center z-10 shadow-lg shadow-blue-950/60">
+                {/* Timeline Dot — left on mobile, center on lg */}
+                <div className="absolute left-3.5 lg:left-1/2 -translate-x-1/2 top-2 w-8 h-8 rounded-full bg-[#0F1115] border-2 border-blue-500 flex items-center justify-center z-10 shadow-lg shadow-blue-950/60">
                   {getTypeIcon(item.type)}
                 </div>
 
-                {/* Card Container */}
-                <div className="w-full sm:w-[calc(50%-2.25rem)] pl-10 sm:pl-0">
+                {/* Card — full width on mobile, half on lg */}
+                <div className="w-full lg:w-[calc(50%-2.25rem)] pl-12 lg:pl-0 min-w-0">
                   <div className="glass-card card-hover rounded-xl p-6 space-y-4 relative overflow-hidden group">
                     
                     {/* Top Badge & Duration */}
@@ -224,7 +224,7 @@ export const Experience: React.FC = () => {
           onClick={() => setSelectedProof(null)}
         >
           <div 
-            className="relative w-full max-w-5xl h-[90vh] bg-[#171A21] border border-slate-800 rounded-xl flex flex-col overflow-hidden shadow-2xl"
+            className="relative w-full max-w-5xl h-[90dvh] h-[90vh] bg-[#171A21] border border-slate-800 rounded-xl flex flex-col overflow-hidden shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}

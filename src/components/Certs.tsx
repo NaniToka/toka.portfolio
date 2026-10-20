@@ -111,7 +111,7 @@ export const Certs: React.FC = () => {
       : CERTIFICATIONS.filter(c => CATEGORIES.find(cat => cat.key === activeTab)?.ids.includes(c.id));
 
   return (
-    <section id="certifications" className="py-20 relative">
+    <section id="certifications" className="py-12 sm:py-20 relative">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* ── Header ── */}
@@ -127,8 +127,8 @@ export const Certs: React.FC = () => {
           </p>
         </div>
 
-        {/* ── Category Tabs ── */}
-        <div className="flex flex-wrap gap-2 mb-8">
+        {/* ── Category Tabs — horizontally scrollable on mobile ── */}
+        <div className="flex gap-2 mb-8 overflow-x-auto scrollbar-hide pb-1 -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap">
           {CATEGORIES.map(cat => {
             const active = activeTab === cat.key;
             const count = cat.key === 'all' ? CERTIFICATIONS.length : cat.ids.length;
@@ -136,7 +136,7 @@ export const Certs: React.FC = () => {
               <button
                 key={cat.key}
                 onClick={() => setActiveTab(cat.key)}
-                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-mono font-semibold border transition-all ${
+                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-mono font-semibold border transition-all whitespace-nowrap min-h-[36px] ${
                   active
                     ? `${cat.bg} ${cat.border} ${cat.accent}`
                     : 'bg-slate-900/60 border-slate-800 text-slate-400 hover:border-slate-600 hover:text-slate-300'
@@ -218,9 +218,9 @@ export const Certs: React.FC = () => {
                       </p>
                     )}
 
-                    {/* Credential ID */}
+                    {/* Credential ID — break long IDs */}
                     {cert.credentialId && (
-                      <div className="font-mono text-[10px] text-slate-500 mb-3">
+                      <div className="font-mono text-[10px] text-slate-500 mb-3 break-all">
                         ID: {cert.credentialId}
                       </div>
                     )}
@@ -355,7 +355,7 @@ export const Certs: React.FC = () => {
           onClick={() => setSelectedCert(null)}
         >
           <div
-            className="relative w-full max-w-5xl h-[calc(100vh-5rem)] bg-[#171A21] border border-slate-800 rounded-xl flex flex-col overflow-hidden shadow-2xl"
+            className="relative w-full max-w-5xl h-[calc(100dvh-5rem)] h-[calc(100vh-5rem)] bg-[#171A21] border border-slate-800 rounded-xl flex flex-col overflow-hidden shadow-2xl"
             onClick={e => e.stopPropagation()}
           >
             {/* Modal header */}

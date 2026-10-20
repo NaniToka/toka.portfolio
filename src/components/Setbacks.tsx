@@ -4,7 +4,7 @@ import { SETBACKS } from '../data/portfolioData';
 
 export const Setbacks: React.FC = () => {
   return (
-    <section id="setbacks" className="py-20 relative">
+    <section id="setbacks" className="py-12 sm:py-20 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-4 mb-12">
           <div className="h-px bg-slate-800 flex-1" />

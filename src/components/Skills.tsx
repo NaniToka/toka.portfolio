@@ -14,7 +14,7 @@ const iconMap: Record<string, React.ReactNode> = {
 
 export const Skills: React.FC = () => {
   return (
-    <section id="skills" className="py-20 relative">
+    <section id="skills" className="py-12 sm:py-20 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}

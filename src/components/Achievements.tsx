@@ -5,7 +5,7 @@ import { ACHIEVEMENTS } from '../data/portfolioData';
 
 export const Achievements: React.FC = () => {
   return (
-    <section id="achievements" className="py-20 relative">
+    <section id="achievements" className="py-12 sm:py-20 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}

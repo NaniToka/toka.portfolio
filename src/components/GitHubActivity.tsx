@@ -8,7 +8,7 @@ export const GitHubActivity: React.FC = () => {
   const [calendarLoaded, setCalendarLoaded] = useState(false);
 
   return (
-    <section id="github" className="py-20 relative">
+    <section id="github" className="py-12 sm:py-20 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
 
         {/* Header */}

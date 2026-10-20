@@ -167,13 +167,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, idx }) => {
         </div>
 
         {/* Actions & Links Column */}
-        <div className="flex flex-wrap lg:flex-col gap-2.5 shrink-0 pt-2 lg:pt-0 border-t lg:border-t-0 border-slate-800">
+        <div className="flex flex-wrap lg:flex-col gap-2 shrink-0 pt-2 lg:pt-0 border-t lg:border-t-0 border-slate-800">
           {project.liveUrl && (
             <a
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary-hover inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-md bg-blue-600 hover:bg-blue-500 text-white font-mono text-xs font-semibold min-h-[44px]"
+              className="btn-primary-hover inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-md bg-blue-600 hover:bg-blue-500 text-white font-mono text-xs font-semibold min-h-[44px] flex-1 lg:flex-none"
             >
               <ExternalLink className="w-4 h-4" /> Live Application
             </a>
@@ -184,7 +184,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, idx }) => {
               href={project.docsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-hover inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-md bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 font-mono text-xs font-medium min-h-[44px]"
+              className="btn-hover inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-md bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 font-mono text-xs font-medium min-h-[44px] flex-1 lg:flex-none"
             >
               <FileCode className="w-4 h-4 text-blue-400" /> Swagger Docs
             </a>
@@ -194,7 +194,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, idx }) => {
             href={project.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-hover inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-md bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 font-mono text-xs font-medium min-h-[44px]"
+            className="btn-hover inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-md bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 font-mono text-xs font-medium min-h-[44px] flex-1 lg:flex-none"
           >
             <Github className="w-4 h-4" /> GitHub Source
           </a>
@@ -204,7 +204,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, idx }) => {
               href={project.linkedinUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-hover inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-md bg-[#0a66c2]/10 hover:bg-[#0a66c2]/20 text-[#70b5f9] border border-[#0a66c2]/30 font-mono text-xs font-medium min-h-[44px] transition-all"
+              className="btn-hover inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-md bg-[#0a66c2]/10 hover:bg-[#0a66c2]/20 text-[#70b5f9] border border-[#0a66c2]/30 font-mono text-xs font-medium min-h-[44px] flex-1 lg:flex-none transition-all"
             >
               <Linkedin className="w-4 h-4" /> LinkedIn Post
             </a>
@@ -223,7 +223,7 @@ export const Projects: React.FC = () => {
   const otherProjects = PROJECTS.filter((p) => !p.featured);
 
   return (
-    <section id="projects" className="py-20 relative">
+    <section id="projects" className="py-12 sm:py-20 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -249,14 +249,14 @@ export const Projects: React.FC = () => {
         {/* Collapsed More Projects Section (Task 5) */}
         {otherProjects.length > 0 && (
           <div className="mt-12 pt-8 border-t border-slate-800/80">
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
               <div>
                 <h3 className="text-xl font-bold text-slate-100">Additional Engineering Projects</h3>
                 <p className="text-xs text-slate-400 font-mono">Specialized analytics pipelines, governance portals, and hackathon prototypes</p>
               </div>
               <button
                 onClick={() => setShowMore(!showMore)}
-                className="btn-hover inline-flex items-center gap-2 px-4 py-2 rounded-md bg-slate-900 hover:bg-slate-800 border border-slate-800 text-blue-400 font-mono text-xs font-semibold"
+                className="btn-hover self-start sm:self-auto inline-flex items-center gap-2 px-4 py-2.5 rounded-md bg-slate-900 hover:bg-slate-800 border border-slate-800 text-blue-400 font-mono text-xs font-semibold min-h-[44px]"
               >
                 {showMore ? 'Hide Additional Projects' : `Show All Projects (${otherProjects.length})`}
               </button>
