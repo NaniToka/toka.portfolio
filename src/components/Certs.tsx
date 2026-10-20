@@ -85,7 +85,11 @@ function getCategoryFor(id: string): Category {
 export const Certs: React.FC = () => {
   const [activeTab, setActiveTab] = useState<CategoryKey>('all');
   const [selectedCert, setSelectedCert] = useState<{
-    title: string; pdfUrl: string; credentialId?: string; issuer: string;
+    title: string;
+    pdfUrl?: string;
+    imgUrl?: string;
+    credentialId?: string;
+    issuer: string;
   } | null>(null);
   const [expandedSubs, setExpandedSubs] = useState<string | null>(null);
 
@@ -223,11 +227,12 @@ export const Certs: React.FC = () => {
 
                     {/* Action row */}
                     <div className="flex flex-wrap items-center gap-2">
-                      {cert.certificateUrl && (
+                      {(cert.certificateUrl || cert.certificateImgUrl) && (
                         <button
                           onClick={() => setSelectedCert({
                             title: cert.title,
-                            pdfUrl: cert.certificateUrl!,
+                            pdfUrl: cert.certificateUrl,
+                            imgUrl: cert.certificateImgUrl,
                             credentialId: cert.credentialId,
                             issuer: cert.issuer,
                           })}
@@ -368,7 +373,7 @@ export const Certs: React.FC = () => {
               </div>
               <div className="flex items-center gap-2 shrink-0 ml-4">
                 <a
-                  href={selectedCert.pdfUrl}
+                  href={selectedCert.pdfUrl ?? selectedCert.imgUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono rounded-md bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors"
@@ -376,8 +381,8 @@ export const Certs: React.FC = () => {
                   <ExternalLink className="w-3.5 h-3.5" /> Fullscreen
                 </a>
                 <a
-                  href={selectedCert.pdfUrl}
-                  download={`${selectedCert.title.replace(/\s+/g, '_')}_Certificate.pdf`}
+                  href={selectedCert.pdfUrl ?? selectedCert.imgUrl}
+                  download={`${selectedCert.title.replace(/\s+/g, '_')}_Certificate`}
                   className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-semibold rounded-md bg-indigo-600 hover:bg-indigo-500 text-white transition-colors"
                 >
                   <Download className="w-3.5 h-3.5" /> Download
@@ -392,49 +397,56 @@ export const Certs: React.FC = () => {
               </div>
             </div>
 
-            {/* Modal body — iframe for desktop, action cards for mobile */}
+            {/* Modal body — image or iframe for PDF */}
             <div className="flex-1 bg-[#181B24] relative flex flex-col overflow-hidden">
 
-              {/* Desktop: iframe embed */}
-              <iframe
-                src={`${selectedCert.pdfUrl}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
-                title="Certificate Preview"
-                className="hidden sm:block w-full h-full border-none"
-              />
+              {/* Image certificate (jpg/png/webp) */}
+              {selectedCert.imgUrl && !selectedCert.pdfUrl && (
+                <div className="flex-1 flex items-center justify-center p-4 overflow-auto">
+                  <img
+                    src={selectedCert.imgUrl}
+                    alt={selectedCert.title}
+                    className="max-w-full max-h-full object-contain rounded-lg shadow-xl"
+                  />
+                </div>
+              )}
 
-              {/* Mobile: clean action view — iframes for PDFs don't work on mobile */}
-              <div className="flex sm:hidden flex-col items-center justify-center h-full gap-5 p-8 text-center">
-                <div className="w-16 h-16 rounded-2xl bg-indigo-950/80 border border-indigo-800/40 flex items-center justify-center">
-                  <Award className="w-8 h-8 text-indigo-400" />
-                </div>
-                <div>
-                  <h4 className="text-base font-bold text-slate-100 mb-1">{selectedCert.title}</h4>
-                  <p className="text-xs text-slate-400">{selectedCert.issuer}</p>
-                  {selectedCert.credentialId && (
-                    <p className="font-mono text-[10px] text-slate-500 mt-1">ID: {selectedCert.credentialId}</p>
-                  )}
-                </div>
-                <p className="text-xs text-slate-500 max-w-xs">
-                  PDF preview isn't supported on mobile browsers. Open or download the certificate directly.
-                </p>
-                <div className="flex flex-col w-full max-w-xs gap-3">
-                  <a
-                    href={selectedCert.pdfUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 w-full px-4 py-3 text-sm font-mono font-semibold rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white transition-colors"
-                  >
-                    <ExternalLink className="w-4 h-4" /> Open PDF in Browser
-                  </a>
-                  <a
-                    href={selectedCert.pdfUrl}
-                    download={`${selectedCert.title.replace(/\s+/g, '_')}_Certificate.pdf`}
-                    className="inline-flex items-center justify-center gap-2 w-full px-4 py-3 text-sm font-mono font-semibold rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors"
-                  >
-                    <Download className="w-4 h-4" /> Download PDF
-                  </a>
-                </div>
-              </div>
+              {/* PDF — desktop iframe */}
+              {selectedCert.pdfUrl && (
+                <>
+                  <iframe
+                    src={`${selectedCert.pdfUrl}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
+                    title="Certificate Preview"
+                    className="hidden sm:block w-full h-full border-none"
+                  />
+                  {/* Mobile: action buttons */}
+                  <div className="flex sm:hidden flex-col items-center justify-center h-full gap-5 p-8 text-center">
+                    <div className="w-16 h-16 rounded-2xl bg-indigo-950/80 border border-indigo-800/40 flex items-center justify-center">
+                      <Award className="w-8 h-8 text-indigo-400" />
+                    </div>
+                    <div>
+                      <h4 className="text-base font-bold text-slate-100 mb-1">{selectedCert.title}</h4>
+                      <p className="text-xs text-slate-400">{selectedCert.issuer}</p>
+                      {selectedCert.credentialId && (
+                        <p className="font-mono text-[10px] text-slate-500 mt-1">ID: {selectedCert.credentialId}</p>
+                      )}
+                    </div>
+                    <p className="text-xs text-slate-500 max-w-xs">
+                      PDF preview isn't supported on mobile. Open or download directly.
+                    </p>
+                    <div className="flex flex-col w-full max-w-xs gap-3">
+                      <a href={selectedCert.pdfUrl} target="_blank" rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-2 w-full px-4 py-3 text-sm font-mono font-semibold rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white transition-colors">
+                        <ExternalLink className="w-4 h-4" /> Open PDF in Browser
+                      </a>
+                      <a href={selectedCert.pdfUrl} download={`${selectedCert.title.replace(/\s+/g, '_')}_Certificate.pdf`}
+                        className="inline-flex items-center justify-center gap-2 w-full px-4 py-3 text-sm font-mono font-semibold rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors">
+                        <Download className="w-4 h-4" /> Download PDF
+                      </a>
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>

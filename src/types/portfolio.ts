@@ -30,7 +30,8 @@ export interface Certification {
   date?: string;
   description?: string;
   verifyUrl?: string;
-  certificateUrl?: string;
+  certificateUrl?: string;   // PDF path
+  certificateImgUrl?: string; // image path (jpg/png/webp)
   linkedinUrl?: string;
   subCertifications?: {
     id: string;
