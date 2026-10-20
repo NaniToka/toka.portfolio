@@ -445,3 +445,36 @@ export const SETBACKS: Setback[] = [
     proofUrl: "/gcp-exam-result.pdf"
   }
 ];
+
+import type { Win } from '../types/portfolio';
+
+export const WINS: Win[] = [
+  {
+    id: "aws-saa-pass",
+    title: "AWS Certified Solutions Architect – Associate",
+    date: "September 2026",
+    context: "Failed the Google Cloud Generative AI Leader exam in August 2026. It cost money and shook my confidence more than the money. I didn't pretend otherwise — I documented it publicly on my portfolio.",
+    description: "One month after that failure, passed the AWS Certified Solutions Architect – Associate (SAA-C03) on the first attempt. Credential ID: 24807f2f-d801-4f20-9c7e-ab40c2fa6b35. Valid through September 2029.\n\nWhat made the difference: building real projects alongside the studying. Concepts from EC2, VPC, IAM, and S3 that I had already deployed on cloud infra for TokenFlow AI and BiasGuard stuck differently when I encountered them on paper.",
+    takeaways: [
+      "A fail shows exactly what you don't know. A pass only tells you that you're fine.",
+      "Building real projects next to studying makes concepts stick — not just for the exam, but permanently.",
+      "Confidence doesn't return when you feel ready. It returns when you show up again."
+    ],
+    proofUrl: "https://www.credly.com/badges/24807f2f-d801-4f20-9c7e-ab40c2fa6b35/linked_in_profile",
+    linkedinUrl: "https://lnkd.in/p/d8u3kDXn"
+  },
+  {
+    id: "azure-ai-pass",
+    title: "Microsoft Certified: Azure AI Cloud Developer Associate",
+    date: "October 2026",
+    context: "Two months after the GCP failure, still carrying that result. The AWS pass helped, but one certification doesn't erase the pattern of doubt that a public failure leaves.",
+    description: "Passed the Microsoft Azure AI Cloud Developer Associate exam on 11 October 2026. Certification number: 7B8CAX-5BFF97. Credential ID: 8191A9785202DDCB. Valid through October 2027.\n\nThree cloud certifications attempted since August. Two passed. One retake scheduled. The GenAI Leader retake is next.",
+    takeaways: [
+      "Passing after failing feels different — you know what it cost.",
+      "Two associate-level certifications across AWS and Azure in under two months.",
+      "The GCP GenAI Leader retake is the next item on the list."
+    ],
+    proofUrl: "https://learn.microsoft.com/en-in/users/tokanani-0812/credentials/8191a9785202ddcb",
+    linkedinUrl: "https://lnkd.in/p/d-AVqTBX"
+  }
+];

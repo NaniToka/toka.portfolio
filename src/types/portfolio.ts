@@ -76,3 +76,14 @@ export interface Setback {
   lessons: string[];
   proofUrl?: string;
 }
+
+export interface Win {
+  id: string;
+  title: string;
+  date: string;
+  context: string;        // what came before (the struggle)
+  description: string;    // the win itself
+  takeaways: string[];    // what it proved / what changed
+  proofUrl?: string;
+  linkedinUrl?: string;
+}

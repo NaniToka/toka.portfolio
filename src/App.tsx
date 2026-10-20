@@ -7,6 +7,7 @@ import { Projects } from './components/Projects';
 import { Skills } from './components/Skills';
 import { Certs } from './components/Certs';
 import { Achievements } from './components/Achievements';
+import { Wins } from './components/Wins';
 import { Setbacks } from './components/Setbacks';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
@@ -45,6 +46,7 @@ export const App: React.FC = () => {
           <Skills />
           <Certs />
           <Achievements />
+          <Wins />
           <Setbacks />
           <Contact onOpenResume={handleOpenResume} />
         </main>
