@@ -345,6 +345,15 @@ export const CERTIFICATIONS: Certification[] = [
     description: "Participated in Round 1 of HackACE 2026, an international level hackathon jointly organized by CSE (AI & ML) and Computer Science and Business Systems departments, KPR Institute of Engineering and Technology, Coimbatore, Tamil Nadu, in association with Allcollegeevent.com.",
     credentialId: "NXAIWDA0ZCC47",
     certificateUrl: "/hackace-2026.pdf"
+  },
+  {
+    id: "anvil-ascent-2026",
+    title: "Anvil Hackathon — Ascent Builders TechFest",
+    issuer: "Scaler School of Technology",
+    status: "Certificate of Participation",
+    description: "Demonstrated innovation and technical excellence at Ascent, the annual Builders TechFest of Scaler School of Technology, held on 16–17 May 2026. Built an autonomous CrewAI + Gemini customer success pipeline.",
+    date: "16–17/05/2026",
+    certificateImgUrl: "/anvil-ascent-cert.jpg"
   }
 ];
 

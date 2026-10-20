@@ -64,7 +64,7 @@ const CATEGORIES: Category[] = [
     accent: 'text-amber-400',
     border: 'border-amber-800/60',
     bg: 'bg-amber-950/70',
-    ids: ['hackace-2026'],
+    ids: ['hackace-2026', 'anvil-ascent-2026'],
   },
   {
     key: 'simulation',
