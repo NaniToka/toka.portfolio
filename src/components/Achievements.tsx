@@ -10,7 +10,7 @@ export const Achievements: React.FC = () => {
         
         {/* Section Header */}
         <div className="mb-12">
-          <span className="font-mono text-xs text-indigo-400 font-semibold uppercase tracking-wider block mb-1">
+          <span className="font-mono text-xs text-blue-400 font-semibold uppercase tracking-wider block mb-1">
             06. Competitive Milestones
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-100 tracking-tight">
@@ -30,14 +30,14 @@ export const Achievements: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: idx * 0.1 }}
-              className="glass-card rounded-xl p-6 hover:border-indigo-500/40 transition-all flex flex-col justify-between"
+              className="glass-card rounded-xl p-6 hover:border-blue-500/40 transition-all flex flex-col justify-between"
             >
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-xs text-indigo-400 font-semibold uppercase">
+                  <span className="font-mono text-xs text-blue-400 font-semibold uppercase">
                     {ach.event}
                   </span>
-                  <Trophy className="w-5 h-5 text-indigo-400 shrink-0" />
+                  <Trophy className="w-5 h-5 text-blue-400 shrink-0" />
                 </div>
 
                 <h3 className="text-lg font-bold text-slate-100">

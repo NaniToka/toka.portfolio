@@ -8,20 +8,25 @@ export default {
   theme: {
     extend: {
       colors: {
-        'bg-base': '#0a0a0f',
-        'accent-violet': 'rgba(139, 92, 246, 1)',
-        bg: {
-          dark: '#0a0a0f',
-          card: '#101420',
-          hover: '#181E30',
+        // Google-palette design tokens as Tailwind aliases
+        'bg-base':    '#0F1115',
+        'surface':    '#171A21',
+        'surface-hover': '#1E222B',
+        accent: {
+          DEFAULT: '#4285F4',
+          hover:   '#669DF6',
         },
         brand: {
-          indigo: '#4F46E5',
-          hover: '#4338CA',
-          glow: 'rgba(79, 70, 229, 0.15)',
+          blue:  '#4285F4',
+          hover: '#669DF6',
+          glow:  'rgba(66, 133, 244, 0.15)',
         },
+        success: '#34A853',
+        highlight: '#FBBC04',
+        danger:  '#EA4335',
+        // Keep slate passthrough for existing Tailwind slate-* classes
         slate: {
-          50: 'var(--slate-50, #f8fafc)',
+          50:  'var(--slate-50, #f8fafc)',
           100: 'var(--slate-100, #f1f5f9)',
           200: 'var(--slate-200, #e2e8f0)',
           300: 'var(--slate-300, #cbd5e1)',

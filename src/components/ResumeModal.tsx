@@ -34,13 +34,13 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
       onClick={onClose}
     >
       <div 
-        className="relative w-full max-w-5xl h-[90vh] bg-[#0C0F17] border border-slate-800 rounded-xl flex flex-col overflow-hidden shadow-2xl"
+        className="relative w-full max-w-5xl h-[90vh] bg-[#171A21] border border-slate-800 rounded-xl flex flex-col overflow-hidden shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header */}
         <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 bg-slate-900/90 border-b border-slate-800">
           <div className="flex items-center gap-2.5">
-            <FileText className="w-5 h-5 text-indigo-400" />
+            <FileText className="w-5 h-5 text-blue-400" />
             <h3 className="font-mono text-sm sm:text-base font-semibold text-slate-100">
               {PERSONAL_INFO.name} — Resume (PDF)
             </h3>
@@ -59,7 +59,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
             <a
               href={PERSONAL_INFO.resumePath}
               download="Toka_Nani_Resume.pdf"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-semibold rounded-md bg-indigo-600 hover:bg-indigo-500 text-white transition-colors shadow-sm"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-semibold rounded-md bg-blue-600 hover:bg-blue-500 text-white transition-colors shadow-sm"
             >
               <Download className="w-3.5 h-3.5" /> Download PDF
             </a>
@@ -75,7 +75,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
         </div>
 
         {/* Modal Body with Embed & Mobile Fallback */}
-        <div className="flex-1 w-full h-full bg-[#181B24] relative">
+        <div className="flex-1 w-full h-full bg-[#1E222B] relative">
           <object
             data={PERSONAL_INFO.resumePath}
             type="application/pdf"
@@ -87,8 +87,8 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
               className="w-full h-full border-none"
             >
               {/* Fallback container for mobile clients restricting embedded PDFs */}
-              <div className="flex flex-col items-center justify-center h-full p-6 text-center bg-[#0C0F17]">
-                <AlertTriangle className="w-12 h-12 text-indigo-400 mb-3" />
+              <div className="flex flex-col items-center justify-center h-full p-6 text-center bg-[#171A21]">
+                <AlertTriangle className="w-12 h-12 text-blue-400 mb-3" />
                 <h4 className="text-lg font-semibold text-slate-100 mb-2">
                   Resume Preview Unavailable Inline
                 </h4>
@@ -100,7 +100,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
                     href={PERSONAL_INFO.resumePath}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 text-xs font-mono font-semibold rounded-md bg-indigo-600 hover:bg-indigo-500 text-white transition-colors"
+                    className="inline-flex items-center gap-2 px-4 py-2 text-xs font-mono font-semibold rounded-md bg-blue-600 hover:bg-blue-500 text-white transition-colors"
                   >
                     <ExternalLink className="w-4 h-4" /> View PDF in New Tab
                   </a>

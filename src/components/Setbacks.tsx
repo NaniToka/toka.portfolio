@@ -9,7 +9,7 @@ export const Setbacks: React.FC = () => {
         <div className="flex items-center gap-4 mb-12">
           <div className="h-px bg-slate-800 flex-1" />
           <h2 className="text-3xl md:text-4xl font-bold text-slate-100 flex items-center gap-3">
-            <ShieldAlert className="w-8 h-8 text-indigo-400" />
+            <ShieldAlert className="w-8 h-8 text-blue-400" />
             Failures & Rejections
           </h2>
           <div className="h-px bg-slate-800 flex-1" />
@@ -19,24 +19,24 @@ export const Setbacks: React.FC = () => {
           {SETBACKS.map((setback) => (
             <div
               key={setback.id}
-              className="bg-[#0f111a] border border-slate-800 rounded-xl p-6 md:p-8 hover:border-indigo-500/30 transition-all duration-300 group"
+              className="bg-[#171A21] border border-slate-800 rounded-xl p-6 md:p-8 hover:border-blue-500/30 transition-all duration-300 group"
             >
               <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-6">
                 <div>
-                  <h3 className="text-2xl font-bold text-slate-100 group-hover:text-indigo-400 transition-colors mb-2">
+                  <h3 className="text-2xl font-bold text-slate-100 group-hover:text-blue-400 transition-colors mb-2">
                     {setback.title}
                   </h3>
-                  <div className="font-mono text-sm text-indigo-400 mb-4">{setback.date}</div>
+                  <div className="font-mono text-sm text-blue-400 mb-4">{setback.date}</div>
                   <p className="text-slate-300 leading-relaxed mb-6 whitespace-pre-line text-sm md:text-base">
                     {setback.description}
                   </p>
                   
-                  <div className="bg-[#1a1d2d] rounded-lg p-5 border border-slate-800/50">
+                  <div className="bg-[#1E222B] rounded-lg p-5 border border-slate-800/50">
                     <h4 className="text-sm font-semibold text-slate-200 mb-4 uppercase tracking-wider font-mono">What's Next:</h4>
                     <ul className="space-y-3">
                       {setback.lessons.map((lesson, idx) => (
                         <li key={idx} className="flex items-start gap-3 text-slate-300">
-                          <span className="text-indigo-400 mt-1.5">•</span>
+                          <span className="text-blue-400 mt-1.5">•</span>
                           <span className="text-sm leading-relaxed">{lesson}</span>
                         </li>
                       ))}
@@ -49,7 +49,7 @@ export const Setbacks: React.FC = () => {
                         href={setback.proofUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-4 py-2 text-sm font-mono font-medium rounded-md text-slate-300 bg-[#1a1d2d] border border-slate-800 hover:border-indigo-500/50 hover:text-indigo-400 transition-all"
+                        className="inline-flex items-center gap-2 px-4 py-2 text-sm font-mono font-medium rounded-md text-slate-300 bg-[#1E222B] border border-slate-800 hover:border-blue-500/50 hover:text-blue-400 transition-all"
                       >
                         <FileText className="w-4 h-4" />
                         Show Proof

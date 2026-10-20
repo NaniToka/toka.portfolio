@@ -9,13 +9,13 @@ const getTypeIcon = (type: ExperienceItem['type']) => {
     case 'internship':
       return <Briefcase className="w-4 h-4 text-emerald-400" />;
     case 'ambassadorship':
-      return <Sparkles className="w-4 h-4 text-indigo-400" />;
+      return <Sparkles className="w-4 h-4 text-blue-400" />;
     case 'virtual':
-      return <Award className="w-4 h-4 text-indigo-400" />;
+      return <Award className="w-4 h-4 text-blue-400" />;
     case 'hackathon':
       return <Trophy className="w-4 h-4 text-amber-400" />;
     default:
-      return <Code2 className="w-4 h-4 text-indigo-400" />;
+      return <Code2 className="w-4 h-4 text-blue-400" />;
   }
 };
 
@@ -24,7 +24,7 @@ const getBadgeStyle = (type: ExperienceItem['type']) => {
     case 'internship':
       return 'bg-emerald-950/80 text-emerald-300 border-emerald-800/50';
     case 'ambassadorship':
-      return 'bg-indigo-950/80 text-indigo-300 border-indigo-800/50';
+      return 'bg-blue-950/80 text-blue-300 border-blue-800/50';
     case 'virtual':
       return 'bg-blue-950/80 text-blue-300 border-blue-800/50';
     case 'hackathon':
@@ -58,13 +58,13 @@ export const Experience: React.FC = () => {
   return (
     <section id="experience" className="py-20 relative">
       {/* Background Soft Glow Orb */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-600/10 blur-[160px] rounded-full pointer-events-none z-0" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/10 blur-[160px] rounded-full pointer-events-none z-0" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="mb-14">
-          <span className="font-mono text-xs text-indigo-400 font-semibold uppercase tracking-wider block mb-1">
+          <span className="font-mono text-xs text-blue-400 font-semibold uppercase tracking-wider block mb-1">
             02. Engineering Path & Simulations
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-100 tracking-tight">
@@ -76,7 +76,7 @@ export const Experience: React.FC = () => {
         </div>
 
         {/* Timeline Container */}
-        <div className="relative space-y-10 before:absolute before:inset-0 before:left-3.5 sm:before:left-1/2 before:-translate-x-px before:w-0.5 before:bg-gradient-to-b before:from-indigo-500/60 before:via-indigo-500/20 before:to-slate-800">
+        <div className="relative space-y-10 before:absolute before:inset-0 before:left-3.5 sm:before:left-1/2 before:-translate-x-px before:w-0.5 before:bg-gradient-to-b before:from-blue-500/60 before:via-blue-500/20 before:to-slate-800">
           {EXPERIENCE_ITEMS.map((item, idx) => {
             const isEven = idx % 2 === 0;
             return (
@@ -91,7 +91,7 @@ export const Experience: React.FC = () => {
                 }`}
               >
                 {/* Timeline Center Dot */}
-                <div className="absolute left-3.5 sm:left-1/2 -translate-x-1/2 top-2 w-8 h-8 rounded-full bg-[#07080D] border-2 border-indigo-500 flex items-center justify-center z-10 shadow-lg shadow-indigo-950/60">
+                <div className="absolute left-3.5 sm:left-1/2 -translate-x-1/2 top-2 w-8 h-8 rounded-full bg-[#0F1115] border-2 border-blue-500 flex items-center justify-center z-10 shadow-lg shadow-blue-950/60">
                   {getTypeIcon(item.type)}
                 </div>
 
@@ -112,10 +112,10 @@ export const Experience: React.FC = () => {
 
                     {/* Title & Organization */}
                     <div>
-                      <h3 className="text-lg font-bold text-slate-100 group-hover:text-indigo-300 transition-colors">
+                      <h3 className="text-lg font-bold text-slate-100 group-hover:text-blue-300 transition-colors">
                         {item.role}
                       </h3>
-                      <div className="flex items-center justify-between gap-2 text-xs font-mono text-indigo-400 font-semibold mt-0.5">
+                      <div className="flex items-center justify-between gap-2 text-xs font-mono text-blue-400 font-semibold mt-0.5">
                         <span>{item.organization}</span>
                         <span className="text-slate-500 font-normal flex items-center gap-1">
                           <MapPin className="w-3.5 h-3.5 text-slate-500" /> {item.location}
@@ -139,7 +139,7 @@ export const Experience: React.FC = () => {
                     <ul className="space-y-2 text-xs text-slate-300">
                       {item.bullets.map((bullet, bIdx) => (
                         <li key={bIdx} className="flex items-start gap-2">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-indigo-400 shrink-0 mt-0.5" />
+                          <CheckCircle2 className="w-3.5 h-3.5 text-blue-400 shrink-0 mt-0.5" />
                           <span className="leading-relaxed">{bullet}</span>
                         </li>
                       ))}
@@ -151,19 +151,19 @@ export const Experience: React.FC = () => {
                         {item.eventsRun !== undefined && (
                           <div className="p-2 bg-slate-950/60 rounded border border-slate-800 text-center">
                             <span className="text-slate-500 text-[10px] block uppercase">Events</span>
-                            <span className="text-indigo-400 font-bold">{item.eventsRun}</span>
+                            <span className="text-blue-400 font-bold">{item.eventsRun}</span>
                           </div>
                         )}
                         {item.workshopsCount !== undefined && (
                           <div className="p-2 bg-slate-950/60 rounded border border-slate-800 text-center">
                             <span className="text-slate-500 text-[10px] block uppercase">Workshops</span>
-                            <span className="text-indigo-400 font-bold">{item.workshopsCount}</span>
+                            <span className="text-blue-400 font-bold">{item.workshopsCount}</span>
                           </div>
                         )}
                         {item.attendeesCount !== undefined && (
                           <div className="p-2 bg-slate-950/60 rounded border border-slate-800 text-center">
                             <span className="text-slate-500 text-[10px] block uppercase">Attendees</span>
-                            <span className="text-indigo-400 font-bold">{item.attendeesCount}+</span>
+                            <span className="text-blue-400 font-bold">{item.attendeesCount}+</span>
                           </div>
                         )}
                       </div>
@@ -200,7 +200,7 @@ export const Experience: React.FC = () => {
                             href={item.verifyUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="btn-hover inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-slate-900 hover:bg-slate-800 border border-slate-800 text-indigo-400 font-mono text-xs font-semibold min-h-[38px]"
+                            className="btn-hover inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-slate-900 hover:bg-slate-800 border border-slate-800 text-blue-400 font-mono text-xs font-semibold min-h-[38px]"
                           >
                             <ExternalLink className="w-3.5 h-3.5" /> Verify Credential
                           </a>
@@ -224,7 +224,7 @@ export const Experience: React.FC = () => {
           onClick={() => setSelectedProof(null)}
         >
           <div 
-            className="relative w-full max-w-5xl h-[90vh] bg-[#0C0F17] border border-slate-800 rounded-xl flex flex-col overflow-hidden shadow-2xl"
+            className="relative w-full max-w-5xl h-[90vh] bg-[#171A21] border border-slate-800 rounded-xl flex flex-col overflow-hidden shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
@@ -272,7 +272,7 @@ export const Experience: React.FC = () => {
             </div>
 
             {/* Modal Body with Embed & Mobile Fallback */}
-            <div className="flex-1 w-full h-full bg-[#181B24] relative">
+            <div className="flex-1 w-full h-full bg-[#1E222B] relative">
               <object
                 data={selectedProof.pdfUrl}
                 type="application/pdf"
@@ -283,7 +283,7 @@ export const Experience: React.FC = () => {
                   title="Proof Document Preview"
                   className="w-full h-full border-none"
                 >
-                  <div className="flex flex-col items-center justify-center h-full p-6 text-center bg-[#0C0F17]">
+                  <div className="flex flex-col items-center justify-center h-full p-6 text-center bg-[#171A21]">
                     <FileText className="w-12 h-12 text-emerald-400 mb-3" />
                     <h4 className="text-lg font-semibold text-slate-100 mb-2">
                       Proof Document Preview

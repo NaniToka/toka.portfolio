@@ -4,6 +4,21 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─── Design Tokens ─────────────────────────────────────────── */
+:root {
+  --bg:            #0F1115;
+  --surface:       #171A21;
+  --surface-hover: #1E222B;
+  --border:        rgba(255, 255, 255, 0.08);
+  --text:          #F1F3F4;
+  --text-muted:    #9AA0A6;
+  --accent:        #4285F4;
+  --accent-hover:  #669DF6;
+  --success:       #34A853;
+  --highlight:     #FBBC04;
+  --danger:        #EA4335;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -12,12 +27,12 @@
 
   /* Default Dark Mode Styling */
   html.dark body {
-    background-color: #0a0a0f;
-    background-image: 
-      linear-gradient(to right, rgba(139, 92, 246, 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(139, 92, 246, 0.05) 1px, transparent 1px);
+    background-color: var(--bg);
+    background-image:
+      linear-gradient(to right, rgba(66, 133, 244, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(66, 133, 244, 0.04) 1px, transparent 1px);
     background-size: 40px 40px;
-    color: #f8fafc;
+    color: var(--text);
     color-scheme: dark;
   }
 
@@ -38,9 +53,9 @@
 
   html.light body {
     background-color: #f8fafc;
-    background-image: 
-      linear-gradient(to right, rgba(124, 58, 237, 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(124, 58, 237, 0.05) 1px, transparent 1px);
+    background-image:
+      linear-gradient(to right, rgba(66, 133, 244, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(66, 133, 244, 0.05) 1px, transparent 1px);
     background-size: 40px 40px;
     color: #0f172a;
     color-scheme: light;
@@ -49,7 +64,7 @@
   body {
     font-size: 16px;
     line-height: 1.6;
-    @apply antialiased selection:bg-indigo-500/30 selection:text-indigo-200;
+    @apply antialiased selection:bg-blue-500/30 selection:text-blue-200;
     overflow-x: hidden;
   }
 
@@ -57,11 +72,11 @@
   :focus-visible {
     outline: none;
     ring: 2px;
-    @apply ring-indigo-500 ring-offset-2;
+    @apply ring-blue-500 ring-offset-2;
   }
 
   html.dark :focus-visible {
-    @apply ring-offset-[#0a0a0f];
+    @apply ring-offset-[#0F1115];
   }
 
   html.light :focus-visible {
@@ -69,13 +84,13 @@
   }
 }
 
-/* Glassmorphism utility for Dark & Light Themes */
+/* ─── Glassmorphism ─────────────────────────────────────────── */
 html.dark .glass-card {
-  background: rgba(16, 20, 32, 0.75);
+  background: var(--surface);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  color: #f1f5f9;
+  border: 1px solid var(--border);
+  color: var(--text);
 }
 
 html.light .glass-card {
@@ -88,21 +103,21 @@ html.light .glass-card {
 }
 
 html.dark .glass-card:hover {
-  border-color: rgba(139, 92, 246, 0.35);
-  background: rgba(24, 30, 48, 0.85);
+  border-color: rgba(66, 133, 244, 0.25);
+  background: var(--surface-hover);
 }
 
 html.light .glass-card:hover {
-  border-color: rgba(99, 102, 241, 0.4);
+  border-color: rgba(66, 133, 244, 0.35);
   background: #ffffff;
-  box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.12);
+  box-shadow: 0 10px 25px -5px rgba(66, 133, 244, 0.10);
 }
 
 html.dark .glass-nav {
-  background: rgba(10, 10, 15, 0.92);
+  background: rgba(15, 17, 21, 0.94);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid var(--border);
 }
 
 html.light .glass-nav {
@@ -112,7 +127,7 @@ html.light .glass-nav {
   border-bottom: 1px solid rgba(226, 232, 240, 0.9);
 }
 
-/* Hero section soft radial gradient glow utility */
+/* ─── Hero glow ─────────────────────────────────────────────── */
 .hero-glow {
   position: relative;
   overflow: hidden;
@@ -124,7 +139,7 @@ html.dark .hero-glow::before {
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background: radial-gradient(circle at 25% 20%, rgba(139, 92, 246, 0.2) 0%, transparent 55%);
+  background: radial-gradient(ellipse at top, rgba(66, 133, 244, 0.15), transparent 60%);
 }
 
 html.light .hero-glow::before {
@@ -133,7 +148,7 @@ html.light .hero-glow::before {
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background: radial-gradient(circle at 25% 20%, rgba(124, 58, 237, 0.08) 0%, transparent 55%);
+  background: radial-gradient(ellipse at top, rgba(66, 133, 244, 0.07), transparent 60%);
 }
 
 .hero-glow > * {
@@ -141,7 +156,7 @@ html.light .hero-glow::before {
   z-index: 1;
 }
 
-/* Custom minimal scrollbar */
+/* ─── Scrollbar ─────────────────────────────────────────────── */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -161,10 +176,10 @@ html.light ::-webkit-scrollbar-thumb {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #6366f1;
+  background: var(--accent);
 }
 
-/* Reusable Micro-Interaction Utility Classes */
+/* ─── Micro-interaction utilities ───────────────────────────── */
 .btn-primary-hover {
   transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease-out, background-color 0.2s ease-out;
   will-change: transform;
@@ -172,7 +187,7 @@ html.light ::-webkit-scrollbar-thumb {
 
 .btn-primary-hover:hover {
   transform: scale(1.03);
-  box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.4);
+  box-shadow: 0 10px 25px -5px rgba(66, 133, 244, 0.35);
 }
 
 .btn-primary-hover:active {
@@ -201,7 +216,7 @@ html.light ::-webkit-scrollbar-thumb {
   transform: translateY(-2px) scale(1.01);
 }
 
-/* Reduced Motion Accessibility Overrides */
+/* ─── Reduced Motion ────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *,
   ::before,

@@ -87,7 +87,7 @@ export const Contact: React.FC<ContactProps> = ({ onOpenResume }) => {
   };
 
   return (
-    <section id="contact" className="py-20 relative border-t border-slate-200 dark:border-slate-800/80 bg-slate-100/50 dark:bg-[#05060A]">
+    <section id="contact" className="py-20 relative border-t border-slate-200 dark:border-slate-800/80 bg-slate-100/50 dark:bg-[#0F1115]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
@@ -101,7 +101,7 @@ export const Contact: React.FC<ContactProps> = ({ onOpenResume }) => {
             className="lg:col-span-6 space-y-6"
           >
             <div>
-              <span className="font-mono text-xs text-indigo-600 dark:text-indigo-400 font-semibold uppercase tracking-wider block mb-1">
+              <span className="font-mono text-xs text-blue-600 dark:text-blue-400 font-semibold uppercase tracking-wider block mb-1">
                 07. Get In Touch
               </span>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">
@@ -115,19 +115,19 @@ export const Contact: React.FC<ContactProps> = ({ onOpenResume }) => {
 
             <div className="space-y-4 pt-2">
               <div className="flex items-center gap-3 text-sm">
-                <div className="w-10 h-10 rounded-md bg-indigo-100 dark:bg-indigo-950/80 border border-indigo-200 dark:border-indigo-800/40 flex items-center justify-center text-indigo-600 dark:text-indigo-400 shrink-0">
+                <div className="w-10 h-10 rounded-md bg-blue-100 dark:bg-blue-950/80 border border-blue-200 dark:border-blue-800/40 flex items-center justify-center text-blue-600 dark:text-blue-400 shrink-0">
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
                   <div className="font-mono text-xs text-slate-500 uppercase">Direct Email</div>
-                  <a href={`mailto:${PERSONAL_INFO.email}`} className="text-slate-900 dark:text-slate-100 font-semibold hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+                  <a href={`mailto:${PERSONAL_INFO.email}`} className="text-slate-900 dark:text-slate-100 font-semibold hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                     {PERSONAL_INFO.email}
                   </a>
                 </div>
               </div>
 
               <div className="flex items-center gap-3 text-sm">
-                <div className="w-10 h-10 rounded-md bg-indigo-100 dark:bg-indigo-950/80 border border-indigo-200 dark:border-indigo-800/40 flex items-center justify-center text-indigo-600 dark:text-indigo-400 shrink-0">
+                <div className="w-10 h-10 rounded-md bg-blue-100 dark:bg-blue-950/80 border border-blue-200 dark:border-blue-800/40 flex items-center justify-center text-blue-600 dark:text-blue-400 shrink-0">
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
@@ -142,7 +142,7 @@ export const Contact: React.FC<ContactProps> = ({ onOpenResume }) => {
                 onClick={onOpenResume}
                 className="inline-flex items-center gap-2 px-4 py-2.5 rounded-md bg-slate-200 dark:bg-slate-900 hover:bg-slate-300 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-300 dark:border-slate-800 font-mono text-xs font-medium transition-colors min-h-[44px]"
               >
-                <FileText className="w-4 h-4 text-indigo-500" /> View Resume
+                <FileText className="w-4 h-4 text-blue-500" /> View Resume
               </button>
 
               <a
@@ -150,7 +150,7 @@ export const Contact: React.FC<ContactProps> = ({ onOpenResume }) => {
                 download="Toka_Nani_Resume.pdf"
                 className="inline-flex items-center gap-2 px-4 py-2.5 rounded-md bg-slate-200 dark:bg-slate-900 hover:bg-slate-300 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-300 dark:border-slate-800 font-mono text-xs font-medium transition-colors min-h-[44px]"
               >
-                <Download className="w-4 h-4 text-indigo-500" /> Download PDF
+                <Download className="w-4 h-4 text-blue-500" /> Download PDF
               </a>
 
               <div className="flex items-center gap-2">
@@ -158,7 +158,7 @@ export const Contact: React.FC<ContactProps> = ({ onOpenResume }) => {
                   href={PERSONAL_INFO.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2.5 rounded-md bg-slate-200 dark:bg-slate-900 hover:bg-slate-300 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 border border-slate-300 dark:border-slate-800 transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
+                  className="p-2.5 rounded-md bg-slate-200 dark:bg-slate-900 hover:bg-slate-300 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 border border-slate-300 dark:border-slate-800 transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
                   aria-label="GitHub Profile"
                 >
                   <Github className="w-5 h-5" />
@@ -167,7 +167,7 @@ export const Contact: React.FC<ContactProps> = ({ onOpenResume }) => {
                   href={PERSONAL_INFO.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2.5 rounded-md bg-slate-200 dark:bg-slate-900 hover:bg-slate-300 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 border border-slate-300 dark:border-slate-800 transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
+                  className="p-2.5 rounded-md bg-slate-200 dark:bg-slate-900 hover:bg-slate-300 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 border border-slate-300 dark:border-slate-800 transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
                   aria-label="LinkedIn Profile"
                 >
                   <Linkedin className="w-5 h-5" />
@@ -194,7 +194,7 @@ export const Contact: React.FC<ContactProps> = ({ onOpenResume }) => {
                 </p>
                 <button
                   onClick={() => setFormState('idle')}
-                  className="mt-4 px-4 py-2 text-xs font-mono font-semibold rounded bg-indigo-600 text-white hover:bg-indigo-500"
+                  className="mt-4 px-4 py-2 text-xs font-mono font-semibold rounded bg-blue-600 text-white hover:bg-blue-500"
                 >
                   Send Another Message
                 </button>
@@ -234,7 +234,7 @@ export const Contact: React.FC<ContactProps> = ({ onOpenResume }) => {
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-md bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-slate-100 text-sm focus:border-indigo-500 focus:outline-none transition-colors"
+                    className="w-full px-4 py-2.5 rounded-md bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-slate-100 text-sm focus:border-blue-500 focus:outline-none transition-colors"
                     placeholder="Your Name"
                   />
                 </div>
@@ -249,7 +249,7 @@ export const Contact: React.FC<ContactProps> = ({ onOpenResume }) => {
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-md bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-slate-100 text-sm focus:border-indigo-500 focus:outline-none transition-colors"
+                    className="w-full px-4 py-2.5 rounded-md bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-slate-100 text-sm focus:border-blue-500 focus:outline-none transition-colors"
                     placeholder="you@company.com"
                   />
                 </div>
@@ -264,7 +264,7 @@ export const Contact: React.FC<ContactProps> = ({ onOpenResume }) => {
                     rows={4}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-md bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-slate-100 text-sm focus:border-indigo-500 focus:outline-none transition-colors resize-none"
+                    className="w-full px-4 py-2.5 rounded-md bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-slate-100 text-sm focus:border-blue-500 focus:outline-none transition-colors resize-none"
                     placeholder="Hi Toka, I'd like to discuss an opportunity..."
                   />
                 </div>
@@ -272,7 +272,7 @@ export const Contact: React.FC<ContactProps> = ({ onOpenResume }) => {
                 <button
                   type="submit"
                   disabled={formState === 'submitting'}
-                  className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-md bg-indigo-600 hover:bg-indigo-500 disabled:bg-indigo-400 text-white font-mono text-xs font-semibold transition-colors shadow-md shadow-indigo-950 min-h-[44px]"
+                  className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-md bg-blue-600 hover:bg-blue-500 disabled:bg-blue-400 text-white font-mono text-xs font-semibold transition-colors shadow-md shadow-blue-950 min-h-[44px]"
                 >
                   <Send className="w-4 h-4" /> {formState === 'submitting' ? 'Sending Message...' : 'Send Message'}
                 </button>
