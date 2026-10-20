@@ -142,6 +142,18 @@ export const PROJECTS: Project[] = [
     stack: ["React", "Vite", "Tailwind CSS", "Docker", "Google Cloud Run"],
     githubUrl: "https://github.com/NaniToka/carbon-footprint-tracker.git",
     featured: false
+  },
+  {
+    id: "anvil-ascent-pipeline",
+    title: "Ascent Autonomous Customer Success Pipeline",
+    subtitle: "Anvil Hackathon @ Scaler Ascent 2026",
+    description: "Autonomous multi-agent pipeline that triages customer support tickets, researches root causes using Gemini AI, and generates fix-it scripts — built for the Anvil Hackathon at Scaler School of Technology.",
+    problem: "Customer success teams manually triage hundreds of support tickets without automated root-cause analysis or fix generation, causing slow resolution cycles.",
+    solution: "Built a full-stack CrewAI + Gemini pipeline where autonomous agents classify ticket severity, research technical root causes via Serper web search, and produce executable remediation scripts. React dashboard with glassmorphism UI streams agent traces in real-time via Omium observability.",
+    stackRationale: "CrewAI for multi-agent orchestration; Gemini AI for root-cause reasoning and script generation; FastAPI for the backend API; React + Vite for the real-time dashboard.",
+    stack: ["CrewAI", "Gemini AI", "FastAPI", "React", "Vite", "Omium", "Python"],
+    githubUrl: "https://github.com/NaniToka/anvil-hackathon.git",
+    featured: false
   }
 ];
 
@@ -341,7 +353,7 @@ export const ACHIEVEMENTS: Achievement[] = [
     id: "anvil-ascent-2026",
     title: "Grand Finale Qualifier — Anvil Hackathon",
     event: "Scaler School of Technology (Anvil @ Ascent 2026)",
-    description: "Selected for the Grand Finale of the Anvil Hackathon at Scaler School of Technology out of competitive nationwide submissions."
+    description: "Demonstrated innovation and technical excellence at Ascent, the annual Builders TechFest of Scaler School of Technology (16–17 May 2026). Built an autonomous CrewAI + Gemini customer success pipeline that triages support tickets and generates fix-it scripts."
   },
   {
     id: "gsc-2026-hackathon",
