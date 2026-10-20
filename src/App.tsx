@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
+import { GitHubActivity } from './components/GitHubActivity';
 import { Experience } from './components/Experience';
 import { Projects } from './components/Projects';
 import { Skills } from './components/Skills';
@@ -41,6 +42,7 @@ export const App: React.FC = () => {
         <main id="main-content" className="relative z-10">
           <Hero onOpenResume={handleOpenResume} />
           <About />
+          <GitHubActivity />
           <Experience />
           <Projects />
           <Skills />
