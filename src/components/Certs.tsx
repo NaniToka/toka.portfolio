@@ -346,11 +346,11 @@ export const Certs: React.FC = () => {
       {/* ── PDF Modal ── */}
       {selectedCert && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md"
+          className="fixed inset-0 z-[60] flex items-start justify-center pt-16 pb-4 px-3 sm:px-6 bg-black/80 backdrop-blur-md"
           onClick={() => setSelectedCert(null)}
         >
           <div
-            className="relative w-full max-w-5xl h-[90vh] bg-[#0C0F17] border border-slate-800 rounded-xl flex flex-col overflow-hidden shadow-2xl"
+            className="relative w-full max-w-5xl h-[calc(100vh-5rem)] bg-[#0C0F17] border border-slate-800 rounded-xl flex flex-col overflow-hidden shadow-2xl"
             onClick={e => e.stopPropagation()}
           >
             {/* Modal header */}
