@@ -353,7 +353,7 @@ export const CERTIFICATIONS: Certification[] = [
     status: "Certificate of Participation",
     description: "Demonstrated innovation and technical excellence at Ascent, the annual Builders TechFest of Scaler School of Technology, held on 16–17 May 2026. Built an autonomous CrewAI + Gemini customer success pipeline.",
     date: "16–17/05/2026",
-    certificateImgUrl: "/anvil-ascent-cert.jpg"
+    certificateImgUrl: "/anvil-ascent-cert.png"
   }
 ];
 
