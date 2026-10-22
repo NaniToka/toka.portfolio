@@ -1,11 +1,21 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Github, ExternalLink, GitCommit, Star } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
 
 const GITHUB_USERNAME = 'NaniToka';
+const REPO_NAME = 'toka.portfolio';
+const RAW_BASE = `https://raw.githubusercontent.com/${GITHUB_USERNAME}/${REPO_NAME}/output`;
+const DARK_SVG  = `${RAW_BASE}/github-snake-dark.svg`;
+const LIGHT_SVG = `${RAW_BASE}/github-snake.svg`;
+// Fallback if the output branch SVG hasn't been generated yet
+const FALLBACK_IMG = `https://ghchart.rshah.org/1a7f37/${GITHUB_USERNAME}`;
 
 export const GitHubActivity: React.FC = () => {
   const [calendarLoaded, setCalendarLoaded] = useState(false);
+  const [snakeFailed, setSnakeFailed] = useState(false);
+  const { theme } = useTheme();
+  const snakeSrc = theme === 'dark' ? DARK_SVG : LIGHT_SVG;
 
   return (
     <section id="github" className="py-12 sm:py-20 relative">
