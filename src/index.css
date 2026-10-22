@@ -6,17 +6,20 @@
 
 /* ─── Design Tokens ─────────────────────────────────────────── */
 :root {
-  --bg:            #0F1115;
-  --surface:       #171A21;
-  --surface-hover: #1E222B;
-  --border:        rgba(255, 255, 255, 0.08);
-  --text:          #F1F3F4;
-  --text-muted:    #9AA0A6;
-  --accent:        #4285F4;
-  --accent-hover:  #669DF6;
-  --success:       #34A853;
-  --highlight:     #FBBC04;
-  --danger:        #EA4335;
+  --jet-black:       #050505;
+  --royal-amethyst:  #3B0A6B;
+  --electric-cyan:   #00E5FF;
+  --bg:              #050505;
+  --surface:         #3B0A6B;
+  --surface-hover:   rgba(59,10,107,0.85);
+  --border:          rgba(0, 229, 255, 0.15);
+  --text:            #FFFFFF;
+  --text-muted:      rgba(255,255,255,0.55);
+  --accent:          #00E5FF;
+  --accent-hover:    #33EEFF;
+  --success:         #34A853;
+  --highlight:       #FBBC04;
+  --danger:          #EA4335;
 }
 
 @layer base {
@@ -37,8 +40,8 @@
   html.dark body {
     background-color: var(--bg);
     background-image:
-      linear-gradient(to right, rgba(66, 133, 244, 0.04) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(66, 133, 244, 0.04) 1px, transparent 1px);
+      linear-gradient(to right, rgba(0, 229, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 229, 255, 0.04) 1px, transparent 1px);
     background-size: 40px 40px;
     color: var(--text);
     color-scheme: dark;
@@ -62,8 +65,8 @@
   html.light body {
     background-color: #f8fafc;
     background-image:
-      linear-gradient(to right, rgba(66, 133, 244, 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(66, 133, 244, 0.05) 1px, transparent 1px);
+      linear-gradient(to right, rgba(0, 229, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 229, 255, 0.05) 1px, transparent 1px);
     background-size: 40px 40px;
     color: #0f172a;
     color-scheme: light;
@@ -72,8 +75,13 @@
   body {
     font-size: 16px;
     line-height: 1.6;
-    @apply antialiased selection:bg-blue-500/30 selection:text-blue-200;
+    @apply antialiased;
     overflow-x: hidden;
+  }
+
+  ::selection {
+    background: #00E5FF;
+    color: #050505;
   }
 
   /* Prevent long strings (credential IDs, URLs) from breaking layout */
@@ -96,7 +104,7 @@
 
 /* ─── Glassmorphism ─────────────────────────────────────────── */
 html.dark .glass-card {
-  background: var(--surface);
+  background: rgba(59,10,107,0.85);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--border);
@@ -113,18 +121,18 @@ html.light .glass-card {
 }
 
 html.dark .glass-card:hover {
-  border-color: rgba(66, 133, 244, 0.25);
+  border-color: rgba(0, 229, 255, 0.35);
   background: var(--surface-hover);
 }
 
 html.light .glass-card:hover {
-  border-color: rgba(66, 133, 244, 0.35);
+  border-color: rgba(0, 229, 255, 0.35);
   background: #ffffff;
-  box-shadow: 0 10px 25px -5px rgba(66, 133, 244, 0.10);
+  box-shadow: 0 10px 25px -5px rgba(0, 229, 255, 0.10);
 }
 
 html.dark .glass-nav {
-  background: rgba(15, 17, 21, 0.94);
+  background: rgba(5, 5, 5, 0.94);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border);
@@ -149,7 +157,7 @@ html.dark .hero-glow::before {
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background: radial-gradient(ellipse at top, rgba(66, 133, 244, 0.15), transparent 60%);
+  background: radial-gradient(ellipse at top, rgba(0, 229, 255, 0.15), transparent 60%);
 }
 
 html.light .hero-glow::before {
@@ -158,7 +166,7 @@ html.light .hero-glow::before {
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background: radial-gradient(ellipse at top, rgba(66, 133, 244, 0.07), transparent 60%);
+  background: radial-gradient(ellipse at top, rgba(0, 229, 255, 0.07), transparent 60%);
 }
 
 .hero-glow > * {
@@ -177,7 +185,7 @@ html.light .hero-glow::before {
 }
 
 html.dark ::-webkit-scrollbar-thumb {
-  background: #1e293b;
+  background: #3B0A6B;
   border-radius: 4px;
 }
 
@@ -208,7 +216,7 @@ html.light ::-webkit-scrollbar-thumb {
 @media (hover: hover) {
   .btn-primary-hover:hover {
     transform: scale(1.03);
-    box-shadow: 0 10px 25px -5px rgba(66, 133, 244, 0.35);
+    box-shadow: 0 10px 25px -5px rgba(0, 229, 255, 0.35);
   }
 }
 

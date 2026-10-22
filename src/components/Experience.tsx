@@ -9,13 +9,13 @@ const getTypeIcon = (type: ExperienceItem['type']) => {
     case 'internship':
       return <Briefcase className="w-4 h-4 text-emerald-400" />;
     case 'ambassadorship':
-      return <Sparkles className="w-4 h-4 text-blue-400" />;
+      return <Sparkles className="w-4 h-4 text-[#00E5FF]" />;
     case 'virtual':
-      return <Award className="w-4 h-4 text-blue-400" />;
+      return <Award className="w-4 h-4 text-[#00E5FF]" />;
     case 'hackathon':
       return <Trophy className="w-4 h-4 text-amber-400" />;
     default:
-      return <Code2 className="w-4 h-4 text-blue-400" />;
+      return <Code2 className="w-4 h-4 text-[#00E5FF]" />;
   }
 };
 
@@ -24,9 +24,9 @@ const getBadgeStyle = (type: ExperienceItem['type']) => {
     case 'internship':
       return 'bg-emerald-950/80 text-emerald-300 border-emerald-800/50';
     case 'ambassadorship':
-      return 'bg-blue-950/80 text-blue-300 border-blue-800/50';
+      return 'bg-[rgba(59,10,107,0.8)] text-[#00E5FF] border-[rgba(0,229,255,0.2)]';
     case 'virtual':
-      return 'bg-blue-950/80 text-blue-300 border-blue-800/50';
+      return 'bg-[rgba(59,10,107,0.8)] text-[#00E5FF] border-[rgba(0,229,255,0.2)]';
     case 'hackathon':
       return 'bg-amber-950/80 text-amber-300 border-amber-800/50';
     default:
@@ -58,13 +58,13 @@ export const Experience: React.FC = () => {
   return (
     <section id="experience" className="py-12 sm:py-20 relative">
       {/* Background Soft Glow Orb */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/10 blur-[160px] rounded-full pointer-events-none z-0" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[rgba(0,229,255,0.05)] blur-[160px] rounded-full pointer-events-none z-0" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="mb-14">
-          <span className="font-mono text-xs text-blue-400 font-semibold uppercase tracking-wider block mb-1">
+          <span className="font-mono text-xs text-[#00E5FF] font-semibold uppercase tracking-wider block mb-1">
             02. Engineering Path & Simulations
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-100 tracking-tight">
@@ -76,7 +76,7 @@ export const Experience: React.FC = () => {
         </div>
 
         {/* Timeline Container — single col on mobile/tablet, alternating on lg+ */}
-        <div className="relative space-y-8 sm:space-y-10 before:absolute before:inset-0 before:left-3.5 lg:before:left-1/2 before:-translate-x-px before:w-0.5 before:bg-gradient-to-b before:from-blue-500/60 before:via-blue-500/20 before:to-slate-800">
+        <div className="relative space-y-8 sm:space-y-10 before:absolute before:inset-0 before:left-3.5 lg:before:left-1/2 before:-translate-x-px before:w-0.5 before:bg-gradient-to-b before:from-[#00E5FF] before:to-transparent">
           {EXPERIENCE_ITEMS.map((item, idx) => {
             const isEven = idx % 2 === 0;
             return (
@@ -91,7 +91,7 @@ export const Experience: React.FC = () => {
                 }`}
               >
                 {/* Timeline Dot — left on mobile, center on lg */}
-                <div className="absolute left-3.5 lg:left-1/2 -translate-x-1/2 top-2 w-8 h-8 rounded-full bg-[#0F1115] border-2 border-blue-500 flex items-center justify-center z-10 shadow-lg shadow-blue-950/60">
+                <div className="absolute left-3.5 lg:left-1/2 -translate-x-1/2 top-2 w-8 h-8 rounded-full bg-[#3B0A6B] border-2 border-[#00E5FF] flex items-center justify-center z-10 shadow-lg shadow-[rgba(0,229,255,0.2)]">
                   {getTypeIcon(item.type)}
                 </div>
 
@@ -112,10 +112,10 @@ export const Experience: React.FC = () => {
 
                     {/* Title & Organization */}
                     <div>
-                      <h3 className="text-lg font-bold text-slate-100 group-hover:text-blue-300 transition-colors">
+                      <h3 className="text-lg font-bold text-slate-100 group-hover:text-[#00E5FF] transition-colors">
                         {item.role}
                       </h3>
-                      <div className="flex items-center justify-between gap-2 text-xs font-mono text-blue-400 font-semibold mt-0.5">
+                      <div className="flex items-center justify-between gap-2 text-xs font-mono text-[#00E5FF] font-semibold mt-0.5">
                         <span>{item.organization}</span>
                         <span className="text-slate-500 font-normal flex items-center gap-1">
                           <MapPin className="w-3.5 h-3.5 text-slate-500" /> {item.location}
@@ -130,7 +130,7 @@ export const Experience: React.FC = () => {
 
                     {/* Summary Description */}
                     {item.description && (
-                      <p className="text-xs text-slate-300 leading-relaxed bg-slate-950/40 p-3 rounded-lg border border-slate-800/80">
+                      <p className="text-xs text-slate-300 leading-relaxed bg-[rgba(59,10,107,0.4)] p-3 rounded-lg border border-[rgba(0,229,255,0.15)]">
                         {item.description}
                       </p>
                     )}
@@ -139,7 +139,7 @@ export const Experience: React.FC = () => {
                     <ul className="space-y-2 text-xs text-slate-300">
                       {item.bullets.map((bullet, bIdx) => (
                         <li key={bIdx} className="flex items-start gap-2">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-blue-400 shrink-0 mt-0.5" />
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#00E5FF] shrink-0 mt-0.5" />
                           <span className="leading-relaxed">{bullet}</span>
                         </li>
                       ))}
@@ -147,23 +147,23 @@ export const Experience: React.FC = () => {
 
                     {/* Ambassador Structured Metrics Panel (Task 9 - Hidden when empty) */}
                     {(item.eventsRun !== undefined || item.attendeesCount !== undefined || item.workshopsCount !== undefined || item.programLink) && (
-                      <div className="grid grid-cols-3 gap-2 pt-2 border-t border-slate-800/80 font-mono text-xs">
+                      <div className="grid grid-cols-3 gap-2 pt-2 border-t border-[rgba(0,229,255,0.15)] font-mono text-xs">
                         {item.eventsRun !== undefined && (
-                          <div className="p-2 bg-slate-950/60 rounded border border-slate-800 text-center">
+                          <div className="p-2 bg-[rgba(59,10,107,0.5)] rounded border border-[rgba(0,229,255,0.15)] text-center">
                             <span className="text-slate-500 text-[10px] block uppercase">Events</span>
-                            <span className="text-blue-400 font-bold">{item.eventsRun}</span>
+                            <span className="text-[#00E5FF] font-bold">{item.eventsRun}</span>
                           </div>
                         )}
                         {item.workshopsCount !== undefined && (
-                          <div className="p-2 bg-slate-950/60 rounded border border-slate-800 text-center">
+                          <div className="p-2 bg-[rgba(59,10,107,0.5)] rounded border border-[rgba(0,229,255,0.15)] text-center">
                             <span className="text-slate-500 text-[10px] block uppercase">Workshops</span>
-                            <span className="text-blue-400 font-bold">{item.workshopsCount}</span>
+                            <span className="text-[#00E5FF] font-bold">{item.workshopsCount}</span>
                           </div>
                         )}
                         {item.attendeesCount !== undefined && (
-                          <div className="p-2 bg-slate-950/60 rounded border border-slate-800 text-center">
+                          <div className="p-2 bg-[rgba(59,10,107,0.5)] rounded border border-[rgba(0,229,255,0.15)] text-center">
                             <span className="text-slate-500 text-[10px] block uppercase">Attendees</span>
-                            <span className="text-blue-400 font-bold">{item.attendeesCount}+</span>
+                            <span className="text-[#00E5FF] font-bold">{item.attendeesCount}+</span>
                           </div>
                         )}
                       </div>
@@ -171,7 +171,7 @@ export const Experience: React.FC = () => {
 
                     {/* Proof & Verification Buttons */}
                     {(item.proofUrl || item.verifyUrl) && (
-                      <div className="pt-3 border-t border-slate-800/80 flex flex-wrap items-center gap-2.5">
+                      <div className="pt-3 border-t border-[rgba(0,229,255,0.15)] flex flex-wrap items-center gap-2.5">
                         {item.proofUrl && (
                           <button
                             onClick={() => setSelectedProof({
@@ -200,7 +200,7 @@ export const Experience: React.FC = () => {
                             href={item.verifyUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="btn-hover inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-slate-900 hover:bg-slate-800 border border-slate-800 text-blue-400 font-mono text-xs font-semibold min-h-[38px]"
+                            className="btn-hover inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-slate-900 hover:bg-slate-800 border border-slate-800 text-[#00E5FF] font-mono text-xs font-semibold min-h-[38px]"
                           >
                             <ExternalLink className="w-3.5 h-3.5" /> Verify Credential
                           </a>
@@ -224,11 +224,11 @@ export const Experience: React.FC = () => {
           onClick={() => setSelectedProof(null)}
         >
           <div 
-            className="relative w-full max-w-5xl h-[90dvh] h-[90vh] bg-[#171A21] border border-slate-800 rounded-xl flex flex-col overflow-hidden shadow-2xl"
+            className="relative w-full max-w-5xl h-[90dvh] h-[90vh] bg-[#3B0A6B] border border-[rgba(0,229,255,0.2)] rounded-xl flex flex-col overflow-hidden shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
-            <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 bg-slate-900/90 border-b border-slate-800">
+            <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 bg-[rgba(59,10,107,0.9)] border-b border-[rgba(0,229,255,0.15)]">
               <div className="flex items-center gap-2.5">
                 <FileText className="w-5 h-5 text-emerald-400" />
                 <div>
@@ -248,7 +248,7 @@ export const Experience: React.FC = () => {
                   href={selectedProof.pdfUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-medium rounded-md bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors"
+                  className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-medium rounded-md bg-[rgba(59,10,107,0.8)] hover:bg-[rgba(59,10,107,0.95)] text-slate-200 border border-[rgba(0,229,255,0.2)] transition-colors"
                 >
                   <ExternalLink className="w-3.5 h-3.5" /> Open Fullscreen
                 </a>
@@ -263,7 +263,7 @@ export const Experience: React.FC = () => {
 
                 <button
                   onClick={() => setSelectedProof(null)}
-                  className="p-1.5 text-slate-400 hover:text-slate-100 rounded-md hover:bg-slate-800 transition-colors"
+                  className="p-1.5 text-slate-400 hover:text-slate-100 rounded-md hover:bg-[rgba(0,229,255,0.1)] transition-colors"
                   aria-label="Close modal"
                 >
                   <X className="w-5 h-5" />
@@ -272,7 +272,7 @@ export const Experience: React.FC = () => {
             </div>
 
             {/* Modal Body with Embed & Mobile Fallback */}
-            <div className="flex-1 w-full h-full bg-[#1E222B] relative">
+            <div className="flex-1 w-full h-full bg-[rgba(59,10,107,0.85)] relative">
               <object
                 data={selectedProof.pdfUrl}
                 type="application/pdf"
@@ -283,7 +283,7 @@ export const Experience: React.FC = () => {
                   title="Proof Document Preview"
                   className="w-full h-full border-none"
                 >
-                  <div className="flex flex-col items-center justify-center h-full p-6 text-center bg-[#171A21]">
+                  <div className="flex flex-col items-center justify-center h-full p-6 text-center bg-[#3B0A6B]">
                     <FileText className="w-12 h-12 text-emerald-400 mb-3" />
                     <h4 className="text-lg font-semibold text-slate-100 mb-2">
                       Proof Document Preview
@@ -303,7 +303,7 @@ export const Experience: React.FC = () => {
                       <a
                         href={selectedProof.pdfUrl}
                         download="Bluestock_Fintech_Offer_Letter.pdf"
-                        className="inline-flex items-center gap-2 px-4 py-2 text-xs font-mono font-semibold rounded-md bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors"
+                        className="inline-flex items-center gap-2 px-4 py-2 text-xs font-mono font-semibold rounded-md bg-[rgba(59,10,107,0.8)] hover:bg-[rgba(59,10,107,0.95)] text-slate-200 border border-[rgba(0,229,255,0.2)] transition-colors"
                       >
                         <Download className="w-4 h-4" /> Download PDF Directly
                       </a>
@@ -318,4 +318,3 @@ export const Experience: React.FC = () => {
     </section>
   );
 };
-

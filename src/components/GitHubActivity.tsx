@@ -14,11 +14,11 @@ export const GitHubActivity: React.FC = () => {
         {/* Header */}
         <div className="flex items-center justify-between flex-wrap gap-3">
           <div>
-            <span className="font-mono text-xs text-blue-400 font-semibold uppercase tracking-wider block mb-1">
+            <span className="font-mono text-xs text-[#00E5FF] font-semibold uppercase tracking-wider block mb-1">
               Live · github.com/{GITHUB_USERNAME}
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-100 tracking-tight flex items-center gap-3">
-              <Github className="w-8 h-8 text-blue-400" />
+              <Github className="w-8 h-8 text-[#00E5FF]" />
               GitHub Activity
             </h2>
           </div>
@@ -26,7 +26,7 @@ export const GitHubActivity: React.FC = () => {
             href={`https://github.com/${GITHUB_USERNAME}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 text-xs font-mono font-semibold rounded-lg bg-blue-600 hover:bg-blue-500 text-white transition-colors"
+            className="inline-flex items-center gap-2 px-4 py-2 text-xs font-mono font-semibold rounded-lg bg-[#00E5FF] hover:bg-[#33EEFF] text-[#050505] transition-colors"
           >
             <Github className="w-3.5 h-3.5" /> View Full Profile <ExternalLink className="w-3 h-3" />
           </a>
@@ -43,7 +43,7 @@ export const GitHubActivity: React.FC = () => {
           {/* Header row */}
           <div className="flex items-center justify-between mb-5">
             <div className="flex items-center gap-2">
-              <GitCommit className="w-4 h-4 text-blue-400" />
+              <GitCommit className="w-4 h-4 text-[#00E5FF]" />
               <span className="font-mono text-sm font-semibold text-slate-100">Contribution Graph</span>
               <span className="font-mono text-xs text-emerald-400 bg-emerald-950/60 border border-emerald-800/40 px-2 py-0.5 rounded-full">
                 473 contributions · 2026
@@ -53,11 +53,11 @@ export const GitHubActivity: React.FC = () => {
           </div>
 
           {/* Calendar image — dark green theme */}
-          <div className="relative rounded-xl overflow-hidden bg-[#0d1117] p-3 sm:p-4">
+          <div className="relative rounded-xl overflow-hidden bg-[#050505] p-3 sm:p-4">
             {!calendarLoaded && (
-              <div className="absolute inset-0 flex items-center justify-center bg-[#0d1117] rounded-xl z-10">
+              <div className="absolute inset-0 flex items-center justify-center bg-[#050505] rounded-xl z-10">
                 <div className="flex flex-col items-center gap-3">
-                  <div className="w-8 h-8 border-2 border-blue-500/30 border-t-blue-500 rounded-full animate-spin" />
+                  <div className="w-8 h-8 border-2 border-[rgba(0,229,255,0.3)] border-t-[#00E5FF] rounded-full animate-spin" />
                   <span className="font-mono text-xs text-slate-500">Loading contribution graph...</span>
                 </div>
               </div>
@@ -135,7 +135,7 @@ export const GitHubActivity: React.FC = () => {
             className="glass-card rounded-2xl p-4 overflow-hidden flex flex-col gap-3"
           >
             <div className="flex items-center gap-2 mb-1">
-              <Github className="w-4 h-4 text-blue-400" />
+              <Github className="w-4 h-4 text-[#00E5FF]" />
               <span className="font-mono text-xs font-semibold text-slate-300 uppercase tracking-wider">Top Languages</span>
             </div>
             <img

@@ -8,18 +8,20 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Google-palette design tokens as Tailwind aliases
-        'bg-base':    '#0F1115',
-        'surface':    '#171A21',
-        'surface-hover': '#1E222B',
+        'jet-black':      '#050505',
+        'royal-amethyst': '#3B0A6B',
+        'electric-cyan':  '#00E5FF',
+        'bg-base':    '#050505',
+        'surface':    '#3B0A6B',
+        'surface-hover': 'rgba(59,10,107,0.85)',
         accent: {
-          DEFAULT: '#4285F4',
-          hover:   '#669DF6',
+          DEFAULT: '#00E5FF',
+          hover:   '#33EEFF',
         },
         brand: {
-          blue:  '#4285F4',
-          hover: '#669DF6',
-          glow:  'rgba(66, 133, 244, 0.15)',
+          blue:  '#00E5FF',
+          hover: '#33EEFF',
+          glow:  'rgba(0,229,255,0.15)',
         },
         success: '#34A853',
         highlight: '#FBBC04',

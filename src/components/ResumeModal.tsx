@@ -34,13 +34,13 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
       onClick={onClose}
     >
       <div 
-        className="relative w-full max-w-5xl h-[90vh] bg-[#171A21] border border-slate-800 rounded-xl flex flex-col overflow-hidden shadow-2xl"
+        className="relative w-full max-w-5xl h-[90vh] bg-[#3B0A6B] border border-[rgba(0,229,255,0.2)] rounded-xl flex flex-col overflow-hidden shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header */}
-        <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 bg-slate-900/90 border-b border-slate-800">
+        <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 bg-[rgba(59,10,107,0.9)] border-b border-[rgba(0,229,255,0.15)]">
           <div className="flex items-center gap-2.5">
-            <FileText className="w-5 h-5 text-blue-400" />
+            <FileText className="w-5 h-5 text-[#00E5FF]" />
             <h3 className="font-mono text-sm sm:text-base font-semibold text-slate-100">
               {PERSONAL_INFO.name} — Resume (PDF)
             </h3>
@@ -51,7 +51,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
               href={PERSONAL_INFO.resumePath}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-medium rounded-md bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors"
+              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-medium rounded-md bg-[rgba(59,10,107,0.8)] hover:bg-[rgba(59,10,107,0.95)] text-slate-200 border border-[rgba(0,229,255,0.2)] transition-colors"
             >
               <ExternalLink className="w-3.5 h-3.5" /> Open Fullscreen
             </a>
@@ -59,14 +59,14 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
             <a
               href={PERSONAL_INFO.resumePath}
               download="Toka_Nani_Resume.pdf"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-semibold rounded-md bg-blue-600 hover:bg-blue-500 text-white transition-colors shadow-sm"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-semibold rounded-md bg-[#00E5FF] hover:bg-[#33EEFF] text-[#050505] transition-colors shadow-sm"
             >
               <Download className="w-3.5 h-3.5" /> Download PDF
             </a>
 
             <button
               onClick={onClose}
-              className="p-1.5 text-slate-400 hover:text-slate-100 rounded-md hover:bg-slate-800 transition-colors"
+              className="p-1.5 text-slate-400 hover:text-slate-100 rounded-md hover:bg-[rgba(0,229,255,0.1)] transition-colors"
               aria-label="Close resume preview modal"
             >
               <X className="w-5 h-5" />
@@ -75,7 +75,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
         </div>
 
         {/* Modal Body with Embed & Mobile Fallback */}
-        <div className="flex-1 w-full h-full bg-[#1E222B] relative">
+        <div className="flex-1 w-full h-full bg-[rgba(59,10,107,0.85)] relative">
           <object
             data={PERSONAL_INFO.resumePath}
             type="application/pdf"
@@ -87,8 +87,8 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
               className="w-full h-full border-none"
             >
               {/* Fallback container for mobile clients restricting embedded PDFs */}
-              <div className="flex flex-col items-center justify-center h-full p-6 text-center bg-[#171A21]">
-                <AlertTriangle className="w-12 h-12 text-blue-400 mb-3" />
+              <div className="flex flex-col items-center justify-center h-full p-6 text-center bg-[#3B0A6B]">
+                <AlertTriangle className="w-12 h-12 text-[#00E5FF] mb-3" />
                 <h4 className="text-lg font-semibold text-slate-100 mb-2">
                   Resume Preview Unavailable Inline
                 </h4>
@@ -100,14 +100,14 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
                     href={PERSONAL_INFO.resumePath}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 text-xs font-mono font-semibold rounded-md bg-blue-600 hover:bg-blue-500 text-white transition-colors"
+                    className="inline-flex items-center gap-2 px-4 py-2 text-xs font-mono font-semibold rounded-md bg-[#00E5FF] hover:bg-[#33EEFF] text-[#050505] transition-colors"
                   >
                     <ExternalLink className="w-4 h-4" /> View PDF in New Tab
                   </a>
                   <a
                     href={PERSONAL_INFO.resumePath}
                     download="Toka_Nani_Resume.pdf"
-                    className="inline-flex items-center gap-2 px-4 py-2 text-xs font-mono font-semibold rounded-md bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors"
+                    className="inline-flex items-center gap-2 px-4 py-2 text-xs font-mono font-semibold rounded-md bg-[rgba(59,10,107,0.8)] hover:bg-[rgba(59,10,107,0.95)] text-slate-200 border border-[rgba(0,229,255,0.2)] transition-colors"
                   >
                     <Download className="w-4 h-4" /> Download PDF Directly
                   </a>

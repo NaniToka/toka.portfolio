@@ -4,12 +4,12 @@ import { Cloud, Server, Layout, Container, Code, Cpu } from 'lucide-react';
 import { SKILL_CATEGORIES } from '../data/portfolioData';
 
 const iconMap: Record<string, React.ReactNode> = {
-  Cloud: <Cloud className="w-5 h-5 text-blue-400" />,
-  Server: <Server className="w-5 h-5 text-blue-400" />,
-  Layout: <Layout className="w-5 h-5 text-blue-400" />,
-  Container: <Container className="w-5 h-5 text-blue-400" />,
-  Code: <Code className="w-5 h-5 text-blue-400" />,
-  Cpu: <Cpu className="w-5 h-5 text-blue-400" />,
+  Cloud: <Cloud className="w-5 h-5 text-[#00E5FF]" />,
+  Server: <Server className="w-5 h-5 text-[#00E5FF]" />,
+  Layout: <Layout className="w-5 h-5 text-[#00E5FF]" />,
+  Container: <Container className="w-5 h-5 text-[#00E5FF]" />,
+  Code: <Code className="w-5 h-5 text-[#00E5FF]" />,
+  Cpu: <Cpu className="w-5 h-5 text-[#00E5FF]" />,
 };
 
 export const Skills: React.FC = () => {
@@ -19,7 +19,7 @@ export const Skills: React.FC = () => {
         
         {/* Section Header */}
         <div className="mb-12">
-          <span className="font-mono text-xs text-blue-400 font-semibold uppercase tracking-wider block mb-1">
+          <span className="font-mono text-xs text-[#00E5FF] font-semibold uppercase tracking-wider block mb-1">
             04. Engineering Capabilities
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-100 tracking-tight">
@@ -42,8 +42,8 @@ export const Skills: React.FC = () => {
               className="glass-card card-hover rounded-xl p-6 flex flex-col justify-between"
             >
               <div>
-                <div className="flex items-center gap-3 pb-3 mb-4 border-b border-slate-800">
-                  {iconMap[cat.iconName] || <Code className="w-5 h-5 text-blue-400" />}
+                <div className="flex items-center gap-3 pb-3 mb-4 border-b border-[rgba(0,229,255,0.15)]">
+                  {iconMap[cat.iconName] || <Code className="w-5 h-5 text-[#00E5FF]" />}
                   <h3 className="font-mono text-sm font-semibold text-slate-100 uppercase tracking-wide">
                     {cat.category}
                   </h3>
@@ -53,7 +53,7 @@ export const Skills: React.FC = () => {
                   {cat.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-900/90 text-slate-200 border border-slate-800 hover:border-blue-500/30 transition-colors"
+                      className="px-2.5 py-1 rounded-md text-xs font-mono bg-[rgba(59,10,107,0.5)] text-slate-200 border border-[rgba(0,229,255,0.15)] hover:border-[rgba(0,229,255,0.4)] transition-colors"
                     >
                       {skill}
                     </span>

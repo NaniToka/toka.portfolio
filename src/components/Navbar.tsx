@@ -66,9 +66,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
             className="font-mono font-semibold text-base sm:text-lg flex items-center gap-1 group shrink-0"
             aria-label="Toka Nani Home"
           >
-            <span className="text-blue-500 font-bold group-hover:text-blue-400 transition-colors">~/</span>
+            <span className="text-[#00E5FF] font-bold group-hover:text-[#00E5FF] transition-colors">~/</span>
             <span className="text-slate-900 dark:text-slate-100">toka-nani</span>
-            <span className="inline-block w-2 h-4 bg-blue-500 animate-pulse ml-0.5" />
+            <span className="inline-block w-2 h-4 bg-[#00E5FF] animate-pulse ml-0.5" />
           </a>
 
           {/* Desktop Nav Links — hidden below lg (10 links overflow at md) */}
@@ -77,7 +77,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
               <a
                 key={link.label}
                 href={link.href}
-                className="font-mono text-xs text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-slate-100 transition-colors relative py-1 whitespace-nowrap hover:after:w-full after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-blue-500 after:transition-all after:duration-200"
+                className="font-mono text-xs text-slate-600 dark:text-slate-400 hover:text-[#00E5FF] dark:hover:text-slate-100 transition-colors relative py-1 whitespace-nowrap hover:after:w-full after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#00E5FF] after:transition-all after:duration-200"
               >
                 {link.label}
               </a>
@@ -88,24 +88,24 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
           <div className="hidden lg:flex items-center gap-2 shrink-0">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-md border border-slate-300 dark:border-slate-800 bg-slate-100 dark:bg-slate-900/80 text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors min-h-[38px] min-w-[38px] flex items-center justify-center"
+              className="p-2 rounded-md border border-slate-300 dark:border-slate-800 bg-slate-100 dark:bg-[rgba(59,10,107,0.5)] text-slate-700 dark:text-slate-300 hover:text-[#00E5FF] dark:hover:text-[#00E5FF] transition-colors min-h-[38px] min-w-[38px] flex items-center justify-center"
               aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
             >
-              {theme === 'dark' ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-blue-600" />}
+              {theme === 'dark' ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-[#00E5FF]" />}
             </button>
 
             <button
               onClick={onOpenResume}
-              className="btn-hover inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-medium rounded-md text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-900/80 hover:bg-slate-200 dark:hover:bg-slate-800 border border-slate-300 dark:border-slate-800 min-h-[38px]"
+              className="btn-hover inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-medium rounded-md text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-[rgba(59,10,107,0.5)] hover:bg-slate-200 dark:hover:bg-slate-800 border border-slate-300 dark:border-slate-800 min-h-[38px]"
             >
-              <FileText className="w-3.5 h-3.5 text-blue-500" />
+              <FileText className="w-3.5 h-3.5 text-[#00E5FF]" />
               View Resume
             </button>
 
             <a
               href={PERSONAL_INFO.resumePath}
               download="Toka_Nani_Resume.pdf"
-              className="btn-primary-hover inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-semibold rounded-md text-white bg-blue-600 hover:bg-blue-500 shadow-sm shadow-blue-900/40 min-h-[38px]"
+              className="btn-primary-hover inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-semibold rounded-md text-[#050505] bg-[#00E5FF] hover:bg-[#33EEFF] shadow-sm shadow-[rgba(0,229,255,0.2)] min-h-[38px]"
             >
               <Download className="w-3.5 h-3.5" />
               Download PDF
@@ -116,15 +116,15 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
           <div className="lg:hidden flex items-center gap-2 shrink-0">
             <button
               onClick={toggleTheme}
-              className="p-2 text-slate-700 dark:text-slate-300 rounded-md border border-slate-300 dark:border-slate-800 bg-slate-100 dark:bg-slate-900/80 min-h-[44px] min-w-[44px] flex items-center justify-center"
+              className="p-2 text-slate-700 dark:text-slate-300 rounded-md border border-slate-300 dark:border-slate-800 bg-slate-100 dark:bg-[rgba(59,10,107,0.5)] min-h-[44px] min-w-[44px] flex items-center justify-center"
               aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
             >
-              {theme === 'dark' ? <Sun className="w-5 h-5 text-amber-400" /> : <Moon className="w-5 h-5 text-blue-600" />}
+              {theme === 'dark' ? <Sun className="w-5 h-5 text-amber-400" /> : <Moon className="w-5 h-5 text-[#00E5FF]" />}
             </button>
 
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 text-slate-700 dark:text-slate-300 rounded-md border border-slate-300 dark:border-slate-800 bg-slate-100 dark:bg-slate-900/80 min-h-[44px] min-w-[44px] flex items-center justify-center"
+              className="p-2 text-slate-700 dark:text-slate-300 rounded-md border border-slate-300 dark:border-slate-800 bg-slate-100 dark:bg-[rgba(59,10,107,0.5)] min-h-[44px] min-w-[44px] flex items-center justify-center"
               aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-menu"
@@ -139,7 +139,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
           <div
             id="mobile-menu"
             ref={menuRef}
-            className="lg:hidden bg-slate-50 dark:bg-[#0F1115] border-b border-slate-200 dark:border-slate-800 px-4 pt-2 pb-5"
+            className="lg:hidden bg-slate-50 dark:bg-[#050505] border-b border-slate-200 dark:border-slate-800 px-4 pt-2 pb-5"
           >
             <nav aria-label="Mobile Navigation" className="flex flex-col">
               {navLinks.map((link) => (
@@ -147,7 +147,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
                   key={link.label}
                   href={link.href}
                   onClick={closeMenu}
-                  className="font-mono text-sm text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 py-3 border-b border-slate-100 dark:border-slate-800/60 last:border-b-0 transition-colors min-h-[44px] flex items-center"
+                  className="font-mono text-sm text-slate-700 dark:text-slate-300 hover:text-[#00E5FF] dark:hover:text-[#00E5FF] py-3 border-b border-slate-100 dark:border-slate-800/60 last:border-b-0 transition-colors min-h-[44px] flex items-center"
                 >
                   {link.label}
                 </a>
@@ -159,14 +159,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
                 onClick={() => { closeMenu(); onOpenResume(); }}
                 className="w-full flex items-center justify-center gap-2 px-4 py-3 text-sm font-mono font-medium rounded-md text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 min-h-[48px]"
               >
-                <FileText className="w-4 h-4 text-blue-500" />
+                <FileText className="w-4 h-4 text-[#00E5FF]" />
                 View Resume
               </button>
               <a
                 href={PERSONAL_INFO.resumePath}
                 download="Toka_Nani_Resume.pdf"
                 onClick={closeMenu}
-                className="w-full flex items-center justify-center gap-2 px-4 py-3 text-sm font-mono font-semibold rounded-md text-white bg-blue-600 hover:bg-blue-500 min-h-[48px]"
+                className="w-full flex items-center justify-center gap-2 px-4 py-3 text-sm font-mono font-semibold rounded-md text-[#050505] bg-[#00E5FF] hover:bg-[#33EEFF] min-h-[48px]"
               >
                 <Download className="w-4 h-4" />
                 Download PDF

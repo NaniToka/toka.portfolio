@@ -26,8 +26,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
           >
             {/* Status Pills */}
             <div className="flex flex-wrap items-center gap-2">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-950/60 border border-blue-800/40 text-blue-400 font-mono text-xs font-medium">
-                <span className="w-2 h-2 rounded-full bg-blue-400 animate-ping shrink-0" />
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[rgba(59,10,107,0.6)] border border-[rgba(0,229,255,0.2)] text-[#00E5FF] font-mono text-xs font-medium">
+                <span className="w-2 h-2 rounded-full bg-[#00E5FF] animate-ping shrink-0" />
                 <span>Available for SWE / Cloud / GenAI Roles</span>
               </div>
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-slate-300 font-mono text-xs">
@@ -46,18 +46,18 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                     width={288}
                     height={288}
                     loading="eager"
-                    className="w-28 h-28 sm:w-48 sm:h-48 lg:w-64 lg:h-64 rounded-full object-cover border-2 border-blue-500/40 ring-4 sm:ring-8 ring-blue-500/10 shadow-xl shadow-blue-950/60"
+                    className="w-28 h-28 sm:w-48 sm:h-48 lg:w-64 lg:h-64 rounded-full object-cover border-2 border-[rgba(0,229,255,0.4)] ring-4 sm:ring-8 ring-[rgba(0,229,255,0.1)] shadow-xl shadow-[rgba(0,229,255,0.15)]"
                   />
                 </picture>
-                <div className="absolute bottom-1.5 right-1.5 w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-blue-500 border-4 border-[#0F1115]" title="Online / Active" />
+                <div className="absolute bottom-1.5 right-1.5 w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#00E5FF] border-4 border-[#050505]" title="Online / Active" />
               </div>
 
               <div className="space-y-2 text-center sm:text-left min-w-0">
                 <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-slate-100 tracking-tight leading-tight">
                   {PERSONAL_INFO.name}
                 </h1>
-                <div className="flex items-center justify-center sm:justify-start gap-2 text-blue-400 font-mono text-xs sm:text-sm lg:text-base font-semibold min-w-0">
-                  <Terminal className="w-4 h-4 sm:w-5 sm:h-5 text-blue-500 shrink-0" />
+                <div className="flex items-center justify-center sm:justify-start gap-2 text-[#00E5FF] font-mono text-xs sm:text-sm lg:text-base font-semibold min-w-0">
+                  <Terminal className="w-4 h-4 sm:w-5 sm:h-5 text-[#00E5FF] shrink-0" />
                   {/* Long title: allow wrapping, never overflow */}
                   <span className="break-words leading-snug">{PERSONAL_INFO.title}</span>
                 </div>
@@ -69,7 +69,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
               <p className="text-sm sm:text-base lg:text-lg font-medium text-slate-200 leading-relaxed">
                 {PERSONAL_INFO.pitch}
               </p>
-              <p className="text-xs sm:text-sm font-mono text-blue-300/90 break-words">
+              <p className="text-xs sm:text-sm font-mono text-[rgba(0,229,255,0.8)] break-words">
                 {PERSONAL_INFO.footerLine}
               </p>
             </div>
@@ -78,7 +78,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
             <div className="pt-1 flex flex-wrap items-center gap-2 sm:gap-3">
               <a
                 href="#projects"
-                className="btn-primary-hover inline-flex items-center justify-center gap-2 px-4 sm:px-5 py-3 rounded-md bg-blue-600 hover:bg-blue-500 text-white font-mono text-xs font-semibold shadow-md shadow-blue-900/30 min-h-[44px]"
+                className="btn-primary-hover inline-flex items-center justify-center gap-2 px-4 sm:px-5 py-3 rounded-md bg-[#00E5FF] hover:bg-[#33EEFF] text-[#050505] font-mono text-xs font-semibold shadow-md shadow-[rgba(0,229,255,0.3)] min-h-[44px]"
               >
                 Explore Case Studies
               </a>
@@ -87,7 +87,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                 onClick={onOpenResume}
                 className="btn-hover inline-flex items-center justify-center gap-2 px-4 sm:px-5 py-3 rounded-md bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 font-mono text-xs font-medium min-h-[44px]"
               >
-                <FileText className="w-4 h-4 text-blue-400" /> View Resume
+                <FileText className="w-4 h-4 text-[#00E5FF]" /> View Resume
               </button>
 
               <a
@@ -95,7 +95,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                 download="Toka_Nani_Resume.pdf"
                 className="btn-hover inline-flex items-center justify-center gap-2 px-4 sm:px-5 py-3 rounded-md bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 font-mono text-xs font-medium min-h-[44px]"
               >
-                <Download className="w-4 h-4 text-blue-400" /> Download PDF
+                <Download className="w-4 h-4 text-[#00E5FF]" /> Download PDF
               </a>
 
               {/* Social icons */}
@@ -136,21 +136,21 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="lg:col-span-5 space-y-3 sm:space-y-4"
           >
-            <div className="glass-card card-hover rounded-xl p-4 sm:p-5 border-l-4 border-l-blue-500">
-              <div className="flex items-center justify-between text-xs font-mono text-blue-400 mb-1">
+            <div className="glass-card card-hover rounded-xl p-4 sm:p-5 border-l-4 border-l-[#00E5FF]">
+              <div className="flex items-center justify-between text-xs font-mono text-[#00E5FF] mb-1">
                 <span>FLAGSHIP HIGHLIGHT</span>
                 <span className="text-emerald-400 font-semibold">BENCHMARKED</span>
               </div>
               <div className="text-xl sm:text-2xl font-bold text-slate-100 mb-1">TokenFlow AI</div>
               <p className="text-xs text-slate-300 leading-relaxed">
-                FastAPI & React middleware utilizing Gemini <code className="text-blue-300 font-mono break-all">text-embedding-004</code> and recency-decay scoring to prune prompt tokens by ~74%.
+                FastAPI & React middleware utilizing Gemini <code className="text-[#00E5FF] font-mono break-all">text-embedding-004</code> and recency-decay scoring to prune prompt tokens by ~74%.
               </p>
             </div>
 
-            <div className="glass-card card-hover rounded-xl p-4 sm:p-5 border-l-4 border-l-blue-500">
-              <div className="flex items-center justify-between text-xs font-mono text-blue-400 mb-1">
+            <div className="glass-card card-hover rounded-xl p-4 sm:p-5 border-l-4 border-l-[#00E5FF]">
+              <div className="flex items-center justify-between text-xs font-mono text-[#00E5FF] mb-1">
                 <span>GOOGLE SOLUTION CHALLENGE</span>
-                <span className="text-blue-300 font-semibold">CLOUD RUN</span>
+                <span className="text-[#00E5FF] font-semibold">CLOUD RUN</span>
               </div>
               <div className="text-xl sm:text-2xl font-bold text-slate-100 mb-1">BiasGuard AI</div>
               <p className="text-xs text-slate-300 leading-relaxed">
@@ -158,8 +158,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
               </p>
             </div>
 
-            <div className="glass-card card-hover rounded-xl p-4 sm:p-5 border-l-4 border-l-blue-500">
-              <div className="flex items-center justify-between text-xs font-mono text-blue-400 mb-1">
+            <div className="glass-card card-hover rounded-xl p-4 sm:p-5 border-l-4 border-l-[#00E5FF]">
+              <div className="flex items-center justify-between text-xs font-mono text-[#00E5FF] mb-1">
                 <span>IMPACT METRIC</span>
                 <span className="text-emerald-400 font-semibold">VERIFIED</span>
               </div>
@@ -177,7 +177,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 opacity-60 hover:opacity-100 transition-opacity">
         <a href="#about" aria-label="Scroll to About section" className="flex flex-col items-center">
           <span className="font-mono text-[10px] text-slate-400 uppercase tracking-widest mb-1">Scroll</span>
-          <ArrowDown className="w-4 h-4 text-blue-400 animate-bounce" />
+          <ArrowDown className="w-4 h-4 text-[#00E5FF] animate-bounce" />
         </a>
       </div>
     </section>

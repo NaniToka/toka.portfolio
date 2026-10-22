@@ -10,12 +10,12 @@ export const Wins: React.FC = () => {
 
         {/* Header */}
         <div className="flex items-center gap-4 mb-12">
-          <div className="h-px bg-slate-800 flex-1" />
+          <div className="h-px bg-[rgba(0,229,255,0.15)] flex-1" />
           <h2 className="text-3xl md:text-4xl font-bold text-slate-100 flex items-center gap-3">
             <Trophy className="w-8 h-8 text-emerald-400" />
             Wins & Comebacks
           </h2>
-          <div className="h-px bg-slate-800 flex-1" />
+          <div className="h-px bg-[rgba(0,229,255,0.15)] flex-1" />
         </div>
 
         <div className="grid grid-cols-1 gap-8">
@@ -26,7 +26,7 @@ export const Wins: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: idx * 0.1 }}
-              className="bg-[#0f111a] border border-slate-800 rounded-xl p-6 md:p-8 hover:border-emerald-500/30 transition-all duration-300 group relative overflow-hidden"
+              className="bg-[#050505] border border-[rgba(0,229,255,0.15)] rounded-xl p-6 md:p-8 hover:border-emerald-500/30 transition-all duration-300 group relative overflow-hidden"
             >
               {/* Subtle green glow top-left */}
               <div className="absolute top-0 left-0 w-48 h-48 bg-emerald-500/5 rounded-full -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
@@ -46,7 +46,7 @@ export const Wins: React.FC = () => {
                 </div>
 
                 {/* Context — what came before */}
-                <div className="mb-5 pl-4 border-l-2 border-slate-700">
+                <div className="mb-5 pl-4 border-l-2 border-[rgba(0,229,255,0.25)]">
                   <p className="text-xs font-mono text-slate-500 uppercase tracking-wider mb-1">The context</p>
                   <p className="text-slate-400 text-sm leading-relaxed">{win.context}</p>
                 </div>
@@ -78,7 +78,7 @@ export const Wins: React.FC = () => {
                       href={win.proofUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-4 py-2 text-sm font-mono font-medium rounded-md text-slate-300 bg-[#1a1d2d] border border-slate-800 hover:border-emerald-500/50 hover:text-emerald-400 transition-all"
+                      className="inline-flex items-center gap-2 px-4 py-2 text-sm font-mono font-medium rounded-md text-slate-300 bg-[rgba(59,10,107,0.5)] border border-[rgba(0,229,255,0.15)] hover:border-emerald-500/50 hover:text-emerald-400 transition-all"
                     >
                       <ExternalLink className="w-4 h-4" />
                       Verify Credential

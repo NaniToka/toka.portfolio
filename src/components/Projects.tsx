@@ -40,7 +40,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, idx }) => {
       className="glass-card card-hover rounded-xl p-6 sm:p-8 relative overflow-hidden group"
     >
       {/* Top Accent Indicator */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-blue-400 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#00E5FF] via-[#33EEFF] to-transparent" />
 
       <div className="flex flex-col lg:flex-row gap-6 lg:items-start justify-between">
         
@@ -50,7 +50,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, idx }) => {
           {/* Title, Subtitle & Badges */}
           <div>
             <div className="flex flex-wrap items-center gap-2 mb-2">
-              <span className="px-2.5 py-0.5 rounded text-[11px] font-mono font-semibold uppercase tracking-wide bg-blue-950/80 text-blue-400 border border-blue-800/40">
+              <span className="px-2.5 py-0.5 rounded text-[11px] font-mono font-semibold uppercase tracking-wide bg-[rgba(59,10,107,0.8)] text-[#00E5FF] border border-[rgba(0,229,255,0.2)]">
                 {project.subtitle}
               </span>
               {project.metrics && (
@@ -59,7 +59,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, idx }) => {
                 </span>
               )}
             </div>
-            <h3 className="text-2xl font-bold text-slate-100 group-hover:text-blue-300 transition-colors">
+            <h3 className="text-2xl font-bold text-slate-100 group-hover:text-[#00E5FF] transition-colors">
               {project.title}
             </h3>
           </div>
@@ -68,7 +68,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, idx }) => {
           <div 
             role="tablist" 
             aria-label={`${project.title} case study details`}
-            className="flex items-center gap-1.5 border-b border-slate-800/80 pb-1"
+            className="flex items-center gap-1.5 border-b border-[rgba(0,229,255,0.15)] pb-1"
           >
             {tabs.map((tab) => {
               const isActive = activeTab === tab.id;
@@ -84,8 +84,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, idx }) => {
                   onKeyDown={(e) => handleKeyDown(e, tab.id)}
                   className={`px-3.5 py-1.5 text-xs font-mono font-semibold rounded-t-md border-b-2 transition-all cursor-pointer min-h-[38px] ${
                     isActive
-                      ? 'text-blue-400 border-blue-500 bg-blue-950/30'
-                      : 'text-slate-400 border-transparent hover:text-slate-200 hover:bg-slate-900/50'
+                      ? 'text-[#00E5FF] border-[#00E5FF] bg-[rgba(0,229,255,0.08)]'
+                      : 'text-slate-400 border-transparent hover:text-slate-200 hover:bg-[rgba(59,10,107,0.3)]'
                   }`}
                 >
                   {tab.label}
@@ -124,10 +124,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, idx }) => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -4 }}
                   transition={{ duration: 0.2 }}
-                  className="p-4 rounded-lg bg-blue-950/20 border border-blue-900/30 text-xs"
+                  className="p-4 rounded-lg bg-[rgba(0,229,255,0.05)] border border-[rgba(0,229,255,0.15)] text-xs"
                 >
-                  <div className="font-mono font-semibold text-blue-400 uppercase mb-1">Architectural Solution</div>
-                  <p className="text-blue-200/90 leading-relaxed text-xs sm:text-sm">{project.solution}</p>
+                  <div className="font-mono font-semibold text-[#00E5FF] uppercase mb-1">Architectural Solution</div>
+                  <p className="text-[rgba(255,255,255,0.85)] leading-relaxed text-xs sm:text-sm">{project.solution}</p>
                 </motion.div>
               )}
 
@@ -141,11 +141,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, idx }) => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -4 }}
                   transition={{ duration: 0.2 }}
-                  className="p-4 rounded-lg bg-slate-900/60 border border-slate-800/80 text-xs space-y-3"
+                  className="p-4 rounded-lg bg-[rgba(59,10,107,0.4)] border border-[rgba(0,229,255,0.15)] text-xs space-y-3"
                 >
                   <div className="font-mono font-semibold text-slate-300 uppercase">Technologies & Architectural Choice</div>
                   {project.stackRationale && (
-                    <p className="text-slate-300 text-xs leading-relaxed italic border-l-2 border-blue-500 pl-3 py-0.5">
+                    <p className="text-slate-300 text-xs leading-relaxed italic border-l-2 border-[#00E5FF] pl-3 py-0.5">
                       {project.stackRationale}
                     </p>
                   )}
@@ -153,7 +153,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, idx }) => {
                     {project.stack.map((tech) => (
                       <span
                         key={tech}
-                        className="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-950 text-blue-300 border border-slate-800"
+                        className="px-2.5 py-1 rounded-md text-xs font-mono bg-[#050505] text-[#00E5FF] border border-[rgba(0,229,255,0.2)]"
                       >
                         {tech}
                       </span>
@@ -167,13 +167,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, idx }) => {
         </div>
 
         {/* Actions & Links Column */}
-        <div className="flex flex-wrap lg:flex-col gap-2 shrink-0 pt-2 lg:pt-0 border-t lg:border-t-0 border-slate-800">
+        <div className="flex flex-wrap lg:flex-col gap-2 shrink-0 pt-2 lg:pt-0 border-t lg:border-t-0 border-[rgba(0,229,255,0.15)]">
           {project.liveUrl && (
             <a
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary-hover inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-md bg-blue-600 hover:bg-blue-500 text-white font-mono text-xs font-semibold min-h-[44px] flex-1 lg:flex-none"
+              className="btn-primary-hover inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-md bg-[#00E5FF] hover:bg-[#33EEFF] text-[#050505] font-mono text-xs font-semibold min-h-[44px] flex-1 lg:flex-none"
             >
               <ExternalLink className="w-4 h-4" /> Live Application
             </a>
@@ -186,7 +186,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, idx }) => {
               rel="noopener noreferrer"
               className="btn-hover inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-md bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 font-mono text-xs font-medium min-h-[44px] flex-1 lg:flex-none"
             >
-              <FileCode className="w-4 h-4 text-blue-400" /> Swagger Docs
+              <FileCode className="w-4 h-4 text-[#00E5FF]" /> Swagger Docs
             </a>
           )}
 
@@ -228,7 +228,7 @@ export const Projects: React.FC = () => {
         
         {/* Section Header */}
         <div className="mb-12">
-          <span className="font-mono text-xs text-blue-400 font-semibold uppercase tracking-wider block mb-1">
+          <span className="font-mono text-xs text-[#00E5FF] font-semibold uppercase tracking-wider block mb-1">
             03. Production Case Studies
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-100 tracking-tight">
@@ -248,7 +248,7 @@ export const Projects: React.FC = () => {
 
         {/* Collapsed More Projects Section (Task 5) */}
         {otherProjects.length > 0 && (
-          <div className="mt-12 pt-8 border-t border-slate-800/80">
+          <div className="mt-12 pt-8 border-t border-[rgba(0,229,255,0.15)]">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
               <div>
                 <h3 className="text-xl font-bold text-slate-100">Additional Engineering Projects</h3>
@@ -256,7 +256,7 @@ export const Projects: React.FC = () => {
               </div>
               <button
                 onClick={() => setShowMore(!showMore)}
-                className="btn-hover self-start sm:self-auto inline-flex items-center gap-2 px-4 py-2.5 rounded-md bg-slate-900 hover:bg-slate-800 border border-slate-800 text-blue-400 font-mono text-xs font-semibold min-h-[44px]"
+                className="btn-hover self-start sm:self-auto inline-flex items-center gap-2 px-4 py-2.5 rounded-md bg-slate-900 hover:bg-slate-800 border border-slate-800 text-[#00E5FF] font-mono text-xs font-semibold min-h-[44px]"
               >
                 {showMore ? 'Hide Additional Projects' : `Show All Projects (${otherProjects.length})`}
               </button>
@@ -270,21 +270,21 @@ export const Projects: React.FC = () => {
                 className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2"
               >
                 {otherProjects.map((proj) => (
-                  <div key={proj.id} className="glass-card rounded-lg p-4 border border-slate-800/80 flex flex-col justify-between space-y-3">
+                  <div key={proj.id} className="glass-card rounded-lg p-4 border border-[rgba(0,229,255,0.15)] flex flex-col justify-between space-y-3">
                     <div className="space-y-1">
                       <div className="flex items-center justify-between">
                         <h4 className="font-mono font-bold text-slate-100 text-sm">{proj.title}</h4>
-                        <span className="font-mono text-[10px] text-blue-400 bg-blue-950/60 px-2 py-0.5 rounded border border-blue-800/40">
+                        <span className="font-mono text-[10px] text-[#00E5FF] bg-[rgba(59,10,107,0.6)] px-2 py-0.5 rounded border border-[rgba(0,229,255,0.2)]">
                           {proj.subtitle}
                         </span>
                       </div>
                       <p className="text-xs text-slate-300 leading-relaxed">{proj.description}</p>
                     </div>
 
-                    <div className="flex items-center justify-between pt-2 border-t border-slate-800/60 text-xs font-mono">
+                    <div className="flex items-center justify-between pt-2 border-t border-[rgba(0,229,255,0.15)] text-xs font-mono">
                       <div className="flex flex-wrap gap-1">
                         {proj.stack.slice(0, 3).map((t) => (
-                          <span key={t} className="text-[10px] text-slate-400 bg-slate-950 px-1.5 py-0.5 rounded border border-slate-800">
+                          <span key={t} className="text-[10px] text-slate-400 bg-[#050505] px-1.5 py-0.5 rounded border border-[rgba(0,229,255,0.15)]">
                             {t}
                           </span>
                         ))}
@@ -293,7 +293,7 @@ export const Projects: React.FC = () => {
                         href={proj.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-blue-400 hover:text-blue-300 font-semibold"
+                        className="inline-flex items-center gap-1 text-[#00E5FF] hover:text-[#33EEFF] font-semibold"
                       >
                         <Github className="w-3.5 h-3.5" /> Source
                       </a>

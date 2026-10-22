@@ -52,9 +52,9 @@ const CATEGORIES: Category[] = [
     key: 'google',
     label: 'Google AI',
     Icon: Zap,
-    accent: 'text-blue-400',
-    border: 'border-blue-800/60',
-    bg: 'bg-blue-950/70',
+    accent: 'text-[#00E5FF]',
+    border: 'border-[rgba(0,229,255,0.3)]',
+    bg: 'bg-[rgba(59,10,107,0.7)]',
     ids: ['google-ai-essentials', 'promptwars-ch1', 'promptwars-ch3', 'build-with-ai-chennai', 'gsc-2026'],
   },
   {
@@ -116,7 +116,7 @@ export const Certs: React.FC = () => {
 
         {/* ── Header ── */}
         <div className="mb-10">
-          <span className="font-mono text-xs text-blue-400 font-semibold uppercase tracking-wider block mb-1">
+          <span className="font-mono text-xs text-[#00E5FF] font-semibold uppercase tracking-wider block mb-1">
             05. Verified Credentials
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-100 tracking-tight">
@@ -139,13 +139,13 @@ export const Certs: React.FC = () => {
                 className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-mono font-semibold border transition-all whitespace-nowrap min-h-[36px] ${
                   active
                     ? `${cat.bg} ${cat.border} ${cat.accent}`
-                    : 'bg-slate-900/60 border-slate-800 text-slate-400 hover:border-slate-600 hover:text-slate-300'
+                    : 'bg-[rgba(59,10,107,0.3)] border-[rgba(0,229,255,0.2)] text-slate-400 hover:border-[rgba(0,229,255,0.4)] hover:text-slate-300'
                 }`}
               >
                 <cat.Icon className="w-3.5 h-3.5" />
                 {cat.label}
                 <span className={`ml-0.5 px-1.5 py-0.5 rounded-full text-[10px] font-bold ${
-                  active ? 'bg-white/10' : 'bg-slate-800'
+                  active ? 'bg-white/10' : 'bg-[rgba(59,10,107,0.5)]'
                 }`}>{count}</span>
               </button>
             );
@@ -173,7 +173,7 @@ export const Certs: React.FC = () => {
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.25, delay: idx * 0.04 }}
-                  className={`relative flex gap-0 rounded-xl overflow-hidden border border-slate-800/70 bg-[#0e1120] hover:border-slate-700 transition-all group`}
+                  className={`relative flex gap-0 rounded-xl overflow-hidden border border-[rgba(0,229,255,0.15)] bg-[rgba(59,10,107,0.4)] hover:border-[rgba(0,229,255,0.3)] transition-all group`}
                 >
                   {/* Left accent bar */}
                   <div className={`w-1 shrink-0 ${cat.bg} opacity-80`} />
@@ -194,7 +194,7 @@ export const Certs: React.FC = () => {
                         <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-mono border ${
                           isCertified
                             ? 'bg-emerald-950/80 border-emerald-800/40 text-emerald-300'
-                            : 'bg-slate-800/80 border-slate-700 text-slate-400'
+                            : 'bg-[rgba(59,10,107,0.5)] border-[rgba(0,229,255,0.15)] text-slate-400'
                         }`}>
                           {isCertified ? <CheckCircle className="w-2.5 h-2.5" /> : <Clock className="w-2.5 h-2.5" />}
                           {cert.status}
@@ -247,7 +247,7 @@ export const Certs: React.FC = () => {
                           href={cert.certificateUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-medium rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-slate-200 hover:border-slate-600 transition-all"
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-medium rounded-lg bg-[rgba(59,10,107,0.4)] border border-[rgba(0,229,255,0.15)] text-slate-400 hover:text-slate-200 hover:border-[rgba(0,229,255,0.35)] transition-all"
                           title="Open PDF in new tab"
                         >
                           <ExternalLink className="w-3 h-3" /> PDF
@@ -258,7 +258,7 @@ export const Certs: React.FC = () => {
                           href={cert.verifyUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-medium rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-blue-400 hover:border-blue-800 transition-all"
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-medium rounded-lg bg-[rgba(59,10,107,0.4)] border border-[rgba(0,229,255,0.15)] text-slate-400 hover:text-[#00E5FF] hover:border-[rgba(0,229,255,0.35)] transition-all"
                         >
                           <FileText className="w-3 h-3" /> Verify
                         </a>
@@ -283,7 +283,7 @@ export const Certs: React.FC = () => {
                       {cert.subCertifications && cert.subCertifications.length > 0 && (
                         <button
                           onClick={() => setExpandedSubs(isExpanded ? null : cert.id)}
-                          className="ml-auto inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-medium rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-slate-200 hover:border-slate-600 transition-all"
+                          className="ml-auto inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-medium rounded-lg bg-[rgba(59,10,107,0.4)] border border-[rgba(0,229,255,0.15)] text-slate-400 hover:text-slate-200 hover:border-[rgba(0,229,255,0.3)] transition-all"
                         >
                           {isExpanded ? '↑ Hide' : `↓ ${cert.subCertifications.length} courses`}
                         </button>
@@ -300,18 +300,18 @@ export const Certs: React.FC = () => {
                           transition={{ duration: 0.2 }}
                           className="overflow-hidden"
                         >
-                          <div className="mt-3 pt-3 border-t border-slate-800 flex flex-col gap-1.5">
+                          <div className="mt-3 pt-3 border-t border-[rgba(0,229,255,0.15)] flex flex-col gap-1.5">
                             {cert.subCertifications.map(sub => (
                               <div
                                 key={sub.id}
-                                className="flex items-center justify-between px-3 py-2 rounded-lg bg-slate-900/50 border border-slate-800/60"
+                                className="flex items-center justify-between px-3 py-2 rounded-lg bg-[rgba(59,10,107,0.3)] border border-[rgba(0,229,255,0.15)]"
                               >
                                 <span className="text-xs text-slate-300 font-medium">{sub.title}</span>
                                 <div className="flex gap-1.5 shrink-0">
                                   {sub.certificateUrl && (
                                     <button
                                       onClick={() => setSelectedCert({ title: sub.title, pdfUrl: sub.certificateUrl!, issuer: cert.title })}
-                                      className="p-1.5 text-blue-400 hover:text-blue-300 hover:bg-blue-500/10 rounded transition-colors"
+                                      className="p-1.5 text-[#00E5FF] hover:text-[#33EEFF] hover:bg-[rgba(0,229,255,0.1)] rounded transition-colors"
                                       title="View Certificate"
                                     >
                                       <Award className="w-3.5 h-3.5" />
@@ -322,7 +322,7 @@ export const Certs: React.FC = () => {
                                       href={sub.verifyUrl}
                                       target="_blank"
                                       rel="noopener noreferrer"
-                                      className="p-1.5 text-slate-400 hover:text-blue-400 hover:bg-blue-500/10 rounded transition-colors"
+                                      className="p-1.5 text-slate-400 hover:text-[#00E5FF] hover:bg-[rgba(0,229,255,0.1)] rounded transition-colors"
                                       title="Verify"
                                     >
                                       <FileText className="w-3.5 h-3.5" />
@@ -355,13 +355,13 @@ export const Certs: React.FC = () => {
           onClick={() => setSelectedCert(null)}
         >
           <div
-            className="relative w-full max-w-5xl h-[calc(100dvh-5rem)] h-[calc(100vh-5rem)] bg-[#171A21] border border-slate-800 rounded-xl flex flex-col overflow-hidden shadow-2xl"
+            className="relative w-full max-w-5xl h-[calc(100dvh-5rem)] h-[calc(100vh-5rem)] bg-[#3B0A6B] border border-[rgba(0,229,255,0.2)] rounded-xl flex flex-col overflow-hidden shadow-2xl"
             onClick={e => e.stopPropagation()}
           >
             {/* Modal header */}
-            <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 bg-slate-900/90 border-b border-slate-800">
+            <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 bg-[rgba(59,10,107,0.9)] border-b border-[rgba(0,229,255,0.15)]">
               <div className="flex items-center gap-2.5 min-w-0">
-                <Award className="w-5 h-5 text-blue-400 shrink-0" />
+                <Award className="w-5 h-5 text-[#00E5FF] shrink-0" />
                 <div className="min-w-0">
                   <h3 className="font-mono text-sm font-semibold text-slate-100 truncate">
                     {selectedCert.title}
@@ -376,20 +376,20 @@ export const Certs: React.FC = () => {
                   href={selectedCert.pdfUrl ?? selectedCert.imgUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono rounded-md bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors"
+                  className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono rounded-md bg-[rgba(59,10,107,0.8)] hover:bg-[rgba(59,10,107,0.95)] text-slate-200 border border-[rgba(0,229,255,0.2)] transition-colors"
                 >
                   <ExternalLink className="w-3.5 h-3.5" /> Fullscreen
                 </a>
                 <a
                   href={selectedCert.pdfUrl ?? selectedCert.imgUrl}
                   download={`${selectedCert.title.replace(/\s+/g, '_')}_Certificate`}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-semibold rounded-md bg-blue-600 hover:bg-blue-500 text-white transition-colors"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-semibold rounded-md bg-[#00E5FF] hover:bg-[#33EEFF] text-[#050505] transition-colors"
                 >
                   <Download className="w-3.5 h-3.5" /> Download
                 </a>
                 <button
                   onClick={() => setSelectedCert(null)}
-                  className="p-1.5 text-slate-400 hover:text-slate-100 rounded-md hover:bg-slate-800 transition-colors"
+                  className="p-1.5 text-slate-400 hover:text-slate-100 rounded-md hover:bg-[rgba(0,229,255,0.1)] transition-colors"
                   aria-label="Close"
                 >
                   <X className="w-5 h-5" />
@@ -398,7 +398,7 @@ export const Certs: React.FC = () => {
             </div>
 
             {/* Modal body — image or iframe for PDF */}
-            <div className="flex-1 bg-[#1E222B] relative flex flex-col overflow-hidden">
+            <div className="flex-1 bg-[rgba(59,10,107,0.85)] relative flex flex-col overflow-hidden">
 
               {/* Image certificate (jpg/png/webp) */}
               {selectedCert.imgUrl && !selectedCert.pdfUrl && (
@@ -421,8 +421,8 @@ export const Certs: React.FC = () => {
                   />
                   {/* Mobile: action buttons */}
                   <div className="flex sm:hidden flex-col items-center justify-center h-full gap-5 p-8 text-center">
-                    <div className="w-16 h-16 rounded-2xl bg-blue-950/80 border border-blue-800/40 flex items-center justify-center">
-                      <Award className="w-8 h-8 text-blue-400" />
+                    <div className="w-16 h-16 rounded-2xl bg-[rgba(59,10,107,0.8)] border border-[rgba(0,229,255,0.3)] flex items-center justify-center">
+                      <Award className="w-8 h-8 text-[#00E5FF]" />
                     </div>
                     <div>
                       <h4 className="text-base font-bold text-slate-100 mb-1">{selectedCert.title}</h4>
@@ -436,11 +436,11 @@ export const Certs: React.FC = () => {
                     </p>
                     <div className="flex flex-col w-full max-w-xs gap-3">
                       <a href={selectedCert.pdfUrl} target="_blank" rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center gap-2 w-full px-4 py-3 text-sm font-mono font-semibold rounded-xl bg-blue-600 hover:bg-blue-500 text-white transition-colors">
+                        className="inline-flex items-center justify-center gap-2 w-full px-4 py-3 text-sm font-mono font-semibold rounded-xl bg-[#00E5FF] hover:bg-[#33EEFF] text-[#050505] transition-colors">
                         <ExternalLink className="w-4 h-4" /> Open PDF in Browser
                       </a>
                       <a href={selectedCert.pdfUrl} download={`${selectedCert.title.replace(/\s+/g, '_')}_Certificate.pdf`}
-                        className="inline-flex items-center justify-center gap-2 w-full px-4 py-3 text-sm font-mono font-semibold rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors">
+                        className="inline-flex items-center justify-center gap-2 w-full px-4 py-3 text-sm font-mono font-semibold rounded-xl bg-[rgba(59,10,107,0.8)] hover:bg-[rgba(59,10,107,0.95)] text-slate-200 border border-[rgba(0,229,255,0.2)] transition-colors">
                         <Download className="w-4 h-4" /> Download PDF
                       </a>
                     </div>
