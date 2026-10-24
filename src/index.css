@@ -79,6 +79,19 @@
     overflow-x: hidden;
   }
 
+  /* Hide default cursor on non-touch devices (custom Cursor component takes over) */
+  @media (hover: hover) {
+    html, a, button, [role=button] {
+      cursor: none !important;
+    }
+  }
+  /* Always show real cursor on touch devices */
+  @media (hover: none) {
+    html, a, button, [role=button] {
+      cursor: auto !important;
+    }
+  }
+
   ::selection {
     background: #00E5FF;
     color: #050505;

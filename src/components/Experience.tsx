@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, useScroll, useSpring } from 'framer-motion';
 import { Calendar, MapPin, CheckCircle2, ExternalLink, Sparkles, Award, Trophy, Code2, Briefcase, FileText, Download, X, ShieldCheck } from 'lucide-react';
 import { EXPERIENCE_ITEMS } from '../data/portfolioData';
 import { ExperienceItem } from '../types/portfolio';
+import { SectionHeading } from './SectionHeading';
+import { useReducedMotion } from '../hooks/useReducedMotion';
+import { VIEWPORT_ONCE, EASE_OUT } from '../lib/animation';
 
 const getTypeIcon = (type: ExperienceItem['type']) => {
   switch (type) {
@@ -36,6 +39,14 @@ const getBadgeStyle = (type: ExperienceItem['type']) => {
 
 export const Experience: React.FC = () => {
   const [selectedProof, setSelectedProof] = useState<{ title: string; pdfUrl: string; offerId?: string } | null>(null);
+  const reduced = useReducedMotion();
+  // Ref wrapping the entire timeline for scroll-driven line draw
+  const timelineRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ['start 80%', 'end 20%'],
+  });
+  const lineScaleY = useSpring(scrollYProgress, { stiffness: 80, damping: 20 });
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -64,19 +75,26 @@ export const Experience: React.FC = () => {
         
         {/* Section Header */}
         <div className="mb-14">
-          <span className="font-mono text-xs text-[#00E5FF] font-semibold uppercase tracking-wider block mb-1">
-            02. Engineering Path & Simulations
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-100 tracking-tight">
-            Experience & Virtual Engineering Simulations
-          </h2>
-          <p className="text-slate-400 text-sm mt-2 max-w-2xl">
-            Chronological narrative covering corporate internships, ambassadorship, corporate job simulations, hackathon platforms, and engineering focus.
-          </p>
+          <SectionHeading
+            label="02. Engineering Path & Simulations"
+            title="Experience & Virtual Engineering Simulations"
+            subtitle="Chronological narrative covering corporate internships, ambassadorship, corporate job simulations, hackathon platforms, and engineering focus."
+          />
         </div>
 
-        {/* Timeline Container — single col on mobile/tablet, alternating on lg+ */}
-        <div className="relative space-y-8 sm:space-y-10 before:absolute before:inset-0 before:left-3.5 lg:before:left-1/2 before:-translate-x-px before:w-0.5 before:bg-gradient-to-b before:from-[#00E5FF] before:to-transparent">
+        {/* Timeline Container — scroll-driven line draw */}
+        <div ref={timelineRef} className="relative space-y-8 sm:space-y-10">
+          {/* Animated timeline line (replaces CSS before: pseudo-element) */}
+          <div className="absolute left-3.5 lg:left-1/2 top-0 bottom-0 -translate-x-px w-0.5 overflow-hidden pointer-events-none">
+            {reduced ? (
+              <div className="absolute inset-0 bg-gradient-to-b from-[#00E5FF] to-transparent" />
+            ) : (
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-b from-[#00E5FF] via-[#3B0A6B] to-transparent origin-top"
+                style={{ scaleY: lineScaleY }}
+              />
+            )}
+          </div>
           {EXPERIENCE_ITEMS.map((item, idx) => {
             const isEven = idx % 2 === 0;
             return (
@@ -84,8 +102,8 @@ export const Experience: React.FC = () => {
                 key={item.id}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.08 }}
+                viewport={VIEWPORT_ONCE}
+                transition={{ duration: 0.5, ease: EASE_OUT, delay: idx * 0.06 }}
                 className={`relative flex flex-col lg:flex-row items-start ${
                   isEven ? 'lg:flex-row-reverse' : ''
                 }`}

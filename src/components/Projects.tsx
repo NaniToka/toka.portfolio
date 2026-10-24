@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Github, FileCode, Linkedin } from 'lucide-react';
 import { PROJECTS } from '../data/portfolioData';
 import { Project } from '../types/portfolio';
+import { SectionHeading } from './SectionHeading';
+import { EASE_OUT, VIEWPORT_ONCE } from '../lib/animation';
 
 type TabType = 'problem' | 'solution' | 'tech';
 
@@ -35,8 +37,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, idx }) => {
     <motion.article 
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: idx * 0.1 }}
+      viewport={VIEWPORT_ONCE}
+      transition={{ duration: 0.5, ease: EASE_OUT, delay: idx * 0.08 }}
       className="glass-card card-hover rounded-xl p-6 sm:p-8 relative overflow-hidden group"
     >
       {/* Top Accent Indicator */}
@@ -228,15 +230,11 @@ export const Projects: React.FC = () => {
         
         {/* Section Header */}
         <div className="mb-12">
-          <span className="font-mono text-xs text-[#00E5FF] font-semibold uppercase tracking-wider block mb-1">
-            03. Production Case Studies
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-100 tracking-tight">
-            Flagship Case Studies
-          </h2>
-          <p className="text-slate-400 text-sm mt-2 max-w-2xl">
-            Production systems built with AI-native workflows, cloud-native containerized architectures, and verified benchmarks.
-          </p>
+          <SectionHeading
+            label="03. Production Case Studies"
+            title="Flagship Case Studies"
+            subtitle="Production systems built with AI-native workflows, cloud-native containerized architectures, and verified benchmarks."
+          />
         </div>
 
         {/* Flagship Projects Stack */}
