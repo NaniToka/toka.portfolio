@@ -17,6 +17,8 @@ import { ScrollProgress } from './components/ScrollProgress';
 import { Cursor } from './components/Cursor';
 import { ThemeProvider } from './context/ThemeContext';
 
+import { ErrorBoundary } from './components/ErrorBoundary';
+
 export const App: React.FC = () => {
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
 
@@ -47,17 +49,39 @@ export const App: React.FC = () => {
         <Navbar onOpenResume={handleOpenResume} />
 
         <main id="main-content" className="relative z-10">
-          <Hero onOpenResume={handleOpenResume} />
-          <About />
-          <GitHubActivity />
-          <Experience />
-          <Projects />
-          <Skills />
-          <Certs />
-          <Achievements />
-          <Wins />
-          <Setbacks />
-          <Contact onOpenResume={handleOpenResume} />
+          <ErrorBoundary name="Hero">
+            <Hero onOpenResume={handleOpenResume} />
+          </ErrorBoundary>
+          <ErrorBoundary name="About">
+            <About />
+          </ErrorBoundary>
+          <ErrorBoundary name="GitHubActivity">
+            <GitHubActivity />
+          </ErrorBoundary>
+          <ErrorBoundary name="Experience">
+            <Experience />
+          </ErrorBoundary>
+          <ErrorBoundary name="Projects">
+            <Projects />
+          </ErrorBoundary>
+          <ErrorBoundary name="Skills">
+            <Skills />
+          </ErrorBoundary>
+          <ErrorBoundary name="Certs">
+            <Certs />
+          </ErrorBoundary>
+          <ErrorBoundary name="Achievements">
+            <Achievements />
+          </ErrorBoundary>
+          <ErrorBoundary name="Wins">
+            <Wins />
+          </ErrorBoundary>
+          <ErrorBoundary name="Setbacks">
+            <Setbacks />
+          </ErrorBoundary>
+          <ErrorBoundary name="Contact">
+            <Contact onOpenResume={handleOpenResume} />
+          </ErrorBoundary>
         </main>
 
         <Footer />

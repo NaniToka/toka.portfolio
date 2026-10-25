@@ -68,6 +68,9 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     if (mediaQuery.addEventListener) {
       mediaQuery.addEventListener('change', handleChange);
       return () => mediaQuery.removeEventListener('change', handleChange);
+    } else if ((mediaQuery as any).addListener) {
+      (mediaQuery as any).addListener(handleChange);
+      return () => (mediaQuery as any).removeListener(handleChange);
     }
   }, []);
 

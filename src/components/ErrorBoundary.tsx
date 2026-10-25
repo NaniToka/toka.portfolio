@@ -22,13 +22,11 @@ export class ErrorBoundary extends Component<Props, State> {
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    if (import.meta.env.DEV) {
-      console.error(
-        `[ErrorBoundary${this.props.name ? `:${this.props.name}` : ''}] Caught error:`,
-        error,
-        errorInfo
-      );
-    }
+    console.error(
+      `[ErrorBoundary${this.props.name ? `:${this.props.name}` : ''}] Caught error:`,
+      error,
+      errorInfo
+    );
   }
 
   handleReload = () => {
@@ -41,8 +39,10 @@ export class ErrorBoundary extends Component<Props, State> {
         return this.props.fallback;
       }
 
+      const isRoot = !this.props.name || this.props.name === 'Root';
+
       return (
-        <div className="min-h-screen flex flex-col items-center justify-center bg-[#050505] text-[#FFFFFF] px-4 font-sans text-center">
+        <div className={`${isRoot ? 'min-h-screen' : 'py-12 my-6 w-full'} flex flex-col items-center justify-center bg-[#050505] text-[#FFFFFF] px-4 font-sans text-center`}>
           <div className="max-w-md w-full p-8 rounded-2xl bg-[#0a0a0f] border border-[rgba(0,229,255,0.2)] shadow-2xl space-y-5">
             <div className="w-12 h-12 mx-auto rounded-full bg-[rgba(0,229,255,0.1)] border border-[rgba(0,229,255,0.3)] flex items-center justify-center text-[#00E5FF]">
               <span className="font-mono font-bold text-lg">!</span>

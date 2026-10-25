@@ -14,8 +14,13 @@ export function useReducedMotion(): boolean {
       setShouldReduceMotion(mediaQuery.matches);
     };
 
-    mediaQuery.addEventListener('change', handleChange);
-    return () => mediaQuery.removeEventListener('change', handleChange);
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener('change', handleChange);
+      return () => mediaQuery.removeEventListener('change', handleChange);
+    } else if ((mediaQuery as any).addListener) {
+      (mediaQuery as any).addListener(handleChange);
+      return () => (mediaQuery as any).removeListener(handleChange);
+    }
   }, []);
 
   return shouldReduceMotion;

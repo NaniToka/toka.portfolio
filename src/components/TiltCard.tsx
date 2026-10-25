@@ -20,16 +20,33 @@ export const TiltCard: React.FC<TiltCardProps> = ({
   maxTilt = 6,
 }) => {
   const reduced = useReducedMotion();
-  const [isTouch, setIsTouch] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    setIsTouch(
+  const [isTouch, setIsTouch] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    return (
       window.matchMedia('(hover: none)').matches ||
       navigator.maxTouchPoints > 0 ||
       'ontouchstart' in window
     );
+  });
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const mq = window.matchMedia('(hover: none)');
+    const onChange = () => {
+      setIsTouch(
+        mq.matches ||
+        navigator.maxTouchPoints > 0 ||
+        'ontouchstart' in window
+      );
+    };
+    if (mq.addEventListener) {
+      mq.addEventListener('change', onChange);
+      return () => mq.removeEventListener('change', onChange);
+    } else if ((mq as any).addListener) {
+      (mq as any).addListener(onChange);
+      return () => (mq as any).removeListener(onChange);
+    }
   }, []);
 
   // Raw motion values for cursor position inside card (-0.5 to +0.5)
@@ -48,11 +65,17 @@ export const TiltCard: React.FC<TiltCardProps> = ({
   const shimmerX = useTransform(springX, [-0.5, 0.5], [0, 100]);
   const shimmerY = useTransform(springY, [-0.5, 0.5], [0, 100]);
 
-  if (reduced || isTouch) {
-    return <div className={className}>{children}</div>;
-  }
+  // Shimmer background gradient — hook called unconditionally at top level
+  const shimmerBackground = useTransform(
+    [shimmerX, shimmerY],
+    ([x, y]) =>
+      `radial-gradient(circle at ${x}% ${y}%, rgba(0,229,255,0.08) 0%, transparent 60%)`
+  );
+
+  const isInteractive = !reduced && !isTouch;
 
   const onMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!isInteractive) return;
     const el = ref.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();
@@ -61,6 +84,7 @@ export const TiltCard: React.FC<TiltCardProps> = ({
   };
 
   const onMouseLeave = () => {
+    if (!isInteractive) return;
     rawX.set(0);
     rawY.set(0);
   };
@@ -69,34 +93,38 @@ export const TiltCard: React.FC<TiltCardProps> = ({
     <motion.div
       ref={ref}
       className={`relative overflow-hidden ${className}`}
-      style={{
-        rotateX,
-        rotateY,
-        transformStyle: 'preserve-3d',
-        perspective: 800,
-      }}
-      onMouseMove={onMouseMove}
-      onMouseLeave={onMouseLeave}
-      whileHover={{
-        scale: 1.02,
-        boxShadow: '0 16px 40px -8px rgba(0,229,255,0.2)',
-        transition: { type: 'spring', stiffness: 300, damping: 22 },
-      }}
+      style={
+        isInteractive
+          ? {
+              rotateX,
+              rotateY,
+              transformStyle: 'preserve-3d',
+              perspective: 800,
+            }
+          : undefined
+      }
+      onMouseMove={isInteractive ? onMouseMove : undefined}
+      onMouseLeave={isInteractive ? onMouseLeave : undefined}
+      whileHover={
+        isInteractive
+          ? {
+              scale: 1.02,
+              boxShadow: '0 16px 40px -8px rgba(0,229,255,0.2)',
+              transition: { type: 'spring', stiffness: 300, damping: 22 },
+            }
+          : undefined
+      }
     >
       {children}
 
       {/* Specular shimmer overlay — pointer-events none so it doesn't block clicks */}
-      <motion.div
-        className="pointer-events-none absolute inset-0 rounded-[inherit]"
-        style={{
-          background: useTransform(
-            [shimmerX, shimmerY],
-            ([x, y]) =>
-              `radial-gradient(circle at ${x}% ${y}%, rgba(0,229,255,0.08) 0%, transparent 60%)`
-          ),
-        }}
-        aria-hidden="true"
-      />
+      {isInteractive && (
+        <motion.div
+          className="pointer-events-none absolute inset-0 rounded-[inherit]"
+          style={{ background: shimmerBackground }}
+          aria-hidden="true"
+        />
+      )}
     </motion.div>
   );
 };
