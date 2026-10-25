@@ -19,7 +19,7 @@ const FloatingIcosahedron: React.FC = () => {
   useFrame(({ clock }) => {
     const t = clock.getElapsedTime();
 
-    // Slow auto-rotation — purposeful, not dizzy
+    // Slow, purposeful auto-rotation
     if (meshRef.current) {
       meshRef.current.rotation.x = t * 0.12;
       meshRef.current.rotation.y = t * 0.18;
@@ -29,36 +29,38 @@ const FloatingIcosahedron: React.FC = () => {
       wireRef.current.rotation.y = meshRef.current.rotation.y;
     }
 
-    // Gentle float & mouse parallax
+    // Gentle vertical float & mouse parallax (capped within ±0.25 range)
     if (groupRef.current) {
-      groupRef.current.position.y = Math.sin(t * 0.5) * 0.12;
+      groupRef.current.position.y = Math.sin(t * 0.5) * 0.14;
       groupRef.current.rotation.y +=
-        (mouse.x * 0.4 - groupRef.current.rotation.y) * 0.04;
+        (mouse.x * 0.35 - groupRef.current.rotation.y) * 0.04;
       groupRef.current.rotation.x +=
-        (-mouse.y * 0.3 - groupRef.current.rotation.x) * 0.04;
+        (-mouse.y * 0.25 - groupRef.current.rotation.x) * 0.04;
     }
   });
 
   return (
     <group ref={groupRef}>
-      {/* Solid amethyst core */}
+      {/* Royal amethyst core with subtle emissive depth */}
       <Icosahedron ref={meshRef} args={[1, 0]}>
         <meshStandardMaterial
           color={PURPLE}
+          emissive="#1F043A"
+          emissiveIntensity={0.3}
+          roughness={0.25}
+          metalness={0.45}
           transparent
-          opacity={0.75}
-          roughness={0.2}
-          metalness={0.5}
+          opacity={0.82}
         />
       </Icosahedron>
 
-      {/* Cyan wireframe overlay */}
-      <Icosahedron ref={wireRef} args={[1.02, 0]}>
+      {/* Thin electric cyan wireframe overlay */}
+      <Icosahedron ref={wireRef} args={[1.025, 0]}>
         <meshBasicMaterial
           color={CYAN}
           wireframe
           transparent
-          opacity={0.55}
+          opacity={0.65}
         />
       </Icosahedron>
     </group>
@@ -69,28 +71,34 @@ const FloatingIcosahedron: React.FC = () => {
 const Scene: React.FC = () => {
   const { size } = useThree();
 
-  // Scale down on small screens
-  const scale = Math.min(1, size.width / 600);
+  const isDesktop = size.width >= 1024;
+  const isTablet = size.width >= 640 && size.width < 1024;
+
+  // Scale and position: on desktop, gracefully float in the right-column ambient space
+  const scale = isDesktop ? 1.05 : isTablet ? 0.8 : Math.min(0.65, size.width / 520);
+  const position: [number, number, number] = isDesktop
+    ? [1.35, 0.05, -0.4]
+    : [0, -0.2, -0.5];
 
   return (
     <>
-      {/* Ambient + point lights for material shading */}
-      <ambientLight intensity={0.4} color={PURPLE} />
-      <pointLight position={[3, 3, 3]} intensity={1.2} color={CYAN} />
-      <pointLight position={[-3, -2, -2]} intensity={0.5} color={PURPLE} />
+      {/* Ambient amethyst light + electric cyan key point light */}
+      <ambientLight intensity={0.45} color={PURPLE} />
+      <pointLight position={[3.5, 3, 2.5]} intensity={1.3} color={CYAN} />
+      <pointLight position={[-3, -2, -1.5]} intensity={0.6} color={PURPLE} />
 
       {/* Particle field — Drei Sparkles, minimal footprint */}
       <DreiSparkles
-        count={60}
-        scale={[8, 8, 8]}
-        size={0.6}
-        speed={0.25}
-        opacity={0.55}
+        count={48}
+        scale={[9, 9, 7]}
+        size={0.65}
+        speed={0.2}
+        opacity={0.5}
         color={CYAN}
       />
 
       {/* Main icosahedron */}
-      <group scale={scale}>
+      <group position={position} scale={scale}>
         <FloatingIcosahedron />
       </group>
     </>

@@ -67,7 +67,7 @@ export const Experience: React.FC = () => {
   }, [selectedProof]);
 
   return (
-    <section id="experience" className="py-12 sm:py-20 relative">
+    <section id="experience" className="py-12 sm:py-20 relative scroll-mt-20 sm:scroll-mt-24">
       {/* Background Soft Glow Orb */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[rgba(0,229,255,0.05)] blur-[160px] rounded-full pointer-events-none z-0" />
 

@@ -4,6 +4,7 @@ import { ExternalLink, Github, FileCode, Linkedin } from 'lucide-react';
 import { PROJECTS } from '../data/portfolioData';
 import { Project } from '../types/portfolio';
 import { SectionHeading } from './SectionHeading';
+import { TiltCard } from './TiltCard';
 import { EASE_OUT, VIEWPORT_ONCE } from '../lib/animation';
 
 type TabType = 'problem' | 'solution' | 'tech';
@@ -39,10 +40,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, idx }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={VIEWPORT_ONCE}
       transition={{ duration: 0.5, ease: EASE_OUT, delay: idx * 0.08 }}
-      className="glass-card card-hover rounded-xl p-6 sm:p-8 relative overflow-hidden group"
     >
-      {/* Top Accent Indicator */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#00E5FF] via-[#33EEFF] to-transparent" />
+      <TiltCard maxTilt={3.5} className="glass-card card-hover rounded-xl p-6 sm:p-8 relative overflow-hidden group">
+        {/* Top Accent Indicator */}
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#00E5FF] via-[#33EEFF] to-transparent" />
 
       <div className="flex flex-col lg:flex-row gap-6 lg:items-start justify-between">
         
@@ -212,8 +213,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, idx }) => {
             </a>
           )}
         </div>
-
-      </div>
+        </div>
+      </TiltCard>
     </motion.article>
   );
 };
@@ -225,7 +226,7 @@ export const Projects: React.FC = () => {
   const otherProjects = PROJECTS.filter((p) => !p.featured);
 
   return (
-    <section id="projects" className="py-12 sm:py-20 relative">
+    <section id="projects" className="py-12 sm:py-20 relative scroll-mt-20 sm:scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}

@@ -1,10 +1,11 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { ShieldAlert, FileText } from 'lucide-react';
 import { SETBACKS } from '../data/portfolioData';
 
 export const Setbacks: React.FC = () => {
   return (
-    <section id="setbacks" className="py-12 sm:py-20 relative">
+    <section id="setbacks" className="py-12 sm:py-20 relative scroll-mt-20 sm:scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-4 mb-12">
           <div className="h-px bg-[rgba(0,229,255,0.15)] flex-1" />
@@ -16,9 +17,13 @@ export const Setbacks: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 gap-8">
-          {SETBACKS.map((setback) => (
-            <div
+          {SETBACKS.map((setback, idx) => (
+            <motion.div
               key={setback.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: idx * 0.1 }}
               className="bg-[#050505] border border-[rgba(0,229,255,0.15)] rounded-xl p-6 md:p-8 hover:border-[rgba(0,229,255,0.3)] transition-all duration-300 group"
             >
               <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-6">
@@ -58,7 +63,7 @@ export const Setbacks: React.FC = () => {
                   )}
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

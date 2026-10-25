@@ -1,4 +1,4 @@
-import React, { useRef, ReactNode } from 'react';
+import React, { useRef, ReactNode, useState, useEffect } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { useReducedMotion } from '../hooks/useReducedMotion';
 
@@ -12,7 +12,7 @@ interface TiltCardProps {
  * 3D tilt card.
  * On hover: tilts up to `maxTilt` degrees toward the cursor,
  * adds a subtle specular highlight that follows the cursor, and lifts with a glow.
- * On reduced motion: passes children through untouched — no tilt, no glow.
+ * On reduced motion or touch devices: passes children through untouched.
  */
 export const TiltCard: React.FC<TiltCardProps> = ({
   children,
@@ -20,7 +20,17 @@ export const TiltCard: React.FC<TiltCardProps> = ({
   maxTilt = 6,
 }) => {
   const reduced = useReducedMotion();
+  const [isTouch, setIsTouch] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    setIsTouch(
+      window.matchMedia('(hover: none)').matches ||
+      navigator.maxTouchPoints > 0 ||
+      'ontouchstart' in window
+    );
+  }, []);
 
   // Raw motion values for cursor position inside card (-0.5 to +0.5)
   const rawX = useMotionValue(0);
@@ -38,7 +48,7 @@ export const TiltCard: React.FC<TiltCardProps> = ({
   const shimmerX = useTransform(springX, [-0.5, 0.5], [0, 100]);
   const shimmerY = useTransform(springY, [-0.5, 0.5], [0, 100]);
 
-  if (reduced) {
+  if (reduced || isTouch) {
     return <div className={className}>{children}</div>;
   }
 

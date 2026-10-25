@@ -20,7 +20,7 @@ export const Skills: React.FC = () => {
   const reduced = useReducedMotion();
 
   return (
-    <section id="skills" className="py-12 sm:py-20 relative">
+    <section id="skills" className="py-12 sm:py-20 relative scroll-mt-20 sm:scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <div className="mb-12">

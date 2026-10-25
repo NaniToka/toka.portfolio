@@ -5,7 +5,7 @@ import { WINS } from '../data/portfolioData';
 
 export const Wins: React.FC = () => {
   return (
-    <section id="wins" className="py-12 sm:py-20 relative">
+    <section id="wins" className="py-12 sm:py-20 relative scroll-mt-20 sm:scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}

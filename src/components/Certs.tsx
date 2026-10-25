@@ -111,7 +111,7 @@ export const Certs: React.FC = () => {
       : CERTIFICATIONS.filter(c => CATEGORIES.find(cat => cat.key === activeTab)?.ids.includes(c.id));
 
   return (
-    <section id="certifications" className="py-12 sm:py-20 relative">
+    <section id="certifications" className="py-12 sm:py-20 relative scroll-mt-20 sm:scroll-mt-24">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* ── Header ── */}

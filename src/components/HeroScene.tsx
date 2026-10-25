@@ -42,7 +42,7 @@ export const HeroScene: React.FC = () => {
   }
 
   return (
-    <div className="absolute inset-0 z-0" aria-hidden="true">
+    <div className="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
       <ErrorBoundary name="HeroScene" fallback={<StaticGradientFallback />}>
         <Suspense fallback={<StaticGradientFallback />}>
           <HeroSceneCanvas />

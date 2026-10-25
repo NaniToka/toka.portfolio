@@ -87,7 +87,7 @@ export const Contact: React.FC<ContactProps> = ({ onOpenResume }) => {
   };
 
   return (
-    <section id="contact" className="py-12 sm:py-20 relative border-t border-slate-200 dark:border-[rgba(0,229,255,0.15)] bg-slate-100/50 dark:bg-[#050505]">
+    <section id="contact" className="py-12 sm:py-20 relative scroll-mt-20 sm:scroll-mt-24 border-t border-slate-200 dark:border-[rgba(0,229,255,0.15)] bg-slate-100/50 dark:bg-[#050505]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">

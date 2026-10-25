@@ -9,7 +9,7 @@ import { useReducedMotion } from '../hooks/useReducedMotion';
 export const Achievements: React.FC = () => {
   const reduced = useReducedMotion();
   return (
-    <section id="achievements" className="py-12 sm:py-20 relative">
+    <section id="achievements" className="py-12 sm:py-20 relative scroll-mt-20 sm:scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="mb-12">
