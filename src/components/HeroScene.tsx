@@ -52,14 +52,22 @@ export const HeroScene: React.FC = () => {
   );
 };
 
-/** Static gradient fallback — always renders cleanly with zero JS overhead */
+/** Static gradient fallback — always renders cleanly with zero JS overhead and brand palette fidelity */
 const StaticGradientFallback: React.FC = () => (
   <div
-    className="absolute inset-0 z-0"
+    className="absolute inset-0 z-0 overflow-hidden pointer-events-none"
     style={{
       background:
-        'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,229,255,0.12) 0%, rgba(59,10,107,0.15) 40%, transparent 70%)',
+        'radial-gradient(ellipse 75% 65% at 75% 35%, rgba(0,229,255,0.13) 0%, rgba(59,10,107,0.25) 45%, rgba(5,5,5,0.95) 75%)',
     }}
     aria-hidden="true"
-  />
+  >
+    <div
+      className="absolute inset-0"
+      style={{
+        background:
+          'radial-gradient(circle at 25% 65%, rgba(59,10,107,0.16) 0%, transparent 55%)',
+      }}
+    />
+  </div>
 );

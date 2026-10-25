@@ -48,30 +48,43 @@ export const Skills: React.FC = () => {
               }
             >
               {/* TiltCard wraps each skill card */}
-              <TiltCard className="glass-card rounded-xl p-6 flex flex-col justify-between h-full">
+              <TiltCard maxTilt={3} className="glass-card rounded-xl p-6 flex flex-col justify-between h-full relative overflow-hidden group">
+                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[rgba(0,229,255,0.4)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div>
                   <div className="flex items-center gap-3 pb-3 mb-4 border-b border-[rgba(0,229,255,0.15)]">
-                    {iconMap[cat.iconName] || <Code className="w-5 h-5 text-[#00E5FF]" />}
+                    <div className="p-2 rounded-lg bg-[rgba(59,10,107,0.7)] border border-[rgba(0,229,255,0.25)] text-[#00E5FF] shadow-sm shadow-[rgba(0,229,255,0.15)]">
+                      {iconMap[cat.iconName] || <Code className="w-5 h-5 text-[#00E5FF]" />}
+                    </div>
                     <h3 className="font-mono text-sm font-semibold text-white uppercase tracking-wide">
                       {cat.category}
                     </h3>
                   </div>
 
-                  <div className="flex flex-wrap gap-2">
+                  <motion.div
+                    className="flex flex-wrap gap-2"
+                    variants={reduced ? {} : staggerContainer(0.03)}
+                  >
                     {cat.skills.map((skill) => (
                       <motion.span
                         key={skill}
+                        variants={reduced
+                          ? {}
+                          : { hidden: { opacity: 0, scale: 0.95 }, visible: { opacity: 1, scale: 1 } }
+                        }
                         whileHover={reduced ? {} : {
-                          borderColor: 'rgba(0,229,255,0.5)',
-                          backgroundColor: 'rgba(0,229,255,0.08)',
+                          scale: 1.05,
+                          borderColor: 'rgba(0,229,255,0.6)',
+                          backgroundColor: 'rgba(0,229,255,0.12)',
+                          boxShadow: '0 0 12px rgba(0,229,255,0.2)',
                           transition: { duration: 0.15 },
                         }}
-                        className="px-2.5 py-1 rounded-md text-xs font-mono bg-[rgba(59,10,107,0.5)] text-[rgba(255,255,255,0.8)] border border-[rgba(0,229,255,0.15)] cursor-default"
+                        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-mono bg-[rgba(59,10,107,0.5)] text-[rgba(255,255,255,0.85)] border border-[rgba(0,229,255,0.15)] cursor-default transition-colors"
                       >
+                        <span className="w-1 h-1 rounded-full bg-[#00E5FF] opacity-60" aria-hidden="true" />
                         {skill}
                       </motion.span>
                     ))}
-                  </div>
+                  </motion.div>
                 </div>
               </TiltCard>
             </motion.div>

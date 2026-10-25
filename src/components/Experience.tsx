@@ -4,6 +4,7 @@ import { Calendar, MapPin, CheckCircle2, ExternalLink, Sparkles, Award, Trophy, 
 import { EXPERIENCE_ITEMS } from '../data/portfolioData';
 import { ExperienceItem } from '../types/portfolio';
 import { SectionHeading } from './SectionHeading';
+import { TiltCard } from './TiltCard';
 import { useReducedMotion } from '../hooks/useReducedMotion';
 import { VIEWPORT_ONCE, EASE_OUT } from '../lib/animation';
 
@@ -109,13 +110,20 @@ export const Experience: React.FC = () => {
                 }`}
               >
                 {/* Timeline Dot — left on mobile, center on lg */}
-                <div className="absolute left-3.5 lg:left-1/2 -translate-x-1/2 top-2 w-8 h-8 rounded-full bg-[#3B0A6B] border-2 border-[#00E5FF] flex items-center justify-center z-10 shadow-lg shadow-[rgba(0,229,255,0.2)]">
+                <motion.div
+                  initial={reduced ? {} : { scale: 0.8 }}
+                  whileInView={reduced ? {} : { scale: [0.8, 1.15, 1] }}
+                  viewport={VIEWPORT_ONCE}
+                  transition={{ duration: 0.4 }}
+                  className="absolute left-3.5 lg:left-1/2 -translate-x-1/2 top-2 w-8 h-8 rounded-full bg-[#3B0A6B] border-2 border-[#00E5FF] flex items-center justify-center z-10 shadow-lg shadow-[rgba(0,229,255,0.25)]"
+                >
                   {getTypeIcon(item.type)}
-                </div>
+                </motion.div>
 
                 {/* Card — full width on mobile, half on lg */}
                 <div className="w-full lg:w-[calc(50%-2.25rem)] pl-12 lg:pl-0 min-w-0">
-                  <div className="glass-card card-hover rounded-xl p-6 space-y-4 relative overflow-hidden group">
+                  <TiltCard maxTilt={2} className="rounded-xl">
+                    <div className="glass-card card-hover rounded-xl p-6 space-y-4 relative overflow-hidden group">
                     
                     {/* Top Badge & Duration */}
                     <div className="flex flex-wrap items-center justify-between gap-2">
@@ -226,7 +234,8 @@ export const Experience: React.FC = () => {
                       </div>
                     )}
 
-                  </div>
+                    </div>
+                  </TiltCard>
                 </div>
               </motion.div>
             );

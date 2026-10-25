@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Sparkles, Zap, Cloud, ShieldCheck, MapPin, ExternalLink, Github } from 'lucide-react';
 import { PERSONAL_INFO, SPECIALIZATIONS } from '../data/portfolioData';
+import { TiltCard } from './TiltCard';
 
 const specIconMap: Record<string, React.ReactNode> = {
   Zap: <Zap className="w-5 h-5 text-[#00E5FF]" />,
@@ -139,19 +140,22 @@ export const About: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: idx * 0.08 }}
-                className="glass-card card-hover rounded-xl p-5 flex flex-col justify-between"
               >
-                <div className="space-y-2">
-                  <div className="p-2 rounded-lg bg-[rgba(59,10,107,0.6)] border border-[rgba(0,229,255,0.2)] w-fit">
-                    {specIconMap[spec.iconName] || <Zap className="w-5 h-5 text-[#00E5FF]" />}
+                <TiltCard maxTilt={3} className="h-full rounded-xl">
+                  <div className="glass-card card-hover rounded-xl p-5 flex flex-col justify-between h-full">
+                    <div className="space-y-2">
+                      <div className="p-2 rounded-lg bg-[rgba(59,10,107,0.6)] border border-[rgba(0,229,255,0.2)] w-fit">
+                        {specIconMap[spec.iconName] || <Zap className="w-5 h-5 text-[#00E5FF]" />}
+                      </div>
+                      <h4 className="text-sm font-bold text-slate-100">
+                        {spec.title}
+                      </h4>
+                      <p className="text-xs text-slate-400 leading-relaxed">
+                        {spec.description}
+                      </p>
+                    </div>
                   </div>
-                  <h4 className="text-sm font-bold text-slate-100">
-                    {spec.title}
-                  </h4>
-                  <p className="text-xs text-slate-400 leading-relaxed">
-                    {spec.description}
-                  </p>
-                </div>
+                </TiltCard>
               </motion.div>
             ))}
           </div>
@@ -183,71 +187,77 @@ export const About: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="glass-card card-hover rounded-xl p-5 flex flex-col justify-between space-y-3">
-              <div className="space-y-2">
-                <div className="flex items-center justify-between">
-                  <h4 className="font-mono font-bold text-slate-100 text-sm flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-[#00E5FF]" /> TokenFlow-AI
-                  </h4>
-                  <span className="font-mono text-[10px] text-slate-400 border border-[rgba(0,229,255,0.15)] px-2 py-0.5 rounded">Python / FastAPI</span>
+            <TiltCard maxTilt={2.5} className="h-full rounded-xl">
+              <div className="glass-card card-hover rounded-xl p-5 flex flex-col justify-between space-y-3 h-full">
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <h4 className="font-mono font-bold text-slate-100 text-sm flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-[#00E5FF]" /> TokenFlow-AI
+                    </h4>
+                    <span className="font-mono text-[10px] text-slate-400 border border-[rgba(0,229,255,0.15)] px-2 py-0.5 rounded">Python / FastAPI</span>
+                  </div>
+                  <p className="text-xs text-slate-300 leading-relaxed">
+                    Prompt memory optimizer middleware reducing token overhead by ~74% via vector decay scoring.
+                  </p>
                 </div>
-                <p className="text-xs text-slate-300 leading-relaxed">
-                  Prompt memory optimizer middleware reducing token overhead by ~74% via vector decay scoring.
-                </p>
+                <a
+                  href="https://github.com/NaniToka/TokenFlow-AI"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 font-mono text-xs text-[#00E5FF] hover:text-[#33EEFF] pt-2 border-t border-[rgba(0,229,255,0.15)] focus-visible:outline-[#00E5FF]"
+                >
+                  <Github className="w-3.5 h-3.5" /> View Repository
+                </a>
               </div>
-              <a
-                href="https://github.com/NaniToka/TokenFlow-AI"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 font-mono text-xs text-[#00E5FF] hover:text-[#33EEFF] pt-2 border-t border-[rgba(0,229,255,0.15)]"
-              >
-                <Github className="w-3.5 h-3.5" /> View Repository
-              </a>
-            </div>
+            </TiltCard>
 
-            <div className="glass-card card-hover rounded-xl p-5 flex flex-col justify-between space-y-3">
-              <div className="space-y-2">
-                <div className="flex items-center justify-between">
-                  <h4 className="font-mono font-bold text-slate-100 text-sm flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-[#00E5FF]" /> BiasGuard-AI
-                  </h4>
-                  <span className="font-mono text-[10px] text-slate-400 border border-[rgba(0,229,255,0.15)] px-2 py-0.5 rounded">Python / Cloud Run</span>
+            <TiltCard maxTilt={2.5} className="h-full rounded-xl">
+              <div className="glass-card card-hover rounded-xl p-5 flex flex-col justify-between space-y-3 h-full">
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <h4 className="font-mono font-bold text-slate-100 text-sm flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-[#00E5FF]" /> BiasGuard-AI
+                    </h4>
+                    <span className="font-mono text-[10px] text-slate-400 border border-[rgba(0,229,255,0.15)] px-2 py-0.5 rounded">Python / Cloud Run</span>
+                  </div>
+                  <p className="text-xs text-slate-300 leading-relaxed">
+                    Forensic ML bias auditing platform streaming decision logs on Cloud Run & Vertex AI for UN SDG fairness metrics.
+                  </p>
                 </div>
-                <p className="text-xs text-slate-300 leading-relaxed">
-                  Forensic ML bias auditing platform streaming decision logs on Cloud Run & Vertex AI for UN SDG fairness metrics.
-                </p>
+                <a
+                  href="https://github.com/NaniToka/unbiased-ai-decision"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 font-mono text-xs text-[#00E5FF] hover:text-[#33EEFF] pt-2 border-t border-[rgba(0,229,255,0.15)] focus-visible:outline-[#00E5FF]"
+                >
+                  <Github className="w-3.5 h-3.5" /> View Repository
+                </a>
               </div>
-              <a
-                href="https://github.com/NaniToka/unbiased-ai-decision"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 font-mono text-xs text-[#00E5FF] hover:text-[#33EEFF] pt-2 border-t border-[rgba(0,229,255,0.15)]"
-              >
-                <Github className="w-3.5 h-3.5" /> View Repository
-              </a>
-            </div>
+            </TiltCard>
 
-            <div className="glass-card card-hover rounded-xl p-5 flex flex-col justify-between space-y-3">
-              <div className="space-y-2">
-                <div className="flex items-center justify-between">
-                  <h4 className="font-mono font-bold text-slate-100 text-sm flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400" /> CivicPulse-AI
-                  </h4>
-                  <span className="font-mono text-[10px] text-slate-400 border border-[rgba(0,229,255,0.15)] px-2 py-0.5 rounded">TypeScript / React</span>
+            <TiltCard maxTilt={2.5} className="h-full rounded-xl">
+              <div className="glass-card card-hover rounded-xl p-5 flex flex-col justify-between space-y-3 h-full">
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <h4 className="font-mono font-bold text-slate-100 text-sm flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-emerald-400" /> CivicPulse-AI
+                    </h4>
+                    <span className="font-mono text-[10px] text-slate-400 border border-[rgba(0,229,255,0.15)] px-2 py-0.5 rounded">TypeScript / React</span>
+                  </div>
+                  <p className="text-xs text-slate-300 leading-relaxed">
+                    Multilingual civic decision intelligence layer converting citizen feedback into evidence-backed priority metrics.
+                  </p>
                 </div>
-                <p className="text-xs text-slate-300 leading-relaxed">
-                  Multilingual civic decision intelligence layer converting citizen feedback into evidence-backed priority metrics.
-                </p>
+                <a
+                  href="https://github.com/NaniToka/civicpulse-ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 font-mono text-xs text-[#00E5FF] hover:text-[#33EEFF] pt-2 border-t border-[rgba(0,229,255,0.15)] focus-visible:outline-[#00E5FF]"
+                >
+                  <Github className="w-3.5 h-3.5" /> View Repository
+                </a>
               </div>
-              <a
-                href="https://github.com/NaniToka/civicpulse-ai"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 font-mono text-xs text-[#00E5FF] hover:text-[#33EEFF] pt-2 border-t border-[rgba(0,229,255,0.15)]"
-              >
-                <Github className="w-3.5 h-3.5" /> View Repository
-              </a>
-            </div>
+            </TiltCard>
           </div>
         </motion.div>
 

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Terminal, FileText, Download, Github, Linkedin, Mail, ArrowDown } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { HeroScene } from './HeroScene';
+import { TiltCard } from './TiltCard';
 import { useReducedMotion } from '../hooks/useReducedMotion';
 import { EASE_OUT, SPRING_SNAPPY, fadeUp, staggerContainer, } from '../lib/animation';
 
@@ -174,7 +175,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
             </motion.div>
           </motion.div>
 
-          {/* ── Right column: Metric cards ── */}
+          {/* ── Right column: Metric cards with 3D depth ── */}
           <motion.div
             className="lg:col-span-5 space-y-3 sm:space-y-4"
             initial="hidden"
@@ -204,19 +205,17 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                   ? { hidden: { opacity: 0 }, visible: { opacity: 1 } }
                   : fadeUp()
                 }
-                whileHover={reduced ? {} : {
-                  scale: 1.02,
-                  boxShadow: '0 0 24px rgba(0,229,255,0.15)',
-                  transition: SPRING_SNAPPY,
-                }}
-                className="glass-card rounded-xl p-4 sm:p-5 border-l-4 border-l-[#00E5FF] cursor-default"
               >
-                <div className="flex items-center justify-between text-xs font-mono text-[#00E5FF] mb-1">
-                  <span>{label}</span>
-                  <span className={`font-semibold ${badgeClass}`}>{badge}</span>
-                </div>
-                <div className="text-xl sm:text-2xl font-bold text-white mb-1">{title}</div>
-                <p className="text-xs text-[rgba(255,255,255,0.6)] leading-relaxed">{body}</p>
+                <TiltCard maxTilt={3} className="rounded-xl">
+                  <div className="glass-card rounded-xl p-4 sm:p-5 border-l-4 border-l-[#00E5FF] cursor-default h-full">
+                    <div className="flex items-center justify-between text-xs font-mono text-[#00E5FF] mb-1">
+                      <span>{label}</span>
+                      <span className={`font-semibold ${badgeClass}`}>{badge}</span>
+                    </div>
+                    <div className="text-xl sm:text-2xl font-bold text-white mb-1">{title}</div>
+                    <p className="text-xs text-[rgba(255,255,255,0.65)] leading-relaxed">{body}</p>
+                  </div>
+                </TiltCard>
               </motion.div>
             ))}
           </motion.div>

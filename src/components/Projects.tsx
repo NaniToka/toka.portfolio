@@ -53,7 +53,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, idx }) => {
           {/* Title, Subtitle & Badges */}
           <div>
             <div className="flex flex-wrap items-center gap-2 mb-2">
-              <span className="px-2.5 py-0.5 rounded text-[11px] font-mono font-semibold uppercase tracking-wide bg-[rgba(59,10,107,0.8)] text-[#00E5FF] border border-[rgba(0,229,255,0.2)]">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[11px] font-mono font-semibold uppercase tracking-wide bg-[rgba(59,10,107,0.8)] text-[#00E5FF] border border-[rgba(0,229,255,0.2)]">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#00E5FF] animate-pulse shrink-0" aria-hidden="true" />
                 {project.subtitle}
               </span>
               {project.metrics && (
@@ -85,7 +86,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, idx }) => {
                   tabIndex={isActive ? 0 : -1}
                   onClick={() => setActiveTab(tab.id)}
                   onKeyDown={(e) => handleKeyDown(e, tab.id)}
-                  className={`px-3.5 py-1.5 text-xs font-mono font-semibold rounded-t-md border-b-2 transition-all cursor-pointer min-h-[38px] ${
+                  className={`px-3.5 py-1.5 text-xs font-mono font-semibold rounded-t-md border-b-2 transition-all cursor-pointer min-h-[38px] focus-visible:outline-[#00E5FF] ${
                     isActive
                       ? 'text-[#00E5FF] border-[#00E5FF] bg-[rgba(0,229,255,0.08)]'
                       : 'text-slate-400 border-transparent hover:text-slate-200 hover:bg-[rgba(59,10,107,0.3)]'
