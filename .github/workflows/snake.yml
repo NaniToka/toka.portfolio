@@ -26,7 +26,7 @@ jobs:
             dist/github-snake.svg?color_snake=#3B0A6B&color_dots=#ebedf0,#c9b3e6,#9b6fd1,#6a2db0,#3B0A6B
 
       - name: Push to output branch
-        uses: crazy-max/ghaction-github-pages@v3.5.0
+        uses: crazy-max/ghaction-github-pages@v5.0.0
         with:
           target_branch: output
           build_dir: dist
