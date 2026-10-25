@@ -53,17 +53,26 @@
     ]
   }
   </script>
-  <script type="module" crossorigin src="/assets/index-Dot3QFIe.js"></script>
-  <link rel="modulepreload" crossorigin href="/assets/three-vendor-7zxI2mg2.js">
-  <link rel="stylesheet" crossorigin href="/assets/index-C3bdvZ4V.css">
+  <script type="module" crossorigin src="/assets/index-Bzc5UaOs.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-gu2IROkP.css">
 </head>
 <body class="antialiased">
   <div id="root">
     <!-- Cold start loading skeleton to avoid blank screen during Render cold starts -->
-    <div style="min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #050505; color: #FFFFFF; font-family: sans-serif;">
+    <div id="loading-skeleton" style="min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #050505; color: #FFFFFF; font-family: sans-serif; text-align: center; padding: 1rem;">
       <div style="width: 44px; height: 44px; border: 3px solid rgba(0, 229, 255, 0.2); border-top-color: #00E5FF; border-radius: 50%; animation: spin 0.8s linear infinite;"></div>
       <p style="margin-top: 16px; font-size: 13px; font-family: monospace; color: #00E5FF; letter-spacing: 0.05em;">Loading Toka Nani Portfolio...</p>
+      <div id="slow-load-hint" style="display: none; margin-top: 24px; max-width: 380px;">
+        <p style="font-size: 12px; color: rgba(255, 255, 255, 0.6); margin-bottom: 12px;">Taking longer than usual? Render server may be waking up from sleep.</p>
+        <button onclick="window.location.reload()" style="background: #00E5FF; color: #050505; font-family: monospace; font-size: 11px; font-weight: 600; padding: 6px 14px; border: none; border-radius: 6px; cursor: pointer;">Reload Page</button>
+      </div>
     </div>
+    <script>
+      setTimeout(function() {
+        var hint = document.getElementById('slow-load-hint');
+        if (hint) hint.style.display = 'block';
+      }, 4500);
+    </script>
     <style>
       @keyframes spin { to { transform: rotate(360deg); } }
     </style>

@@ -19,14 +19,6 @@ export default defineConfig({
     outDir: 'dist',
     sourcemap: false,
     // Raise chunk warning threshold — Three.js lazy chunk is intentionally large
-    chunkSizeWarningLimit: 600,
-    rollupOptions: {
-      output: {
-        // Separate Three.js from the main bundle — it's already lazy-loaded
-        manualChunks: {
-          'three-vendor': ['three', '@react-three/fiber', '@react-three/drei'],
-        },
-      },
-    },
+    chunkSizeWarningLimit: 1200,
   },
 });

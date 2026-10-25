@@ -20,19 +20,23 @@ const FloatingIcosahedron: React.FC = () => {
     const t = clock.getElapsedTime();
 
     // Slow auto-rotation — purposeful, not dizzy
-    meshRef.current.rotation.x = t * 0.12;
-    meshRef.current.rotation.y = t * 0.18;
-    wireRef.current.rotation.x = meshRef.current.rotation.x;
-    wireRef.current.rotation.y = meshRef.current.rotation.y;
+    if (meshRef.current) {
+      meshRef.current.rotation.x = t * 0.12;
+      meshRef.current.rotation.y = t * 0.18;
+    }
+    if (wireRef.current && meshRef.current) {
+      wireRef.current.rotation.x = meshRef.current.rotation.x;
+      wireRef.current.rotation.y = meshRef.current.rotation.y;
+    }
 
-    // Gentle float
-    groupRef.current.position.y = Math.sin(t * 0.5) * 0.12;
-
-    // Parallax from mouse — max ±0.25 units, spring-eased
-    groupRef.current.rotation.y +=
-      (mouse.x * 0.4 - groupRef.current.rotation.y) * 0.04;
-    groupRef.current.rotation.x +=
-      (-mouse.y * 0.3 - groupRef.current.rotation.x) * 0.04;
+    // Gentle float & mouse parallax
+    if (groupRef.current) {
+      groupRef.current.position.y = Math.sin(t * 0.5) * 0.12;
+      groupRef.current.rotation.y +=
+        (mouse.x * 0.4 - groupRef.current.rotation.y) * 0.04;
+      groupRef.current.rotation.x +=
+        (-mouse.y * 0.3 - groupRef.current.rotation.x) * 0.04;
+    }
   });
 
   return (
@@ -101,6 +105,23 @@ const Scene: React.FC = () => {
  */
 const HeroSceneCanvas: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null!);
+  const [isVisible, setIsVisible] = React.useState(true);
+
+  // Pause rendering when outside viewport to preserve CPU/GPU
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el || typeof IntersectionObserver === 'undefined') return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.05 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   // Track mouse normalized to [-1, 1]
   useEffect(() => {
@@ -124,8 +145,21 @@ const HeroSceneCanvas: React.FC = () => {
         // Cap pixel ratio at 2 for performance
         dpr={[1, 2]}
         style={{ background: 'transparent' }}
-        // Pause render loop when frame is not needed
-        frameloop="always"
+        // Pause render loop when offscreen
+        frameloop={isVisible ? 'always' : 'never'}
+        onCreated={({ gl }) => {
+          const canvas = gl.domElement;
+          canvas.addEventListener(
+            'webglcontextlost',
+            (event: Event) => {
+              event.preventDefault();
+              if (import.meta.env.DEV) {
+                console.warn('[HeroSceneCanvas] WebGL context lost.');
+              }
+            },
+            false
+          );
+        }}
       >
         <Scene />
       </Canvas>
