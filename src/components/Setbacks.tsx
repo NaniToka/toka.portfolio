@@ -1,72 +1,32 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ShieldAlert, FileText } from 'lucide-react';
+import { ArrowUpRight, Check } from 'lucide-react';
 import { SETBACKS } from '../data/portfolioData';
+import { SectionHeading } from './SectionHeading';
+import { VIEWPORT_ONCE } from '../lib/animation';
 
-export const Setbacks: React.FC = () => {
-  return (
-    <section id="setbacks" className="py-12 sm:py-20 relative scroll-mt-20 sm:scroll-mt-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center gap-4 mb-12">
-          <div className="h-px bg-[rgba(0,229,255,0.15)] flex-1" />
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-100 flex items-center gap-3">
-            <ShieldAlert className="w-8 h-8 text-[#00E5FF]" />
-            Failures & Rejections
-          </h2>
-          <div className="h-px bg-[rgba(0,229,255,0.15)] flex-1" />
-        </div>
-
-        <div className="grid grid-cols-1 gap-8">
-          {SETBACKS.map((setback, idx) => (
-            <motion.div
-              key={setback.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: idx * 0.1 }}
-              className="bg-[#050505] border border-[rgba(0,229,255,0.15)] rounded-xl p-6 md:p-8 hover:border-[rgba(0,229,255,0.3)] transition-all duration-300 group"
-            >
-              <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-6">
-                <div>
-                  <h3 className="text-2xl font-bold text-slate-100 group-hover:text-[#00E5FF] transition-colors mb-2">
-                    {setback.title}
-                  </h3>
-                  <div className="font-mono text-sm text-[#00E5FF] mb-4">{setback.date}</div>
-                  <p className="text-slate-300 leading-relaxed mb-6 whitespace-pre-line text-sm md:text-base">
-                    {setback.description}
-                  </p>
-                  
-                  <div className="bg-[rgba(59,10,107,0.4)] rounded-lg p-5 border border-[rgba(0,229,255,0.15)]">
-                    <h4 className="text-sm font-semibold text-slate-200 mb-4 uppercase tracking-wider font-mono">What's Next:</h4>
-                    <ul className="space-y-3">
-                      {setback.lessons.map((lesson, idx) => (
-                        <li key={idx} className="flex items-start gap-3 text-slate-300">
-                          <span className="text-[#00E5FF] mt-1.5">•</span>
-                          <span className="text-sm leading-relaxed">{lesson}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  
-                  {setback.proofUrl && (
-                    <div className="mt-6">
-                      <a
-                        href={setback.proofUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-4 py-2 text-sm font-mono font-medium rounded-md text-slate-300 bg-[rgba(59,10,107,0.4)] border border-[rgba(0,229,255,0.15)] hover:border-[rgba(0,229,255,0.4)] hover:text-[#00E5FF] transition-all"
-                      >
-                        <FileText className="w-4 h-4" />
-                        Show Proof
-                      </a>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
+export const Setbacks: React.FC = () => (
+  <section id="setbacks" className="section section--tinted">
+    <div className="shell">
+      <SectionHeading label="09 / Lessons" title="Progress includes the difficult chapters." subtitle="A transparent record of what did not go to plan, what it revealed, and the disciplined next steps that followed." />
+      {SETBACKS.map((setback, index) => (
+        <motion.article key={setback.id} className="grid gap-8 border-t border-[var(--line-strong)] pt-9 lg:grid-cols-12" initial={{ opacity: 0, y: 22 }} whileInView={{ opacity: 1, y: 0 }} viewport={VIEWPORT_ONCE} transition={{ duration: 0.55, delay: index * 0.08 }}>
+          <div className="lg:col-span-4">
+            <span className="eyebrow">{setback.date}</span>
+            <h3 className="mt-4 font-serif text-[clamp(2.2rem,3.8vw,3.5rem)] font-medium leading-[1.02]">{setback.title}</h3>
+            {setback.proofUrl && <a href={setback.proofUrl} target="_blank" rel="noopener noreferrer" className="text-link mt-6">View result document <ArrowUpRight size={14} /></a>}
+          </div>
+          <div className="lg:col-span-8 lg:pl-10">
+            <p className="whitespace-pre-line font-serif text-[clamp(1.35rem,2.2vw,1.8rem)] leading-[1.4] text-[var(--ink-soft)]">{setback.description}</p>
+            <div className="mt-8 border-t border-[var(--line)] pt-6">
+              <h4 className="eyebrow">The way forward</h4>
+              <ul className="mt-5 grid gap-4 md:grid-cols-3">
+                {setback.lessons.map(lesson => <li key={lesson} className="flex items-start gap-3 text-xs leading-6 text-[var(--muted)]"><Check size={15} className="mt-1 shrink-0 text-[var(--accent)]" />{lesson}</li>)}
+              </ul>
+            </div>
+          </div>
+        </motion.article>
+      ))}
+    </div>
+  </section>
+);

@@ -1,456 +1,164 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import {
-  Award, FileText, CheckCircle, Clock, ExternalLink,
-  Download, X, Linkedin, Cloud, Cpu, Zap, Trophy, Briefcase
-} from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { ArrowUpRight, Award, CheckCircle2, ChevronDown, Download, ExternalLink, FileText, Linkedin, Minus, Plus, X } from 'lucide-react';
 import { CERTIFICATIONS } from '../data/portfolioData';
 import type { Certification } from '../types/portfolio';
+import { SectionHeading } from './SectionHeading';
 
-/* ─── Category definitions ─────────────────────────────────── */
 type CategoryKey = 'all' | 'cloud' | 'bootcamp' | 'google' | 'hackathon' | 'simulation';
 
-interface Category {
-  key: CategoryKey;
-  label: string;
-  Icon: React.FC<{ className?: string }>;
-  accent: string;         // tailwind text colour
-  border: string;         // tailwind border colour
-  bg: string;             // tailwind bg colour (pill)
-  ids: string[];
-}
-
-const CATEGORIES: Category[] = [
-  {
-    key: 'all',
-    label: 'All',
-    Icon: Award,
-    accent: 'text-slate-300',
-    border: 'border-slate-700',
-    bg: 'bg-slate-800',
-    ids: [],
-  },
-  {
-    key: 'cloud',
-    label: 'Cloud & Industry',
-    Icon: Cloud,
-    accent: 'text-sky-400',
-    border: 'border-sky-800/60',
-    bg: 'bg-sky-950/70',
-    ids: ['azure-ai-developer', 'aws-saa'],
-  },
-  {
-    key: 'bootcamp',
-    label: 'Bootcamps',
-    Icon: Cpu,
-    accent: 'text-violet-400',
-    border: 'border-violet-800/60',
-    bg: 'bg-violet-950/70',
-    ids: ['amrita-agentic-leap-2026', 'genai-academy-apac-2026', 'iict-ai-readiness'],
-  },
-  {
-    key: 'google',
-    label: 'Google AI',
-    Icon: Zap,
-    accent: 'text-[#00E5FF]',
-    border: 'border-[rgba(0,229,255,0.3)]',
-    bg: 'bg-[rgba(59,10,107,0.7)]',
-    ids: ['google-ai-essentials', 'promptwars-ch1', 'promptwars-ch3', 'build-with-ai-chennai', 'gsc-2026'],
-  },
-  {
-    key: 'hackathon',
-    label: 'Hackathons',
-    Icon: Trophy,
-    accent: 'text-amber-400',
-    border: 'border-amber-800/60',
-    bg: 'bg-amber-950/70',
-    ids: ['hackace-2026', 'anvil-ascent-2026'],
-  },
-  {
-    key: 'simulation',
-    label: 'Simulations',
-    Icon: Briefcase,
-    accent: 'text-emerald-400',
-    border: 'border-emerald-800/60',
-    bg: 'bg-emerald-950/70',
-    ids: ['jpmorgan-forage', 'walmart-forage', 'tata-iq-forage'],
-  },
+const categories: { key: CategoryKey; label: string; ids: string[] }[] = [
+  { key: 'all', label: 'All credentials', ids: [] },
+  { key: 'cloud', label: 'Cloud & industry', ids: ['azure-ai-developer', 'aws-saa'] },
+  { key: 'bootcamp', label: 'Bootcamps', ids: ['amrita-agentic-leap-2026', 'genai-academy-apac-2026', 'iict-ai-readiness'] },
+  { key: 'google', label: 'Google AI', ids: ['google-ai-essentials', 'promptwars-ch1', 'promptwars-ch3', 'build-with-ai-chennai', 'gsc-2026'] },
+  { key: 'hackathon', label: 'Hackathons', ids: ['hackace-2026', 'anvil-ascent-2026'] },
+  { key: 'simulation', label: 'Simulations', ids: ['jpmorgan-forage', 'walmart-forage', 'tata-iq-forage'] },
 ];
 
-function getCategoryFor(id: string): Category {
-  return CATEGORIES.find(c => c.ids.includes(id)) ?? CATEGORIES[0];
-}
+type SelectedCertificate = { title: string; issuer: string; pdfUrl?: string; imgUrl?: string; credentialId?: string };
 
-/* ─── Component ─────────────────────────────────────────────── */
 export const Certs: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<CategoryKey>('all');
-  const [selectedCert, setSelectedCert] = useState<{
-    title: string;
-    pdfUrl?: string;
-    imgUrl?: string;
-    credentialId?: string;
-    issuer: string;
-  } | null>(null);
-  const [expandedSubs, setExpandedSubs] = useState<string | null>(null);
+  const [activeCategory, setActiveCategory] = useState<CategoryKey>('all');
+  const [expanded, setExpanded] = useState<string | null>('azure-ai-developer');
+  const [selected, setSelected] = useState<SelectedCertificate | null>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const visible = activeCategory === 'all' ? CERTIFICATIONS : CERTIFICATIONS.filter(cert => categories.find(category => category.key === activeCategory)?.ids.includes(cert.id));
 
-  /* lock scroll when modal open */
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setSelectedCert(null); };
-    if (selectedCert) {
-      document.body.style.overflow = 'hidden';
-      window.addEventListener('keydown', onKey);
-    } else {
+    if (!selected) return;
+    const previousFocus = document.activeElement as HTMLElement | null;
+    document.body.style.overflow = 'hidden';
+    const timer = window.setTimeout(() => closeButtonRef.current?.focus(), 50);
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setSelected(null);
+      if (event.key !== 'Tab' || !modalRef.current) return;
+      const items = modalRef.current.querySelectorAll<HTMLElement>('a[href], button:not([disabled])');
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last?.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first?.focus();
+      }
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => {
+      window.clearTimeout(timer);
       document.body.style.overflow = '';
-    }
-    return () => { document.body.style.overflow = ''; window.removeEventListener('keydown', onKey); };
-  }, [selectedCert]);
+      window.removeEventListener('keydown', onKeyDown);
+      previousFocus?.focus();
+    };
+  }, [selected]);
 
-  const visible: Certification[] =
-    activeTab === 'all'
-      ? CERTIFICATIONS
-      : CERTIFICATIONS.filter(c => CATEGORIES.find(cat => cat.key === activeTab)?.ids.includes(c.id));
+  const openCertificate = (cert: Certification, title = cert.title, pdfUrl = cert.certificateUrl) => {
+    setSelected({ title, issuer: cert.issuer, pdfUrl, imgUrl: cert.certificateImgUrl, credentialId: cert.credentialId });
+  };
 
   return (
-    <section id="certifications" className="py-12 sm:py-20 relative scroll-mt-20 sm:scroll-mt-24">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        {/* ── Header ── */}
-        <div className="mb-10">
-          <span className="font-mono text-xs text-[#00E5FF] font-semibold uppercase tracking-wider block mb-1">
-            05. Verified Credentials
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-100 tracking-tight">
-            Certifications & Badges
-          </h2>
-          <p className="text-slate-400 text-sm mt-2 max-w-2xl">
-            Cloud certifications, bootcamp completions, Google AI programs, hackathon recognitions, and industry simulations.
-          </p>
-        </div>
-
-        {/* ── Category Tabs — horizontally scrollable on mobile ── */}
-        <div className="flex gap-2 mb-8 overflow-x-auto scrollbar-hide pb-1 -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap">
-          {CATEGORIES.map(cat => {
-            const active = activeTab === cat.key;
-            const count = cat.key === 'all' ? CERTIFICATIONS.length : cat.ids.length;
+    <section id="certifications" className="section section--tinted">
+      <div className="shell">
+        <SectionHeading label="05 / Credentials" title="Verified learning. Demonstrated commitment." subtitle="Cloud certifications, Google AI programs, hackathon recognition, and industry simulations—with source documents and verification links." />
+        <div className="mb-8 flex gap-2 overflow-x-auto pb-2 scrollbar-hide" role="group" aria-label="Filter credentials">
+          {categories.map(category => {
+            const count = category.key === 'all' ? CERTIFICATIONS.length : category.ids.length;
+            const active = activeCategory === category.key;
             return (
-              <button
-                key={cat.key}
-                onClick={() => setActiveTab(cat.key)}
-                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-mono font-semibold border transition-all whitespace-nowrap min-h-[36px] ${
-                  active
-                    ? `${cat.bg} ${cat.border} ${cat.accent}`
-                    : 'bg-[rgba(59,10,107,0.3)] border-[rgba(0,229,255,0.2)] text-slate-400 hover:border-[rgba(0,229,255,0.4)] hover:text-slate-300'
-                }`}
-              >
-                <cat.Icon className="w-3.5 h-3.5" />
-                {cat.label}
-                <span className={`ml-0.5 px-1.5 py-0.5 rounded-full text-[10px] font-bold ${
-                  active ? 'bg-white/10' : 'bg-[rgba(59,10,107,0.5)]'
-                }`}>{count}</span>
+              <button key={category.key} onClick={() => { setActiveCategory(category.key); setExpanded(null); }} aria-pressed={active} className={`flex min-h-11 shrink-0 items-center gap-2 border px-4 text-[0.67rem] font-bold transition-colors ${active ? 'border-[var(--forest)] bg-[var(--forest)] text-[var(--on-forest)]' : 'border-[var(--line)] text-[var(--muted)] hover:border-[var(--accent)] hover:text-[var(--accent)]'}`}>
+                {category.label}<span className="opacity-60">{String(count).padStart(2, '0')}</span>
               </button>
             );
           })}
         </div>
 
-        {/* ── Certificate List ── */}
         <AnimatePresence mode="wait">
-          <motion.div
-            key={activeTab}
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.2 }}
-            className="flex flex-col gap-3"
-          >
-            {visible.map((cert, idx) => {
-              const cat = getCategoryFor(cert.id);
-              const isCertified = cert.status?.toLowerCase().includes('active') || cert.status?.toLowerCase().includes('certified');
-              const isExpanded = expandedSubs === cert.id;
-
+          <motion.div key={activeCategory} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }} transition={{ duration: 0.22 }} className="border-t border-[var(--line)]">
+            {visible.map(cert => {
+              const isExpanded = expanded === cert.id;
+              const active = cert.status?.toLowerCase().includes('active');
               return (
-                <motion.div
-                  key={cert.id}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.25, delay: idx * 0.04 }}
-                  className={`relative flex gap-0 rounded-xl overflow-hidden border border-[rgba(0,229,255,0.15)] bg-[rgba(59,10,107,0.4)] hover:border-[rgba(0,229,255,0.3)] transition-all group`}
-                >
-                  {/* Left accent bar */}
-                  <div className={`w-1 shrink-0 ${cat.bg} opacity-80`} />
-
-                  <div className="flex-1 px-5 py-4">
-                    {/* Top row: issuer + category pill + status */}
-                    <div className="flex flex-wrap items-center gap-2 mb-1.5">
-                      <span className={`font-mono text-[10px] font-bold uppercase tracking-widest ${cat.accent}`}>
-                        {cert.issuer}
-                      </span>
-                      {/* category chip */}
-                      <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-mono border ${cat.bg} ${cat.border} ${cat.accent} opacity-80`}>
-                        <cat.Icon className="w-2.5 h-2.5" />
-                        {cat.label}
-                      </span>
-                      {/* status pill */}
-                      {cert.status && (
-                        <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-mono border ${
-                          isCertified
-                            ? 'bg-emerald-950/80 border-emerald-800/40 text-emerald-300'
-                            : 'bg-[rgba(59,10,107,0.5)] border-[rgba(0,229,255,0.15)] text-slate-400'
-                        }`}>
-                          {isCertified ? <CheckCircle className="w-2.5 h-2.5" /> : <Clock className="w-2.5 h-2.5" />}
-                          {cert.status}
-                        </span>
-                      )}
-                      {/* date */}
-                      {cert.date && (
-                        <span className="font-mono text-[10px] text-slate-500 ml-auto">{cert.date}</span>
-                      )}
+                <article key={cert.id} className="border-b border-[var(--line)]">
+                  <button className="grid w-full gap-4 py-6 text-left sm:grid-cols-12 sm:items-center" onClick={() => setExpanded(isExpanded ? null : cert.id)} aria-expanded={isExpanded} aria-controls={`credential-${cert.id}`}>
+                    <div className="sm:col-span-3">
+                      <span className="text-[0.62rem] font-bold uppercase leading-5 tracking-[0.12em] text-[var(--accent)]">{cert.issuer}</span>
+                      {cert.status && <span className={`mt-2 flex items-center gap-1.5 text-[0.62rem] font-semibold ${active ? 'text-[var(--success)]' : 'text-[var(--muted)]'}`}>{active ? <CheckCircle2 size={12} /> : <Award size={12} />}{cert.status}</span>}
                     </div>
-
-                    {/* Title */}
-                    <h3 className="text-sm sm:text-base font-bold text-slate-100 leading-snug mb-1">
-                      {cert.title}
-                    </h3>
-
-                    {/* Description — truncated, no full paragraph dump */}
-                    {cert.description && (
-                      <p className="text-xs text-slate-400 leading-relaxed line-clamp-2 mb-2">
-                        {cert.description}
-                      </p>
-                    )}
-
-                    {/* Credential ID — break long IDs */}
-                    {cert.credentialId && (
-                      <div className="font-mono text-[10px] text-slate-500 mb-3 break-all">
-                        ID: {cert.credentialId}
-                      </div>
-                    )}
-
-                    {/* Action row */}
-                    <div className="flex flex-wrap items-center gap-2">
-                      {(cert.certificateUrl || cert.certificateImgUrl) && (
-                        <button
-                          onClick={() => setSelectedCert({
-                            title: cert.title,
-                            pdfUrl: cert.certificateUrl,
-                            imgUrl: cert.certificateImgUrl,
-                            credentialId: cert.credentialId,
-                            issuer: cert.issuer,
-                          })}
-                          className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-semibold rounded-lg border transition-all ${cat.bg} ${cat.border} ${cat.accent} hover:opacity-90`}
-                        >
-                          <Award className="w-3.5 h-3.5" />
-                          View
-                        </button>
-                      )}
-                      {cert.certificateUrl && (
-                        <a
-                          href={cert.certificateUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-medium rounded-lg bg-[rgba(59,10,107,0.4)] border border-[rgba(0,229,255,0.15)] text-slate-400 hover:text-slate-200 hover:border-[rgba(0,229,255,0.35)] transition-all"
-                          title="Open PDF in new tab"
-                        >
-                          <ExternalLink className="w-3 h-3" /> PDF
-                        </a>
-                      )}
-                      {cert.verifyUrl && (
-                        <a
-                          href={cert.verifyUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-medium rounded-lg bg-[rgba(59,10,107,0.4)] border border-[rgba(0,229,255,0.15)] text-slate-400 hover:text-[#00E5FF] hover:border-[rgba(0,229,255,0.35)] transition-all"
-                        >
-                          <FileText className="w-3 h-3" /> Verify
-                        </a>
-                      )}
-                      {cert.linkedinUrl && (
-                        <a
-                          href={cert.linkedinUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-medium rounded-lg bg-[#0A66C2]/10 border border-[#0A66C2]/30 text-[#4d9fda] hover:bg-[#0A66C2]/20 hover:border-[#0A66C2]/50 transition-all"
-                        >
-                          <Linkedin className="w-3 h-3" /> Post
-                        </a>
-                      )}
-                      {!cert.certificateUrl && !cert.verifyUrl && !cert.linkedinUrl && (
-                        <span className="inline-flex items-center gap-1 font-mono text-[10px] text-emerald-400">
-                          <CheckCircle className="w-3 h-3" /> Verified Official
-                        </span>
-                      )}
-
-                      {/* Sub-certs toggle */}
-                      {cert.subCertifications && cert.subCertifications.length > 0 && (
-                        <button
-                          onClick={() => setExpandedSubs(isExpanded ? null : cert.id)}
-                          className="ml-auto inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-medium rounded-lg bg-[rgba(59,10,107,0.4)] border border-[rgba(0,229,255,0.15)] text-slate-400 hover:text-slate-200 hover:border-[rgba(0,229,255,0.3)] transition-all"
-                        >
-                          {isExpanded ? '↑ Hide' : `↓ ${cert.subCertifications.length} courses`}
-                        </button>
-                      )}
+                    <h3 className="font-serif text-[1.65rem] font-medium leading-[1.08] sm:col-span-7">{cert.title}</h3>
+                    <div className="flex items-center justify-between gap-3 sm:col-span-2 sm:justify-end">
+                      {cert.date && <span className="text-[0.62rem] font-semibold text-[var(--muted)]">{cert.date}</span>}
+                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[var(--line)] text-[var(--accent)]">{isExpanded ? <Minus size={15} /> : <Plus size={15} />}</span>
                     </div>
-
-                    {/* Sub-certifications expandable */}
-                    <AnimatePresence>
-                      {isExpanded && cert.subCertifications && (
-                        <motion.div
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: 'auto' }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.2 }}
-                          className="overflow-hidden"
-                        >
-                          <div className="mt-3 pt-3 border-t border-[rgba(0,229,255,0.15)] flex flex-col gap-1.5">
-                            {cert.subCertifications.map(sub => (
-                              <div
-                                key={sub.id}
-                                className="flex items-center justify-between px-3 py-2 rounded-lg bg-[rgba(59,10,107,0.3)] border border-[rgba(0,229,255,0.15)]"
-                              >
-                                <span className="text-xs text-slate-300 font-medium">{sub.title}</span>
-                                <div className="flex gap-1.5 shrink-0">
-                                  {sub.certificateUrl && (
-                                    <button
-                                      onClick={() => setSelectedCert({ title: sub.title, pdfUrl: sub.certificateUrl!, issuer: cert.title })}
-                                      className="p-1.5 text-[#00E5FF] hover:text-[#33EEFF] hover:bg-[rgba(0,229,255,0.1)] rounded transition-colors"
-                                      title="View Certificate"
-                                    >
-                                      <Award className="w-3.5 h-3.5" />
-                                    </button>
-                                  )}
-                                  {sub.verifyUrl && (
-                                    <a
-                                      href={sub.verifyUrl}
-                                      target="_blank"
-                                      rel="noopener noreferrer"
-                                      className="p-1.5 text-slate-400 hover:text-[#00E5FF] hover:bg-[rgba(0,229,255,0.1)] rounded transition-colors"
-                                      title="Verify"
-                                    >
-                                      <FileText className="w-3.5 h-3.5" />
-                                    </a>
-                                  )}
+                  </button>
+                  <AnimatePresence initial={false}>
+                    {isExpanded && (
+                      <motion.div id={`credential-${cert.id}`} initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="overflow-hidden">
+                        <div className="grid gap-6 pb-8 sm:grid-cols-12">
+                          <div className="sm:col-span-3"><span className="font-serif text-2xl italic text-[var(--accent)]"><ChevronDown size={22} /></span></div>
+                          <div className="sm:col-span-9">
+                            {cert.description && <p className="max-w-3xl text-sm leading-7 text-[var(--muted)]">{cert.description}</p>}
+                            {cert.credentialId && <p className="break-anywhere mt-3 text-[0.65rem] font-bold uppercase tracking-[0.1em] text-[var(--muted)]">Credential ID · {cert.credentialId}</p>}
+                            <div className="mt-5 flex flex-wrap gap-x-5 gap-y-3">
+                              {(cert.certificateUrl || cert.certificateImgUrl) && <button className="text-link" onClick={() => openCertificate(cert)}><Award size={14} /> View certificate</button>}
+                              {cert.verifyUrl && <a href={cert.verifyUrl} target="_blank" rel="noopener noreferrer" className="text-link"><FileText size={14} /> Verify credential</a>}
+                              {cert.certificateUrl && <a href={cert.certificateUrl} target="_blank" rel="noopener noreferrer" className="text-link"><ExternalLink size={14} /> Open PDF</a>}
+                              {cert.linkedinUrl && <a href={cert.linkedinUrl} target="_blank" rel="noopener noreferrer" className="text-link"><Linkedin size={14} /> LinkedIn post</a>}
+                            </div>
+                            {cert.subCertifications && (
+                              <div className="mt-7 border-t border-[var(--line)] pt-5">
+                                <h4 className="eyebrow">Included courses · {cert.subCertifications.length}</h4>
+                                <div className="mt-4 grid gap-3 md:grid-cols-2">
+                                  {cert.subCertifications.map(sub => (
+                                    <div key={sub.id} className="border border-[var(--line)] p-4">
+                                      <p className="text-xs font-semibold leading-6">{sub.title}</p>
+                                      <div className="mt-2 flex gap-4">
+                                        {sub.certificateUrl && <button onClick={() => openCertificate(cert, sub.title, sub.certificateUrl)} className="text-link !text-[0.68rem]">View <ArrowUpRight size={12} /></button>}
+                                        {sub.verifyUrl && <a href={sub.verifyUrl} target="_blank" rel="noopener noreferrer" className="text-link !text-[0.68rem]">Verify <ArrowUpRight size={12} /></a>}
+                                      </div>
+                                    </div>
+                                  ))}
                                 </div>
                               </div>
-                            ))}
+                            )}
                           </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                </motion.div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </article>
               );
             })}
           </motion.div>
         </AnimatePresence>
-
-        {/* cert count */}
-        <p className="mt-6 font-mono text-xs text-slate-600 text-right">
-          {visible.length} of {CERTIFICATIONS.length} credentials
-        </p>
+        <p className="mt-5 text-right text-[0.65rem] font-bold uppercase tracking-[0.12em] text-[var(--muted)]">Showing {visible.length} of {CERTIFICATIONS.length} credentials</p>
       </div>
 
-      {/* ── PDF Modal ── */}
-      {selectedCert && (
-        <div
-          className="fixed inset-0 z-[60] flex items-start justify-center pt-16 pb-4 px-3 sm:px-6 bg-black/80 backdrop-blur-md"
-          onClick={() => setSelectedCert(null)}
-        >
-          <div
-            className="relative w-full max-w-5xl h-[calc(100dvh-5rem)] h-[calc(100vh-5rem)] bg-[#3B0A6B] border border-[rgba(0,229,255,0.2)] rounded-xl flex flex-col overflow-hidden shadow-2xl"
-            onClick={e => e.stopPropagation()}
-          >
-            {/* Modal header */}
-            <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 bg-[rgba(59,10,107,0.9)] border-b border-[rgba(0,229,255,0.15)]">
-              <div className="flex items-center gap-2.5 min-w-0">
-                <Award className="w-5 h-5 text-[#00E5FF] shrink-0" />
-                <div className="min-w-0">
-                  <h3 className="font-mono text-sm font-semibold text-slate-100 truncate">
-                    {selectedCert.title}
-                  </h3>
-                  <span className="font-mono text-xs text-slate-400 block truncate">
-                    {selectedCert.issuer}{selectedCert.credentialId ? ` · ID: ${selectedCert.credentialId}` : ''}
-                  </span>
+      <AnimatePresence>
+        {selected && (
+          <motion.div ref={modalRef} className="modal-backdrop" role="dialog" aria-modal="true" aria-label={`${selected.title} certificate`} onClick={() => setSelected(null)} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+            <div className="document-modal" onClick={event => event.stopPropagation()}>
+              <div className="document-modal__header">
+                <div className="min-w-0"><h3 className="truncate font-serif text-xl font-semibold">{selected.title}</h3><p className="truncate text-[0.65rem] text-[var(--muted)]">{selected.issuer}{selected.credentialId ? ` · ${selected.credentialId}` : ''}</p></div>
+                <div className="flex shrink-0 items-center gap-2">
+                  <a href={selected.pdfUrl || selected.imgUrl} target="_blank" rel="noopener noreferrer" className="icon-button" aria-label="Open certificate in a new tab"><ExternalLink size={16} /></a>
+                  <a href={selected.pdfUrl || selected.imgUrl} download className="icon-button" aria-label="Download certificate"><Download size={16} /></a>
+                  <button ref={closeButtonRef} className="icon-button" onClick={() => setSelected(null)} aria-label="Close certificate"><X size={17} /></button>
                 </div>
               </div>
-              <div className="flex items-center gap-2 shrink-0 ml-4">
-                <a
-                  href={selectedCert.pdfUrl ?? selectedCert.imgUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono rounded-md bg-[rgba(59,10,107,0.8)] hover:bg-[rgba(59,10,107,0.95)] text-slate-200 border border-[rgba(0,229,255,0.2)] transition-colors"
-                >
-                  <ExternalLink className="w-3.5 h-3.5" /> Fullscreen
-                </a>
-                <a
-                  href={selectedCert.pdfUrl ?? selectedCert.imgUrl}
-                  download={`${selectedCert.title.replace(/\s+/g, '_')}_Certificate`}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-semibold rounded-md bg-[#00E5FF] hover:bg-[#33EEFF] text-[#050505] transition-colors"
-                >
-                  <Download className="w-3.5 h-3.5" /> Download
-                </a>
-                <button
-                  onClick={() => setSelectedCert(null)}
-                  className="p-1.5 text-slate-400 hover:text-slate-100 rounded-md hover:bg-[rgba(0,229,255,0.1)] transition-colors"
-                  aria-label="Close"
-                >
-                  <X className="w-5 h-5" />
-                </button>
+              <div className="document-modal__body">
+                {selected.imgUrl && !selected.pdfUrl ? <div className="flex h-full items-center justify-center overflow-auto p-4"><img src={selected.imgUrl} alt={selected.title} className="max-h-full object-contain" /></div> : (
+                  <>
+                    <iframe src={`${selected.pdfUrl}#toolbar=1&navpanes=0`} title={`${selected.title} preview`} className="hidden h-full w-full border-0 sm:block" />
+                    <div className="flex h-full flex-col items-center justify-center p-8 text-center sm:hidden"><Award size={42} className="text-[var(--accent)]" /><p className="mt-5 max-w-xs text-sm text-[var(--muted)]">Open the certificate in your browser for the best mobile viewing experience.</p><a href={selected.pdfUrl} target="_blank" rel="noopener noreferrer" className="button button--primary mt-6">Open certificate <ArrowUpRight size={15} /></a></div>
+                  </>
+                )}
               </div>
             </div>
-
-            {/* Modal body — image or iframe for PDF */}
-            <div className="flex-1 bg-[rgba(59,10,107,0.85)] relative flex flex-col overflow-hidden">
-
-              {/* Image certificate (jpg/png/webp) */}
-              {selectedCert.imgUrl && !selectedCert.pdfUrl && (
-                <div className="flex-1 flex items-center justify-center p-4 overflow-auto">
-                  <img
-                    src={selectedCert.imgUrl}
-                    alt={selectedCert.title}
-                    className="max-w-full max-h-full object-contain rounded-lg shadow-xl"
-                  />
-                </div>
-              )}
-
-              {/* PDF — desktop iframe */}
-              {selectedCert.pdfUrl && (
-                <>
-                  <iframe
-                    src={`${selectedCert.pdfUrl}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
-                    title="Certificate Preview"
-                    className="hidden sm:block w-full h-full border-none"
-                  />
-                  {/* Mobile: action buttons */}
-                  <div className="flex sm:hidden flex-col items-center justify-center h-full gap-5 p-8 text-center">
-                    <div className="w-16 h-16 rounded-2xl bg-[rgba(59,10,107,0.8)] border border-[rgba(0,229,255,0.3)] flex items-center justify-center">
-                      <Award className="w-8 h-8 text-[#00E5FF]" />
-                    </div>
-                    <div>
-                      <h4 className="text-base font-bold text-slate-100 mb-1">{selectedCert.title}</h4>
-                      <p className="text-xs text-slate-400">{selectedCert.issuer}</p>
-                      {selectedCert.credentialId && (
-                        <p className="font-mono text-[10px] text-slate-500 mt-1">ID: {selectedCert.credentialId}</p>
-                      )}
-                    </div>
-                    <p className="text-xs text-slate-500 max-w-xs">
-                      PDF preview isn't supported on mobile. Open or download directly.
-                    </p>
-                    <div className="flex flex-col w-full max-w-xs gap-3">
-                      <a href={selectedCert.pdfUrl} target="_blank" rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center gap-2 w-full px-4 py-3 text-sm font-mono font-semibold rounded-xl bg-[#00E5FF] hover:bg-[#33EEFF] text-[#050505] transition-colors">
-                        <ExternalLink className="w-4 h-4" /> Open PDF in Browser
-                      </a>
-                      <a href={selectedCert.pdfUrl} download={`${selectedCert.title.replace(/\s+/g, '_')}_Certificate.pdf`}
-                        className="inline-flex items-center justify-center gap-2 w-full px-4 py-3 text-sm font-mono font-semibold rounded-xl bg-[rgba(59,10,107,0.8)] hover:bg-[rgba(59,10,107,0.95)] text-slate-200 border border-[rgba(0,229,255,0.2)] transition-colors">
-                        <Download className="w-4 h-4" /> Download PDF
-                      </a>
-                    </div>
-                  </div>
-                </>
-              )}
-            </div>
-          </div>
-        </div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };

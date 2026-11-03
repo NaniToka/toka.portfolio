@@ -3,65 +3,22 @@ import { motion } from 'framer-motion';
 import { Trophy } from 'lucide-react';
 import { ACHIEVEMENTS } from '../data/portfolioData';
 import { SectionHeading } from './SectionHeading';
-import { TiltCard } from './TiltCard';
-import { staggerContainer, fadeUp, VIEWPORT_ONCE } from '../lib/animation';
-import { useReducedMotion } from '../hooks/useReducedMotion';
+import { VIEWPORT_ONCE } from '../lib/animation';
 
-export const Achievements: React.FC = () => {
-  const reduced = useReducedMotion();
-  return (
-    <section id="achievements" className="py-12 sm:py-20 relative scroll-mt-20 sm:scroll-mt-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <div className="mb-12">
-          <SectionHeading
-            label="06. Competitive Milestones"
-            title="Achievements & Hackathons"
-            subtitle="Real hackathon participation, competitive challenges, and Google for Developers technical bootcamps."
-          />
-        </div>
-
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-6"
-          initial="hidden"
-          whileInView="visible"
-          viewport={VIEWPORT_ONCE}
-          variants={staggerContainer(0.08)}
-        >
-          {ACHIEVEMENTS.map((ach) => (
-            <motion.div
-              key={ach.id}
-              variants={reduced
-                ? { hidden: { opacity: 0 }, visible: { opacity: 1 } }
-                : fadeUp()
-              }
-            >
-              <TiltCard maxTilt={3} className="h-full rounded-xl">
-                <div className="glass-card rounded-xl p-6 h-full hover:border-[rgba(0,229,255,0.4)] transition-all flex flex-col justify-between relative overflow-hidden group">
-                  <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[rgba(0,229,255,0.35)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between">
-                      <span className="font-mono text-xs text-[#00E5FF] font-semibold uppercase">
-                        {ach.event}
-                      </span>
-                      <Trophy className="w-5 h-5 text-[#00E5FF] shrink-0" />
-                    </div>
-
-                    <h3 className="text-lg font-bold text-slate-100">
-                      {ach.title}
-                    </h3>
-
-                    <p className="text-xs text-slate-300 leading-relaxed">
-                      {ach.description}
-                    </p>
-                  </div>
-                </div>
-              </TiltCard>
-            </motion.div>
-          ))}
-        </motion.div>
-
+export const Achievements: React.FC = () => (
+  <section id="achievements" className="section">
+    <div className="shell">
+      <SectionHeading label="06 / Milestones" title="Tested in competitive rooms." subtitle="Hackathons and engineering challenges that turned ideas into working systems under real constraints." />
+      <div className="grid gap-x-12 md:grid-cols-2">
+        {ACHIEVEMENTS.map((achievement, index) => (
+          <motion.article key={achievement.id} className="border-t border-[var(--line-strong)] py-8" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={VIEWPORT_ONCE} transition={{ duration: 0.5, delay: index * 0.07 }}>
+            <div className="flex items-center justify-between text-[var(--accent)]"><Trophy size={21} strokeWidth={1.5} /><span className="font-serif text-xl italic">/{String(index + 1).padStart(2, '0')}</span></div>
+            <p className="eyebrow mt-8 leading-6">{achievement.event}</p>
+            <h3 className="mt-3 font-serif text-[2rem] font-medium leading-[1.06]">{achievement.title}</h3>
+            <p className="mt-4 text-sm leading-7 text-[var(--muted)]">{achievement.description}</p>
+          </motion.article>
+        ))}
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);

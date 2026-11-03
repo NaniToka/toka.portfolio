@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { X, Download, ExternalLink, FileText, AlertTriangle } from 'lucide-react';
+import React, { useEffect, useRef } from 'react';
+import { Download, ExternalLink, FileText, X } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
 interface ResumeModalProps {
@@ -8,113 +8,43 @@ interface ResumeModalProps {
 }
 
 export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => {
+  const closeRef = useRef<HTMLButtonElement>(null);
+
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && isOpen) {
-        onClose();
-      }
-    };
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-      window.addEventListener('keydown', handleKeyDown);
-    } else {
-      document.body.style.overflow = '';
-    }
+    if (!isOpen) return;
+    const previousFocus = document.activeElement as HTMLElement | null;
+    document.body.style.overflow = 'hidden';
+    closeRef.current?.focus();
+    const onKeyDown = (event: KeyboardEvent) => { if (event.key === 'Escape') onClose(); };
+    window.addEventListener('keydown', onKeyDown);
     return () => {
       document.body.style.overflow = '';
-      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('keydown', onKeyDown);
+      previousFocus?.focus();
     };
   }, [isOpen, onClose]);
 
   if (!isOpen) return null;
 
   return (
-    <div 
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md animate-fadeIn"
-      onClick={onClose}
-    >
-      <div 
-        className="relative w-full max-w-5xl h-[90vh] bg-[#3B0A6B] border border-[rgba(0,229,255,0.2)] rounded-xl flex flex-col overflow-hidden shadow-2xl"
-        onClick={(e) => e.stopPropagation()}
-      >
-        {/* Modal Header */}
-        <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 bg-[rgba(59,10,107,0.9)] border-b border-[rgba(0,229,255,0.15)]">
-          <div className="flex items-center gap-2.5">
-            <FileText className="w-5 h-5 text-[#00E5FF]" />
-            <h3 className="font-mono text-sm sm:text-base font-semibold text-slate-100">
-              {PERSONAL_INFO.name} — Resume (PDF)
-            </h3>
-          </div>
-          
-          <div className="flex items-center gap-2">
-            <a
-              href={PERSONAL_INFO.resumePath}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-medium rounded-md bg-[rgba(59,10,107,0.8)] hover:bg-[rgba(59,10,107,0.95)] text-slate-200 border border-[rgba(0,229,255,0.2)] transition-colors"
-            >
-              <ExternalLink className="w-3.5 h-3.5" /> Open Fullscreen
-            </a>
-            
-            <a
-              href={PERSONAL_INFO.resumePath}
-              download="Toka_Nani_Resume.pdf"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-semibold rounded-md bg-[#00E5FF] hover:bg-[#33EEFF] text-[#050505] transition-colors shadow-sm"
-            >
-              <Download className="w-3.5 h-3.5" /> Download PDF
-            </a>
-
-            <button
-              onClick={onClose}
-              className="p-1.5 text-slate-400 hover:text-slate-100 rounded-md hover:bg-[rgba(0,229,255,0.1)] transition-colors"
-              aria-label="Close resume preview modal"
-            >
-              <X className="w-5 h-5" />
-            </button>
+    <div className="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="resume-title" onClick={onClose}>
+      <div className="document-modal" onClick={event => event.stopPropagation()}>
+        <div className="document-modal__header">
+          <div className="flex min-w-0 items-center gap-3"><FileText size={20} className="shrink-0 text-[var(--accent)]" /><div className="min-w-0"><h2 id="resume-title" className="truncate font-serif text-xl font-semibold">{PERSONAL_INFO.name} · Résumé</h2><p className="text-[0.65rem] text-[var(--muted)]">Cloud & Generative AI Engineer</p></div></div>
+          <div className="flex shrink-0 items-center gap-2">
+            <a href={PERSONAL_INFO.resumePath} target="_blank" rel="noopener noreferrer" className="icon-button" aria-label="Open résumé in a new tab"><ExternalLink size={16} /></a>
+            <a href={PERSONAL_INFO.resumePath} download="Toka_Nani_Resume.pdf" className="icon-button" aria-label="Download résumé"><Download size={16} /></a>
+            <button ref={closeRef} onClick={onClose} className="icon-button" aria-label="Close résumé"><X size={17} /></button>
           </div>
         </div>
-
-        {/* Modal Body with Embed & Mobile Fallback */}
-        <div className="flex-1 w-full h-full bg-[rgba(59,10,107,0.85)] relative">
-          <object
-            data={PERSONAL_INFO.resumePath}
-            type="application/pdf"
-            className="w-full h-full border-none"
-          >
-            <iframe
-              src={`${PERSONAL_INFO.resumePath}#toolbar=1&navpanes=0`}
-              title="Toka Nani Resume Preview"
-              className="w-full h-full border-none"
-            >
-              {/* Fallback container for mobile clients restricting embedded PDFs */}
-              <div className="flex flex-col items-center justify-center h-full p-6 text-center bg-[#3B0A6B]">
-                <AlertTriangle className="w-12 h-12 text-[#00E5FF] mb-3" />
-                <h4 className="text-lg font-semibold text-slate-100 mb-2">
-                  Resume Preview Unavailable Inline
-                </h4>
-                <p className="text-sm text-slate-400 max-w-md mb-6 leading-relaxed">
-                  Mobile browsers and restricted web clients may not render embedded PDF documents directly in the page. You can view or download the file directly below.
-                </p>
-                <div className="flex flex-wrap gap-3 justify-center">
-                  <a
-                    href={PERSONAL_INFO.resumePath}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 text-xs font-mono font-semibold rounded-md bg-[#00E5FF] hover:bg-[#33EEFF] text-[#050505] transition-colors"
-                  >
-                    <ExternalLink className="w-4 h-4" /> View PDF in New Tab
-                  </a>
-                  <a
-                    href={PERSONAL_INFO.resumePath}
-                    download="Toka_Nani_Resume.pdf"
-                    className="inline-flex items-center gap-2 px-4 py-2 text-xs font-mono font-semibold rounded-md bg-[rgba(59,10,107,0.8)] hover:bg-[rgba(59,10,107,0.95)] text-slate-200 border border-[rgba(0,229,255,0.2)] transition-colors"
-                  >
-                    <Download className="w-4 h-4" /> Download PDF Directly
-                  </a>
-                </div>
-              </div>
-            </iframe>
-          </object>
+        <div className="document-modal__body">
+          <iframe src={`${PERSONAL_INFO.resumePath}#toolbar=1&navpanes=0`} title="Toka Nani résumé preview" className="hidden h-full w-full border-0 sm:block" />
+          <div className="flex h-full flex-col items-center justify-center p-8 text-center sm:hidden">
+            <FileText size={44} className="text-[var(--accent)]" />
+            <h3 className="mt-5 font-serif text-3xl font-medium">Your next chapter starts here.</h3>
+            <p className="mt-3 max-w-xs text-sm text-[var(--muted)]">Open or download the PDF for the best mobile reading experience.</p>
+            <div className="mt-6 flex flex-wrap justify-center gap-3"><a href={PERSONAL_INFO.resumePath} target="_blank" rel="noopener noreferrer" className="button button--primary">Open résumé <ExternalLink size={15} /></a><a href={PERSONAL_INFO.resumePath} download="Toka_Nani_Resume.pdf" className="button button--outline">Download <Download size={15} /></a></div>
+          </div>
         </div>
       </div>
     </div>
