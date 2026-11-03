@@ -52,8 +52,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
             transition={{ duration: 0.85, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
           >
             <picture>
-              <source srcSet="/toka-profile.webp" type="image/webp" />
-              <img src="/toka-profile.jpg" alt="Portrait of Toka Nani in a navy suit" width={512} height={640} loading="eager" className="portrait-image" />
+              <source srcSet="/toka-profile-editorial-v2.webp" type="image/webp" />
+              <img src="/toka-profile-editorial-v2.jpg" alt="Portrait of Toka Nani in a navy suit" width={512} height={640} loading="eager" className="portrait-image" />
             </picture>
             <figcaption className="portrait-caption">
               <span className="block text-[0.6rem] font-bold uppercase tracking-[0.18em] text-[#d8b18b]">Leadership · 2026</span>
