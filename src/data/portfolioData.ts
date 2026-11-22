@@ -393,9 +393,14 @@ export const EXPERIENCE_ITEMS: ExperienceItem[] = [
     location: "Vijayawada, India",
     type: "ambassadorship",
     badgeLabel: "Leadership & Ambassadorship",
-    description: "Selected through a multi-stage evaluation to represent Google Gemini in the Student Ambassador program on campus.",
+    certificateUrl: "/google-student-ambassador-sem1-certificate.pdf",
+    certificateLabel: "View Sem 1 Certificate",
+    proofUrl: "/google-student-ambassador-sem1-certificate.pdf",
+    proofLabel: "View Sem 1 Certificate",
+    description: "Selected through a multi-stage evaluation to represent Google Gemini in the Student Ambassador program on campus (#TeamGemini). Successfully completed Semester 1 with a Certificate of Recognition for outstanding performance and exceptional contribution.",
     bullets: [
-      "Selected through a multi-stage evaluation to represent Google Gemini in the Student Ambassador program.",
+      "Selected through a multi-stage evaluation to represent Google Gemini in the Student Ambassador program on campus.",
+      "Awarded Certificate of Recognition for successfully completing Semester 1 with outstanding performance and exceptional contribution (November 2026).",
       "Represent Gemini on campus through workshops and developer sessions on AI application development."
     ]
   },

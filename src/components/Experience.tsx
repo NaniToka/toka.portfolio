@@ -30,8 +30,39 @@ export const Experience: React.FC = () => (
                   <h3 className="font-serif text-[clamp(2rem,3.3vw,3rem)] font-medium leading-[1.03] tracking-[-0.025em]">{item.role}</h3>
                   <p className="mt-2 text-sm font-bold text-[var(--accent)]">{item.organization}</p>
                 </div>
-                {(item.proofUrl || item.verifyUrl) && (
-                  <a href={item.proofUrl || item.verifyUrl} target="_blank" rel="noopener noreferrer" className="text-link shrink-0">{item.proofUrl ? 'View offer letter' : 'Verify experience'} <ArrowUpRight size={14} /></a>
+                {(item.certificateUrl || item.proofUrl || item.verifyUrl) && (
+                  <div className="flex flex-wrap items-center gap-4 shrink-0">
+                    {item.certificateUrl && (
+                      <a
+                        href={item.certificateUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-link shrink-0"
+                      >
+                        {item.certificateLabel || 'View certificate'} <ArrowUpRight size={14} />
+                      </a>
+                    )}
+                    {item.proofUrl && item.proofUrl !== item.certificateUrl && (
+                      <a
+                        href={item.proofUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-link shrink-0"
+                      >
+                        {item.proofLabel || (item.type === 'internship' ? 'View offer letter' : 'View certificate')} <ArrowUpRight size={14} />
+                      </a>
+                    )}
+                    {item.verifyUrl && (
+                      <a
+                        href={item.verifyUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-link shrink-0"
+                      >
+                        Verify experience <ArrowUpRight size={14} />
+                      </a>
+                    )}
+                  </div>
                 )}
               </div>
               {item.offerId && <p className="mt-2 text-[0.65rem] font-bold uppercase tracking-[0.12em] text-[var(--muted)]">Offer ID · {item.offerId}</p>}

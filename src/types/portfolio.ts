@@ -61,6 +61,9 @@ export interface ExperienceItem {
   badgeLabel?: string;
   verifyUrl?: string;
   proofUrl?: string;
+  proofLabel?: string;
+  certificateUrl?: string;
+  certificateLabel?: string;
   offerId?: string;
   eventsRun?: number;
   attendeesCount?: number;
